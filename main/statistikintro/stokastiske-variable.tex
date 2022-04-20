@@ -1,0 +1,91 @@
+\section{Stokastisk Variable} \label{sec:SV}
+\begin{defn}%def 2.1 og 2.2
+En reel variabel med værdi fra et stokastisk eksperiment kaldes en \textbf{stokastisk variabel} $X$. Værdimængden af $X$, kaldes \textbf{udfaldsrummet} af $X$. Hvis udfaldsrummet af $X$ er tællelig kaldes $X$ en \textbf{diskret stokastisk variabel}.
+\end{defn}
+
+Vi husker, at en hændelse afhængig af stokastiske variabler kan noteres med et prædikat, så som
+\begin{align*}
+    \{X=0\}=\Set*{s\in S\given X=0}
+\end{align*}
+der beskriver hændelsen, hvor $X$ antager værdien $0$.
+Generelt undlades tuborg klammerne omkring predikatet, når der arbejdes med sandsynlighedsmål, så $P(\{X = 0\})$ noteres også $P(X = 0)$.
+
+\begin{defn} [Sandsynlighedsfunktion]%Def 2.3
+    Lad en diskret stokastisk variabel $X$ med udfaldsrum $V_X$. Så kaldes funktionen
+% \begin{align*}
+%     p(x_k)=P(X=x_k), \quad k=1,2,\ldots 
+% \end{align*}
+\begin{align*}
+    p(x)=
+    \begin{cases}
+        P(X=x) & x\in V_X\\
+        0 & x\not\in V_X
+    \end{cases}
+\end{align*}
+for \textbf{sandsynlighedsfunktion (pmf)} af $X$. Sandsynlighederne, beskrevet ved $p(x_k)$, kaldes \textbf{fordelingen} af $X$.
+\end{defn}
+Vi introducerer nu følgende resultat, som kan benyttes til at generalisere resultaterne om sandsynlighedsfunktioner til diskrete stokastiske variable med uendelige udfaldsrum til diskrete stokastiske variabler med endelige udfaldsrum.
+\begin{lem}
+Lad $X$, være en diskret stokastisk variabel med udfaldsrum $\{x_1, x_2, \ldots, x_n\}$, og $f: \N \to \R$. Så er 
+\begin{equation*}
+    \sum^n_{k = 1} f(k) p(x_k) = \sum^\infty_{k = 1} f(k) p(x_k)
+\end{equation*}
+hvor $x_k \in \R \backslash \{x_1, x_2, \ldots, x_n\}$ for $k = n + 1, n + 2, \ldots$
+\end{lem}
+\begin{proof}
+Vi har 
+\begin{align*}
+    \sum^\infty_{k = 1} f(k) p(x_k) =\sum^n_{k = 1} f(k) p(x_k) + \sum^\infty_{k = n + 1} f(k) p(x_k) = \sum^n_{k = 1} f(k) p(x_k) 
+\end{align*}
+da $p(x_k) = 0$ for alle $x_k \not \in \{x_1, x_2, \ldots, x_n\}$.
+\end{proof}
+
+
+
+% En sandsynlighedsfunktion kaldes skrives på engelsk probability mass function, heraf forkortelsen \textbf{pmf} fremkommer, som vi herefter vil benytte.
+
+\begin{prop}\label{prop:kravTilPMF}\label{prop:pmfEgenskaber} %Prop:2.1
+Lad $X$ være en stokastisk variabel med udfaldsrum $\{x_1, x_2\ldots\}$ og pmf $p$, så er 
+\begin{enumerate}
+    \item $p(x_k) \geq 0$ for $k=1,2 \ldots$
+    \item $\displaystyle \sum_{k=1}^{\infty} p(x_k) = 1 $
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Da $P$ er et sandsynlighedsmål, medfører det, at $0 \leq p(x_k) = P(X = x_k) \leq 1 \text{ for } k=1,2,\ldots$. Derudover gælder, at $P(S)=1$, da $S = \bigcup^\infty_{k = 1} \{X=x_k\}$ og $\{X=x_i\} \cap \{X=x_j\} = \emptyset$ for $i \neq j$, gælder det, at
+\begin{equation*}
+    1 = P(S) = \sum^\infty_{k = 1} P(X=x_k) = \sum_{k=1}^\infty p(x_k)
+\end{equation*}
+\end{proof}
+I stedet for kun at kigge på hændelser, hvor $\{ X=x \}$, kan man yderligere se på hændelser, hvor $\{X \leq x \}$. Dette kan eksempelhvis være sandsynligheden for at slå mindre end eller lig med et bestemt tal $x$ på et terningkast. 
+\begin{defn} %2.4
+Lad $X$ være en stokastiske variable. Funktionen $F: \R \to \R$ givet ved
+\begin{align*}
+    F(x)=P(X\leq x), 
+\end{align*}
+kaldes den \textbf{kumulative fordelingsfunktion (cdf)} af $X$.
+\end{defn}
+Ved hjælp af proposition \ref{prop:sandsynlighedMedToHændelser} punkt \ref{enu:propsandsynlighedMedToHændelser1}, kan man omskrive tilfældet $P(X\geq x)$ til $P(X\geq x)=1-P(X<x)$. Yderligere gælder følgende egenskaber for cdf'er. 
+
+\begin{prop}%2.2
+Lad $X$ være en diskret stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$, pmf, $p$ og cdf $F$. Så gælder
+\begin{enumerate}
+    \item $F(x)=\displaystyle \sum_{k:x_k \leq x} p(x_k)$
+    \item $p(x_k)=F(x_k)- \displaystyle \lim_{y \rightarrow x_k^- } F(y)$ for $k= 1,2, \ldots $
+    \item hvis $B \subseteq \R$ er $P(X \in B)= \displaystyle \sum_{k:x_k \in B} p(x_k)$.
+\end{enumerate}
+\end{prop} 
+\begin{proof}
+Først bevises punkt 3. Lad $X_V$ være udfaldsrummet af $X$. Vi har derved, at
+\begin{align*}
+    P(X\in B)=\sum_{r\in B}p(r)=\sum_{r\in(B\cap X_V)}p(r)=\sum_{k:x_k\in B}p(x_k)
+\end{align*}
+hvilket beviser punkt 3. Dette anvendes til at bevise punkt 1,
+\begin{align*}
+    F(x)=P(X\in(\infty,x])=\sum_{k:x_k\in ]-\infty,x]}p(x_k)=\sum_{k:x_k\leq x}p(x_k)
+\end{align*}
+Til sidst bevises punkt 2 ved
+\begin{align*}
+    F(x_k)-\lim_{y\rightarrow x_k^-}F(y)=P(X\leq x_k)-P(X<x_k)=P(X=x_k)=p(x_k)
+\end{align*}
+\end{proof}

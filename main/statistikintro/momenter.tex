@@ -1,0 +1,138 @@
+\section{Momenter}
+I dette afsnit vil vi introducere relevante statistisk momenter for diskrette stokastiske variabler. Disse er funktioner af stokastisk variable der beskriver en variabels fordeling. 
+
+\begin{defn}\label{defn:middelværdien}
+    Lad $X$, være en diskret stokastisk variabel, med udfaldsrum $\{x_1, x_2, \ldots\}$ og pmf $p$. \textbf{Middelværdien} af $X$ er defineret som
+    \begin{equation*}
+        E[X] = \sum^\infty_{k = 1} x_k p(x_k)
+    \end{equation*}
+\end{defn}
+Middelværdien kaldes også det første moment.  Det skal bemærkes, at selvom middelværdien giver en forventning til variablens udfald, så er det ikke nødvendigvis en værdi som variablen kan antage. Dette ses i følgende eksempel.
+
+\begin{exmp}
+    Variablen $X$ beskriver udfaldet af et fair møntkast, med værdi $0$ for plat og $1$ for krone og med pmf $p(0)=p(1)=\frac{1}{2}$. Hvad bliver middelværdien? Fra definition \ref{defn:middelværdien} fås $E[X]=0p(0)+1p(1)=\frac{1}{2}$, altså en middelværdi som variablen ikke selv kan antage.
+\end{exmp}
+
+Hvis diskret stokastisk variabel kun kan antage ikke-negative heltal, så er følgende resultat nyttig.
+
+\begin{prop} \label{prop:2.9}% prop 2.9
+Lad $X$ være en diskret variable med udfaldsrum $\N_0$. Så gælder det at
+\begin{align*}
+    E[X] = \sum^\infty_{n = 0} P(X > n)
+\end{align*}
+\end{prop}
+\begin{proof}
+    Bemærk at $k = \sum^k_{n = 1} 1$, samt at $0P(X=0)=0$ og benyt definition \ref{defn:middelværdien} til at opnå
+    \begin{align*}
+        E[X] = \sum^\infty_{k = 0} k P(X = k)
+        = \sum^\infty_{k = 1} k P(X = k)
+        = \sum^\infty_{k = 1} \sum^k_{n = 1} P(X = k) 
+\end{align*}
+        Da $1\leq n \leq k < \infty$, kan der byttes om på summeringerne, og de kan laves om til
+\begin{align*}
+    E[X] = \sum^\infty_{n = 1} \sum^\infty_{k = n} P(X = k) = \sum^\infty_{n = 1} P(X \geq n) = \sum^\infty_{n = 0} P(X > n),
+    \end{align*}
+    da $\sum^\infty_{k = n} P(X = k) = P(X \geq n)$. 
+\end{proof}
+
+\begin{exmp}
+    Variablen $X$ beskriver antallet af møntkast, inden første krone bliver slået. Det vides på forhånd at sandsynligheden for at de første $k$ kast giver plat er 
+    \begin{align*}
+        P(X\geq k)=\left(\frac{1}{2}\right)^k
+    \end{align*}
+    Forskydes $k$ med $1$, så fåes
+    \begin{align*}
+        P(X\geq k+1)=P(X>k)=\left(\frac{1}{2}\right)^{k+1}=\frac{1}{2}\left(\frac{1}{2}\right)^k
+    \end{align*}
+    Nu kan middelværdien udregnes med \ref{prop:2.9} 
+    \begin{align*}
+        E[X]=\sum_{k=0}^\infty P(X>k)=\sum_{k=0}^\infty\frac{1}{2}\left(\frac{1}{2}\right)^k=\frac{1}{2}\frac{1}{1-\frac{1}{2}}=1.
+    \end{align*}
+\end{exmp}
+
+\begin{prop} \label{prop 2.12} %2.12
+Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\{x_1,x_2,\ldots\}$ have pmf $p_x$ og $g:\R\to \R$ være en funktion, så er 
+\begin{align*}
+    E[g(X)] = \sum_{k=1}^\infty g(x_k)p(x_k)
+\end{align*}
+\end{prop}
+\begin{proof}
+Lad $Y = g(X)$ og $y_k = g(x_k)$, så er pmf $p_y(y_k) = p_x(x_k)$, og eftersom 
+$E[Y] = \sum^\infty_{k = 1} y_k p_y(y_k)$
+følger det at $E[g(X)] = \sum^\infty_{k = 1} g(x_k) p_x(x_k)$.
+\end{proof}
+
+\begin{lem} \label{lem:middelværdiAfX2}
+Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\{x_1, x_2, \ldots\}$, så er $E[X^2] = E[X(X-1)] + E[X]$
+\end{lem}
+
+\begin{proof}
+Vi har ligheden
+\begin{align*}
+    E[X^2] = \sum^\infty_{k = 1} x_k^2 p(x_k) &= E[X] - E[X] + \sum^\infty_{k = 1} x_k^2 p(x_k) \\
+    &= \sum^\infty_{k = 1} x_k p(x_k) + \sum^\infty_{k = 1} (x_k^2 - x_k)P(x_k) = E[X] + E[X(X - 1)]
+\end{align*}
+jævnfør proposition \ref{prop 2.12}.
+\end{proof}
+Hvis en stokastisk variabler er sammensat af komponenterne $aX+b$, så kan middelværdien omskrives ved hjælp af proposition \ref{prop:bogen prop2.21}.
+\begin{prop} \label{prop:bogen prop2.21}
+Lad $X$ være en stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$ og $a, b \in \R$, så er
+\begin{equation*}
+    E[aX+b] = aE[X] + b
+\end{equation*}
+\end{prop}
+\begin{proof}
+    Lad $Y = aX + b$, og $y_k = ax_k + b$ for $k = 1, 2, \ldots$, så er $p_y(y_k) = p_x(x_k)$. Middelværdien for $Y$ beregnes da
+    
+    \begin{align*}
+        E[Y] &= \sum^\infty_{k = 1} y_k p_y(y_k) = \sum^\infty_{k = 1} (a x_k + b) p_x(x_k) \\
+        &= a \sum^\infty_{k = 1}  x_k p_x(x_k) + b \sum^\infty_{k = 1} p_x(x_k) = a E[X] + b
+    \end{align*}
+    da $\sum^\infty_{k = 1} p_x(x_k) = 1$, jævnfør proposition \ref{prop:pmfEgenskaber}.
+\end{proof}
+Et udtryk, der kommer af middelværdien, er variansen af $X$. Denne beskriver hvor langt hændelserne ligger fra middelværdien. 
+\begin{defn} \label{def:Varians}%2.10 og 2.11
+Lad $X$ være en diskret stokastisk variabel og $\mu = E[X]$. Så er \textbf{variansen} af $X$ defineret ved
+\begin{align*}
+    \Var[ X ] = E[(X-\mu)^2]
+\end{align*}
+hvor \textbf{standardafvigelsen} af $X$ noteres $\sigma = \sqrt{\Var[ X ]}$.
+\end{defn}
+
+Varians kaldes også det andet centrale moment.
+
+\begin{cor} \label{cor:VariansIForholdTilForventedVærdi} %Cor 2.2
+    Lad $X$ være en diskret stokastisk variabel, udfaldsrum $\{x_1, x_2, \ldots\}$ og med pmf $p$, så gælder
+    \begin{align*}
+      \Var[X]=E[X^2]-E[X]^2
+    \end{align*}
+\end{cor}
+\begin{proof}
+    Lad $\mu = E[X]$, så gælder
+    \begin{align*}
+        \Var[X] = E[(X - \mu)^2] &= \sum^\infty_{k = 1} (x_k - \mu)^2 p(x_k)\\
+        &= \sum^\infty_{k = 1} (x_k^2 + \mu^2 - 2\mu x_k)p(x_k) \\
+        &= \sum^\infty_{k = 1} x_k^2 p(x_k) + \mu^2 \sum^\infty_{k = 1} p(x_k) - \mu \sum^\infty_{k = 1} 2x_k p(x_k) = E[X^2] + \mu^2 - 2\mu E[X]
+    \end{align*}
+    Da $\mu = E[X]$, følger det derfor, at $\Var[X] = E[X^2] + E[X]^2 - 2E[X]^2 = E[X^2] - E[X]^2$.
+\end{proof}
+
+
+% GRIMMIT & STRUR et eller andet
+
+
+\begin{prop} %Prop 2.15
+Lad $X$ være en diskret stokastisk variabel og $a, b\in \R$, så er
+\begin{align*}
+    \Var[aX+b]=a^2\Var[X]
+\end{align*}
+\end{prop}
+\begin{proof}
+Fra definition \ref{def:Varians} har vi
+    \begin{align*}
+        \Var[aX+b]&=E[(aX+b-E[aX+b])^2]\\
+        &=E[(aX+b-aE[X]-b)^2]\\
+        &=a^2E[(X-E[X])^2]\\
+        &=a^2\Var[X]
+    \end{align*}
+\end{proof}

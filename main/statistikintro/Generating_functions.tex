@@ -1,0 +1,257 @@
+\section{Sandsynlighedsfrembringende funktioner}
+Frembringende funktioner er nyttige redskaber i sandsynlighedsteori. Der findes forskellige typer frembringende funktioner, men i dette projekt kigges på sandsynlighedsfrembringende funktioner for diskret fordelinger. 
+\begin{defn} \label{pgf} %def3.23
+    Lad $X$ være en diskret stokastisk variabel, med udfaldsrum $\N_0$. Så kaldes funktionen
+    \begin{align*}
+        G_X(s)=E[s^X] = \sum_{k=0}^{\infty}s^k P(X=k), \quad \text{hvor } 0\leq s \leq 1
+    \end{align*}
+    den \textbf{sandsynlighedsfrembringende funktion (pgf)} af $X$. 
+\end{defn}
+\begin{cor} \label{cor:egenskaberVedPGF} \label{problem133}
+Lad $X$ være en diskret stokastisk variabel med udfalds rum $\N_0$ og pgf $G_X(s) = E[s^X]$ for $s \in [0, 1]$, så er $G_X$ voksende og convex. Det gælder derudover at hvis $p_X(1) + p_X(0) \neq 1$, så er $G_X$ strengt voksende, og hvis $p_X(2) + p_X(1) + p_X(0) \neq 1$, så er $G_X$ strengt konveks.
+\end{cor}
+\begin{proof}
+Vi har 
+\begin{equation*}
+  G'_X(s) = \sum^\infty_{k = 1} s^{k - 1}p_X(k)
+\end{equation*}
+Det gælder at $G'_X(s) \geq 0 \; \forall s \in ]0, 1[$, da ledene er ikke negative, heraf følger det at $G_X$ er en voksende funktion. Hvis $p_X(1) + p_X(0) \neq 1$, eksistere et $n \in \N \backslash \{1\}$ således $p_X(n) > 0$, det medføre at vi har et strengt positivt og strengt voksende led $s^{n - 1}p_X(n)$, i summen, og ikke kan være strengt aftagende, må summen være strengt voksende.
+\begin{equation*}
+    G_X''(s) = \sum^\infty_{k = 2} k(k - 1) s^{k - 2} p_X(k)
+\end{equation*}
+eftersom $G''_X(s) \geq 0 \; \forall s \in ]0, 1[$ er funktionen konveks. Det gælder ligeledes at hvis $p_X(0) + p_X(1) + p_X(2) \neq 1$, eksistere et strengt voksende led i summen og at dette medføre at $G_X$ er strengt konveks i dette tilfælde. 
+\end{proof}
+
+\begin{exmp}\label{ex:geom-pgf}
+Lad $\lambda > 0$ og $X\sim\geom(\lambda)$, så er pgf'en givet ved
+\begin{align*}
+    G_X(s)=E[s^X]&=\sum_{k=1}^\infty s^k \lambda(1-\lambda)^{k-1}\\
+    &=s\lambda\sum_{k=1}^\infty s^{k-1}(1-\lambda)^{k-1}\\
+    &=s\lambda\sum_{k=0}^\infty (s-s\lambda)^k
+\end{align*}
+jævnfør proposition \ref{prop 2.12}, og da $|s-s\lambda|<1$ konvergerer rækken og $G_X(s)=\dfrac{s\lambda}{1+s\lambda-s}$.
+\end{exmp}
+
+\begin{exmp}\label{ex:poi-pgf}
+Lad $\lambda > 0$ og $X \sim \Poi(\lambda)$, så er 
+\begin{equation*}
+    E[s^X] = \sum_{k = 0}^\infty s^k p_X(k) = \sum^\infty_{k = 0} s^k\e^{-\lambda}\frac{\lambda^k}{k!} = \e^{-\lambda} \sum^\infty_{k = 0} \frac{(s\lambda)^k}{k!}  
+\end{equation*}
+Men $\displaystyle \sum^\infty_{k = 0} \frac{(s\lambda)^k}{k!}$ er blot Maclaurin rækken for $\e^{s\lambda}$, heraf fåes
+\begin{equation*}
+    E[s^X] = \e^{-\lambda} \e^{s\lambda} = \e^{\lambda(s - 1)}
+\end{equation*}
+$X$ har derfor pgf $G_X(s) = \e^{\lambda(s - 1)}$. 
+\end{exmp}
+
+Når der kigges på $s=0$ og $s=1$ fåes nogen helt specifikke værdier for $G_x$, hvilket anvendes i afsnittet om forgrenings processer.  
+ 
+\begin{prop}\label{prop:pgfI0Og1} % corolar 3.12
+    Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_X$, så er 
+    \begin{equation*}
+        G_X (0) = p_X(0), \quad G_X(1) = 1
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+Lad $X$ have pmf $p_X$, så har vi
+\begin{equation*}
+    G_X(s) = E[s^X] = \sum_{k = 0}^\infty s^k p_X(k) = p_X(0) + \sum_{k = 1}^\infty s^k p_X(k)
+\end{equation*}
+jævnfør proposition \ref{prop 2.12}, indsættes $s = 0$, fåes $G_X(0) = p_X(0)$. Hvis $s = 1$, så er 
+\begin{equation*}
+    G_X(1) = \sum^\infty_{k = 0} 1^k p_X(k) = \sum^\infty_{k = 0} p_X(k) = 1
+\end{equation*}
+jævnfør propostion \ref{prop:pmfEgenskaber}.
+\end{proof}
+
+Eksempel \ref{ex:geom-pgf} og \ref{ex:poi-pgf} viste, at når der var tale om henholdsvis en geometrisk eller Poisson fordeling var der en entydig tilhørende pgf. Endnu en vigtig egenskab af en pgf er, at den modsat også beskriver en entydig tilhørende pmf, altså at en pgf ligeledes beskriver fordelingen af en stokastisk variabel. Hvis variablen har udfaldsrum $\N_0$ giver sætning \ref{thm:pgf2pmf} en eksplicit formel for denne tilhørende pmf. For at bevise sætningen introduceres følgende lemma. 
+
+\begin{lem} \label{lem:deAfledteAfPGF}
+    Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_X$, så er 
+    \begin{equation*}
+        G_X^{(n)}(s) = n! p_X(n) + \sum^\infty_{k = n + 1} \frac{k!}{(k - n)!} s^{k - n} p_X(k) \text{ for } n = 1, 2, \ldots
+    \end{equation*}
+\end{lem}
+
+\begin{proof}
+Propositionen bevises ved hjælp af induktion, for $n = 1$, har vi 
+\begin{equation*}
+    G_X'(s) = \left(E[s^X]\right)' = \left(p_X(0) + \sum^\infty_{k = 1} s^{k}p_X(k)\right)' = \sum^\infty_{k = 1} ks^{k - 1} p_X(k) = p_X(1) + \sum^\infty_{k = 2} \frac{k!}{(k - 1)!} s^{k - 1} p_X(k)
+\end{equation*}
+Hvor vi opnår ved den afledte ved at differentiere hvert led i rækken. Antag nu, at det gælder for $n = N - 1$, så er 
+\begin{align*}
+    G_X^{(N)}(s) &= \left((N - 1)!p_X(N - 1) + \sum^\infty_{k = N} \frac{k!}{(k - N + 1)!} s^{k - N + 1} p_X(k) \right)' \\ 
+    &= \sum^\infty_{k = N} \frac{k!}{(k - N + 1)!}(k - N + 1) s^{k - N} p_X(k) \\ 
+    &= N! p_X(k) + \sum^\infty_{k = N + 1} \frac{k!}{(k - N)!} s^{k - N} p_X(k) 
+\end{align*}
+Hvilket afslutter induktionsskridtet.
+\end{proof}
+
+\begin{thm}\label{thm:pgf2pmf} % prop 3.36
+    Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ samt pgf $G_X$ og lad $n \in \N_0$. Så er
+    \begin{equation*}
+        p_X(n) = \frac{G_X^{(n)}(0)}{n!} 
+    \end{equation*}
+\end{thm}
+\begin{proof}
+Hvis $n = 0$ følger resultatet af proposition \ref{prop:pgfI0Og1}. For $n > 0$ følger det af lemma \ref{lem:deAfledteAfPGF}, at 
+\begin{equation*}
+    G_X^{(n)}(0) = n! p_X(n) + \sum^\infty_{k = n + 1} \frac{k!}{(k - n)!} 0^{k - n} p_X(k) = n! p_X(n)
+\end{equation*}
+heraf fåes $p_X(n) = \dfrac{G_X^{(n)}(0)}{n!}$.
+\end{proof}
+
+\begin{exmp}
+    Lad $\lambda > 0$ og $X \sim \Poi(\lambda)$, fra eksempel \ref{ex:poi-pgf} har vi at $G_X(s) = \e^{\lambda(s-1)}$, hvis vi differencer denne fåes
+    \begin{equation*}
+        G^{(n)}_X(s) = \lambda^n\e^{\lambda(s-1)}
+    \end{equation*}
+    Ved at anvende sætning \ref{thm:pgf2pmf} findes den tilhørende pmf, ved
+    \begin{equation*}
+        p(n) = \frac{\lambda^n}{n!}\e^{-\lambda}
+    \end{equation*}
+    præcis som man ville forvente.
+\end{exmp}
+
+Den forventede værdi og varians for den direkte stokastiske variabel kan også findes ud fra den første og anden afledte af pgf'en.
+\begin{prop}\label{prop 3.37} %3.37
+    Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_X$, så gælder
+    \begin{align*}
+        E[X]&=G'_X(1)\\
+        \Var[X]&=G_X''(1)+G'_X(1)-G'_X(1)^2
+    \end{align*}
+\end{prop}
+
+\begin{proof}
+    Fra lemma \ref{lem:deAfledteAfPGF} har vi at 
+    \begin{equation*}
+        G_X'(s) = p_X(0) + \sum_{k=1}^\infty ks^{k-1} p_X(k)
+    \end{equation*}
+    indsættes $s = 1$, fåes
+    \begin{equation*}
+        G'_X(1) = p_X(0) + \sum^\infty_{k = 1} kp_X(k) = E[X]
+    \end{equation*}
+    $G''_X(s)$ er givet ved 
+    \begin{equation*}
+        G_X''(s) = 2p_X(2) + \sum^\infty_{k = 3} k(k-1) s^{k - 2} p_X(k) = \sum_{k=1}^\infty (k-1)ks^{k-2} p_X(k)
+    \end{equation*}
+    jævnfør lemma \ref{lem:deAfledteAfPGF}. Det følger nu at
+    \begin{align*}
+        G''(1)+G'(1)-G'(1)^2&=\sum_{k=1}^\infty (k-1)k p_X(k)+\sum_{k=1}^\infty k p_X(k)-E[X]^2\\
+        &=\sum_{k=1}^\infty k^2 p_X(k)-E[X]^2
+        =E[X^2]-E[X]^2 =\Var[X]
+    \end{align*}
+    jævnfør korrolar \ref{cor:VariansIForholdTilForventedVærdi}.
+\end{proof}
+
+Det gælder, at pgf'en af summen over diskrete stokastisk variabler med pgf'er er givet som et produkt af variablernes pgf'er
+\begin{prop} \label{prop:prop3.38}%3.38
+    Lad $X_1, X_2, \ldots, X_n$ være uafhængige diskrete stokastiske variable med pgf henholdsvis $G_1, G_2, \ldots, G_n$, og lad $S_n= \sum^n_{k = 1} X_k$. Det medfører, at $S_n$ har pgf
+    \begin{align*}
+        G_{S_n}(s)=\prod^n_{k = 1} G_k(s), \quad 0\leq s \leq 1
+    \end{align*}
+\end{prop}
+
+\begin{proof}
+Eftersom $X_1, \ldots, X_n$ er uafhængige, må de stokastiske variabler $s^{X_1}, \ldots, s^{X_n} $ også være uafhængige for hvert $s\in[0,1]$. På baggrund af dette sammen med definition \ref{pgf} fremkommer:
+\begin{align*}
+    G_{S_n}(s) &= E[s^{\sum^n_{k = 1} X_k}] = \prod^n_{k = 1} E[s^{X_k}] = \prod^n_{k = 1} G_k(s) 
+\end{align*}
+\end{proof}
+\begin{exmp}\label{exmp:sumAfPoissonFordeling}
+Lad $X_1 \sim \Poi[\lambda_1], X_2 \sim \Poi[\lambda_2], \ldots, X_n \sim \Poi[\lambda_n]$ og lad $X_1, X_2, \ldots X_n$ være uafhængelige. Definier nu $S_n = \sum^n_{k = 1} X_k$. Så følger det af proposition \ref{prop:prop3.38} og eksempel \ref{ex:poi-pgf} at $S_n$ har pgf
+\begin{equation*}
+    G_{S_n} = \prod^n_{k = 1} G_{X_k}(s) = \prod^n_{k = 1} \e^{\lambda_k(s - 1)} = \e^{\lambda(s - 1)}
+\end{equation*}
+hvor $\lambda = \sum^n_{k = 1} \lambda_k$. Altså følger summen af $n$ uafhængelige variable, som hver følger en Poisson fordeling, en Poisson fordeling med parameter $\lambda$.
+\end{exmp}
+Man kan være interesseret i at undersøge summen $S_N = \sum^N_{k = 1} X_k$, hvor $X_1, X_2, \ldots$ er iid og hvor $N$ er en diskret stokastisk variabel. Til dette kan Galton Watson formellen benyttes.
+\begin{prop} [Galton-Watson formellen] \label{prop 3.39} %prop 3.39
+    Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med samme pgf $G_X$. Lad $N$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_N$. Lad $N$ være uafhængig af $X_k$. Så har $S_N=X_1+\cdots X_N$ pgf bestående af den sammensatte funktion
+    \begin{align*}
+        G_{S_N}(s)=G_N(G_X(s))
+    \end{align*}
+\end{prop}
+\begin{proof}
+Betragt, at pgf'en for $S_N$ er givet ved
+    \begin{align}\label{alg:proofprop3.39}
+        G_{S_N}(s)=\sum_{n=0}^{\infty}E\left[s^{S_N} | N=n\right]P(N=n)=\sum_{n=0}^{\infty}E[s^{S_n}]P(N=n)
+    \end{align}
+siden $N$ og $S_n$ er uafhængige. Af proposition \ref{prop:prop3.38} har vi, at 
+    \begin{align*}
+        E[s^{S_n}]=G_X(s)^n 
+    \end{align*}
+    hvilket sættes ind i \eqref{alg:proofprop3.39}
+    \begin{align*}
+        G_{S_N}(s)=\sum_{n=0}^{\infty} G_X(s)^nP(N=n)=G_N(G_X(s)) 
+    \end{align*}
+    hvilket afslutter vores bevis.
+\end{proof}
+\begin{prop} \label{prop:cor 3.13} %3.13
+Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med sammen pgf $G_X$. Lad $N$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_N$. Lad $N$ være uafhængig af $X_k$ samt lad $S_N=X_1+\cdots X_N$, så gælder det at 
+\begin{align*}
+    E[S_N] &=E[N]E[X_k] \\
+    Var[S_N] &=E[N]\Var[X_k]+E[X_k]^2\Var[N]
+\end{align*}
+\end{prop}
+
+\begin{proof}
+Først bevises formelen for den forventede værdi. Ved at benytte  proposition \ref{prop 3.39} gælder, at
+\begin{align} \label{alg:proofcor3.13}
+    G'_{S_N}(s) = \frac{d}{ds}G_N(G_X(s))=G'_N(G_X(s))G'_X(s)
+\end{align}
+Da $G_X(1)=1$, så fåes ud fra proposition \ref{prop 3.37} og \eqref{alg:proofcor3.13}, at
+\begin{align} \label{alg:Eproofcor3.13}
+    E[S_N]= G'_N(G_X(1))G'_X(1)=G'_N(1)E[X_k]=E[N]E[X_k]
+\end{align}
+hvor $\mu=E[X_k]$. Hvilket afslutter beviset for den forventede værdi. Vi beviser nu formlen for variansen. Fra proposition \ref{prop 3.37} og \eqref{alg:Eproofcor3.13} har vi, at 
+\begin{equation*}
+    \Var[S_n] = G''_{S_n}(1) + G'_{S_n}(1) - G'_{S_n}(1)^2 = G''_{S_n}(1) + E[N]E[X_k] - E[N]^2E[X_k]^2
+\end{equation*}
+Med kædereglen og produktreglen fåes, så at
+\begin{equation*}
+    G''_{S_n}(s) = \frac{d}{ds} G'_N(G_X(s))G'_X(s) = G''_N(G_X(s))G'_X(s)^2 + G'_N(G_X(s))G''_X(s)
+\end{equation*}
+Da $G'_X(1)=E[X_k]$ og $G'_N(1)=E[N]$, gælder
+\begin{align*}
+    \Var[S_n]&= 
+     G''_N(G_X(1))G'_X(1)^2 + G'_N(G_X(1))G''_X(1)
+    + E[N]E[X_k] - E[N]^2E[X_k]^2
+    \\
+    &= G''_N(1)E[X_k]^2 + E[N] G''_X(1) + E[N]G'_X(1) - G'_N(1)^2E[X_k]^2 + \left(E[N]E[X_k]^2 - E[N]E[X_k]^2\right)
+\end{align*}
+Men $E[N]E[X_k]^2 - E[N]E[X_k]^2 = G'_N(1)E[X_k]^2 - E[N]G_X'(1)^2$, hvilket giver
+\begin{align*}
+    &= E[N]\left(G''_X(1) + G'_X(1) - G'_X(1)^2 \right) + E[X_k]^2\left(G''_N(1) + G'_N(1) - G'_N(1)^2\right)
+    \\
+    &= E[N]\Var[X_k] + E[X_k]^2\Var[N]
+\end{align*}
+%&= E[N]\left(G''_X(1) + E[X_k] - E[X_k]^2 \right) + E[X_k]^2\left(G''_N(1) + E[N] - E[N]^2\right)
+hvilket beviser formelen for varians.
+\end{proof}
+
+\begin{exmp}
+På tanken i en forstad til Aalborg sælges lodsedler. Lad $N$ være antallet af besøgende kunder i timen, og antag at $N$ følger en Poisson fordeling med en middelværdi på $20$. Definer $X_k$ som antallet af lodsedler den $k$'te kunde køber, og antag at $X_1, X_2, \ldots$ er iid., og at de følger en Poisson fordeling med middelværdi $\frac{1}{7}$. Definer den stokastiske variabel
+\begin{equation*}
+    S_N = \sum^N_{k = 1} X_k
+\end{equation*}
+Fra eksempel \ref{ex:poi-pgf} vides det, at $G_N(s) = \exp(20(s - 1))$, og at $G_{X}(s) = \exp\left(\tfrac{s-1}{7}\right)$. Da $N$ og $X_1, X_2, \ldots$ opfylder antagelserne i proposition \ref{prop 3.39}, fåes 
+\begin{equation*}
+    G_{S_N}(s) = G_N(G_X(s)) = \exp\left(20\left(\exp\left(\tfrac{s - 1}{7}\right) - 1\right)\right)
+\end{equation*}
+Sandsynligheden for, at der ikke bliver solgt nogle lodsedler, er givet som 
+\begin{align*}
+    P(S_N=0)= G_{S_N}(0) = \exp\left(20\left(\exp\left(-\tfrac{1}{7}\right) - 1\right)\right) \approx 0.07,
+\end{align*}
+hvor første lighed følge af proposition \ref{prop:pgfI0Og1}. Ved at benytte proposition \ref{prop:cor 3.13} og \ref{prop:poiForventedOgVarians}, fåes 
+\begin{equation*}
+    E[S_N] = E[N]E[X_k] = \frac{20}{7} \approx 2.86
+\end{equation*}
+og 
+\begin{equation*}
+    Var[S_N] =E[N]\Var[X_k]+E[X_k]^2\Var[N] = \frac{20}{7} + \left(\frac{1}{7}\right)^2 20 =  \frac{160}{49} \approx 3.26.
+\end{equation*}
+Tanken kan altså forvente at sælge omkring 3 lodsedler i gennemsnit, dog er variansen relativ høj, så de bør forvente relativt store udsving i antallet af solgte lodsedler.
+\end{exmp}
+

@@ -1,0 +1,214 @@
+\section{Flere stokastiske variable}
+I tidligere afsnit har vi fokuseret på enkelte diskrete stokastiske variabler. Vi vil i dette afsnit introducere teori, til tilfælde med  flere stokastiske variable.
+\begin{defn} \label{def:def3.8bogen}%def3.8
+    Lad $X_1, X_2, \ldots$ være diskrete stokastiske variable. Så kaldes de \textbf{uafhængelige}, hvis hændelserne $X_k \in A_k$ for $k \in \N$, er uafhængelige hændelser, for alle $A_1, A_2, \ldots \subseteq \R$, således $A_k \neq \emptyset \; \forall k \in \N$.
+\end{defn}
+
+Da de bagvedliggende hændelser er uafhængelige har vi også at 
+\begin{align*}
+    P\left(\bigcup^n_{k = 1} X_k \in A_k\right)= \prod^n_{k = 1}P(X_k\in A_k)
+\end{align*}
+for alle $A_1, A_2, \ldots, A_n \subseteq \R$, såfremt $X_1, X_2, \ldots X_n$ er uafhængelige.
+
+\begin{prop} \label{prop:prop3.9} %prop 3.9
+    Lad $X$ og $Y$ være diskrete stokastiske variable med pmf henholdsvis $p_X$ og $p_Y$. Så er $X$ og $Y$ uafhængige hvis og kun hvis 
+    \begin{align*}
+        P(X = x, Y = y)=p_X(x)p_Y(y) 
+    \end{align*}
+for alle $x,y\in \R$
+\end{prop}
+\begin{proof}
+    Antag at $X$ og $Y$ er uafhængige. Lad $A=\{x \}$ og $B=\{y \}$ så er
+    \begin{align*}
+        P(X \in A,Y \in B)=P(X \in A)P(Y \in B)= P(X = x)P(Y = y) = p_X(x)p_Y(y)
+    \end{align*}
+Modsat, antag nu at $P(X = x, Y = y) = p_X(x)p_Y(y)$ og betragt $A\subseteq \R$ og $B\subseteq \R$, så gælder  
+\begin{align*}
+    P(X\in A, Y\in B)=\sum_{x\in A}\sum_{y\in B}P(X = x, Y =y) =\sum_{x\in A}p_X(x)\sum_{y\in B}p_Y(y)=P(X\in A)P(Y\in B)
+\end{align*}
+og hermed er $X$ og $Y$ uafhængige.
+\end{proof}
+I vise tilfælde har vi flere variabler, som følger samme fordeling, derfor introduceres følgende definition
+\begin{defn} %3.19
+    Lad $X_1,X_2,\ldots$ være uafhængige stokastiske variabler med samme fordeling. Så kaldes variablerne  \textbf{uafhængige og identisk fordelte (iid)}.
+\end{defn}
+\begin{exmp}
+    Lad $X_1, X_2, \ldots, X_6$ være diskrete stokastiske variable, og lad $X_k$ beskrive antallet af 6'er ved det $k$'te kast af en fair terning, så er $X_1, X_2, \ldots, X_6$ uafhængelige, jævnfør \ref{exmp:uafhængelighed}, samtidig er 
+    \begin{equation*}
+        p_{X_k}(x) = \begin{cases}
+            \frac{5}{6}, \; x = 0\\
+            \frac{1}{6}, \; x = 1\\
+            0, \text{ ellers}
+        \end{cases}
+    \end{equation*} 
+    for $k = 1, 2, \ldots, 6$. $X_1, X_2, \ldots X_6$ er altså uafhængige og identisk fordelte   
+\end{exmp}
+
+Når der arbejdes med mere end én variabel viser følgende definition sig at være nyttig.
+\begin{defn} % definition 3.3 & 3.4
+    Lad $n \in \N$ og $X_1, X_2, \ldots, X_n$ være diskrete stokastiske variable og lad $X_j$ have udfaldsrum $\{x_{j, 1}, x_{j, 2}, \ldots\}$. Så kaldes $(X_1, X_2, \ldots, X_n)$ en diskret stokastisk vektor og funktionen
+    \begin{align*}
+        p(x_{1, k_1}, x_{2, k_2}, \ldots, x_{n, k_n}) = P(X_1 = x_{1,k_1}, X_2 = x_{2, k_2}, \ldots, X_n = x_{n, k_n})
+    \end{align*}
+    for \textbf{simultan pmf'en} af $(X_1, X_2, \ldots, X_n)$, og pmf'en for $X_j$ kaldes en \textbf{marginal pmf}.
+    %Hvis $X$ og $Y$ er diskrete stokastiske variabler, så kaldes $(X,Y)$ for en diskrete stokastiske vektor. Hvis vektoren har udfaldsrummet ${(x_j,y_k) : j,k=1,2\ldots}$, så er funktionen 
+    %\begin{align*}
+    %    p(x_j,y_k)=P(X=x_j,Y=y_k)
+    %\end{align*}
+    %den \textbf{simultan pmf} af $(X,Y)$. Den en-dimensionel pmf af henholdsvis $X$ og $Y$ \textbf{marginal pmf'en}
+\end{defn}
+\begin{cor}
+Lad $(X, Y)$ være en diskret stokastisk vektor, så er $X$ og $Y$ uafhængelige hvis og kun hvis
+\begin{equation*}
+    p(x, y) = p_X(x)p_Y(y)
+\end{equation*}
+for alle $x, y \in \R$.
+\end{cor}
+\begin{proof}
+Da $p(x, y) = P(X = x, Y = y)$, følger resultatet direkte af proposition \ref{prop:prop3.9}.
+\end{proof}
+
+
+\begin{exmp} \label{examp:tern_vektor}
+    Lav to terningkast. Lad $X$ være udkommet af det første terningkast og $Y$ være udkommet af det andet. 
+    Udfaldsrummet for de to kast er $\{(x, y) | x, y \in \N, 0 < x, y \leq 6\}$. Så er den simultane pmf for et par $\{x_k,y_k\}$ givet ved
+    \begin{align*}
+        p(x_j,y_k)=P(X=x_j,Y=y_k)=P(X=x_j)P(Y=y_k)=\frac{1}{6}\frac{1}{6}=\frac{1}{36}
+    \end{align*}
+Fra eksempel \ref{exp:terning} vides det, at de to diskrete stokastisk variabler er uafhængige.
+\end{exmp}
+
+De marginale pmf findes ud fra den simultane pmf på følgende måde. 
+\begin{prop}\label{prop:marginalPmf} %prop:3.2
+    Hvis den diskrete stokastiske vektor $(X,Y)$ har den simultan pmf $p$, så er marginal pmf'erne af $X$ og $Y$ givet ved
+    \begin{align*}
+        p_X(x_j)=\sum_{k=1}^\infty p(x_j,y_k), \quad & j=1,2\ldots
+        \\
+        p_Y(y_k)=\sum_{j=1}^\infty p(x_j,y_k), \quad & k=1,2\ldots
+    \end{align*}
+\end{prop}
+\begin{proof}
+Da hændelsen $\{X=x_j\}$ er ækvivalent med $\{X=x_j,Y \in S\}$, så er 
+\begin{align*}
+    p_X(x_j)=\sum_{k=1}^\infty P(X=x_j,Y=y_k)=\sum_{k=1}^\infty p(x_j,y_k)
+\end{align*}
+Beviset er analogt for $Y$. 
+\end{proof}
+
+\begin{exmp}
+    Fortsættelse af  eksempel \ref{examp:tern_vektor}. Det ses, at marginal pmf'en for $X$ er 
+    \begin{align*}
+        p_X(x_j)=\sum_{k=1}^6 p(x_j,y_k)=\sum_{k=1}^6 p_X(x_j)p_Y(y_k) = p_X(x_j) \sum_{k=1}^6 p_Y(y_k)
+        =\frac{1}{6}
+    \end{align*}
+    Da $\sum^6_{k = 1} p_Y(y_k) = 1$.
+\end{exmp}
+
+Hvis vi undersøgere den forventede værdi af en linearkombination af to diskrete stokastiske variable, får vi en linearkombination af forventede værdier.
+\begin{prop}\label{prop:forventedVærdiAfLinearKombination} %Cor:3.3
+Lad $X, Y$ være diskrete stokastiske variable med udfaldsrummene $\{x_1, x_2, \ldots \}$ og $\{y_1, y_2, \ldots \}$ og $c_X, c_Y \in \R$, så er
+\begin{equation*}
+    E[c_XX+c_yY] = c_XE[X] + c_YE[Y]
+\end{equation*}
+
+
+\end{prop}
+\begin{proof}
+Vi har
+\begin{align*}
+    E[c_X X + c_Y Y] = \sum^\infty_{j = 1} \sum^\infty_{k = 1} (c_X x_j + c_Y y_k) p(x_j, y_k) &= \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_X x_j p(x_j, y_k) + \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_Y y_k p(x_j, y_k) \\
+    &\stackrel{(a)}= \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_X x_j p(x_j, y_k) + \sum^\infty_{k = 1} \sum^\infty_{j = 1} c_Y y_k p(x_j, y_k) \\
+    &\stackrel{(b)}= \sum^\infty_{j = 1} c_X x_j p_X(x_j) + \sum^\infty_{k = 1} c_Y y_k p_Y(y_k)\\
+    &= E[c_X X] +  E[c_Y Y] \stackrel{(c)}= c_X E[X] + c_Y E[Y]
+\end{align*}
+Hvor vi har benyttet, at 
+\begin{equation*}
+    \sum^\infty_{k = 1} \sum^\infty_{j = 1} c_Y y_k p(x_j, y_k) = \sum^\infty_{k = 1} c_Y y_k p(y_k) = c_YE[Y]
+\end{equation*}
+medfører, at vi kan bytte rundt på summerings rækkefølge for at opnå ligheden $(a)$, jævnfør \cite{horiaPowerSerieNoter}.
+Lighederne $(b)$ og $(c)$ følger af proposition \ref{prop:marginalPmf} og \ref{prop:bogen prop2.21}.
+\end{proof}
+
+Proposition \ref{prop:forventedVærdiAfLinearKombination} gælder også for tilfældet med $n$ forskellige diskret stokastisk variabler.
+\begin{cor} %Prop 3.14
+Lad $X_1, X_2, \ldots, X_n$ være diskrete stokastiske variabler og $c_1, c_2, \ldots, c_n \in \R$, så er 
+\begin{align*}
+    E\left[\sum^n_{k = 1} c_k X_k\right] = \sum^n_{k = 1} c_k E[X_k]
+\end{align*}
+\end{cor}
+
+\begin{proof}
+    Lad $Y_m = \sum_{k = m}^n c_k X_k$ for $m = 1, 2, \ldots, n - 1$, så er $Y_m$ en diskret stokastisk variabel, og vi kan benytte \ref{prop:forventedVærdiAfLinearKombination} til at lave følgende omskrivning, hvis $m \neq n - 1$
+    \begin{align*}
+        E\left[Y_m\right] = E\left[c_m X_m + Y_{m + 1} \right] &= c_m E[X_m] + E[Y_{m + 1}] 
+    \end{align*}
+    og for $m = n - 1$ har vi
+    \begin{equation*}
+        E[Y_{n - 1}] = E[c_n X_n] = c_N E[X_n]
+    \end{equation*}
+    jævnfør \ref{prop:bogen prop2.21}. Heraf fåes 
+    \begin{equation*}
+        E\left[\sum^n_{k = 1} c_k X_k\right] = E[Y_1] = c_1 E[X_1] + E[Y_2] = \cdots = \left(\sum^{n - 1}_{k = 1} c_k E[X_1]\right) + E[Y_{n - 1}] = \sum^n_{k = 1} c_k E[X_1]
+    \end{equation*}
+    hvilket afslutter vores bevis.
+\end{proof}
+\begin{exmp} %ex 3.21
+    Hvor mange gange skal man slå med en terning for at have slået alle muligheder?
+    Første slag må givetvis give et brugbart resultat. For at nå anden brugbare resultat, er der  $\frac{5}{6}$ sandsynlighed for at få et brugbart resultat, det tredje brugbare resultat fremkommer ved $\frac{4}{6}$, og så fremledes. Dette giver følgende formel
+    \begin{align*}
+        X=1+\sum^{6}_{k=2}X_k
+    \end{align*}
+    Hvor $X_k\sim \geom\left(\frac{7-k}{6}\right)$
+    Det giver at 
+    \begin{align*}
+        E[X]=1+\sum^{6}_{k=2}E[X_k] = 1+ \left(\frac{6}{5}+\frac{6}{4}+\dots+\frac{6}{1}\right) \approx 14,7
+    \end{align*}
+    jævnfør proposition \ref{prop:geomEgenskaber}. Altså forventes det at tage lidt under $15$ slag for at have opnået alle forskellige udfald af en terning.
+\end{exmp}
+
+Den forventede værdi af en diskret stokastisk vektor indsat i en funktion $g(X,Y)$ kan findes på nærmest samme måde som i proposition \ref{prop 2.12} og beviset er også analogt. 
+\begin{prop} \label{prop:prop3.11}%prop 3.11
+    Lad $(X,Y)$ være en diskret stokastisk vektor med simultan pmf $p$, samt lad $g:\R \times \R \to \R$ være en funktion, så er 
+    \begin{align*}
+        E[g(X,Y)]=\sum_{j=1}^\infty \sum_{k=1}^\infty g(x_j,y_k)p(x_j,y_k)
+    \end{align*}
+\end{prop}
+\begin{proof}
+Lad $V = g(X,Y)$ og $v_{j,k} = g(x_j,y_k)$, så er pmf $p_V(v_{j,k}) = p(x_j,y_k)$, og eftersom 
+$E[V] = \sum_{j=1}^\infty \sum_{k=1}^\infty v_{j,k} p_V(v_{j,k})$
+følger det at $E[g(X,Y)] = \sum_{j=1}^\infty \sum_{k=1}^\infty g(x_j,y_k) p(x_j,y_k)$.
+\end{proof}
+
+Den forventede værdi af diskrete stokastiske variabler kan også opdeles, når det kommer til multiplikation.  
+\begin{lem} \label{lem:prop3.13} %prop 3.13
+    Lad $X$ og $Y$ være uafhængige diskrete stokastiske variable, så er 
+    \begin{align*}
+        E[XY]=E[X]E[Y]
+    \end{align*}
+\end{lem}
+\begin{proof}
+    Da $X$ og $Y$ er uafhængige, så har vi fra proposition \ref{prop:prop3.9}, at $p(x,y)=p_X(x)p_y(y)$. Ved hjælp af proposition \ref{prop:prop3.11} fåes
+    \begin{align*}
+        E[XY]=\sum_{j=1}^\infty\sum_{k=1}^\infty xyp(x_j,y_k)&=\sum_{j=1}^\infty\sum_{k=1}^\infty x_jy_kp_X(x_j)p_Y(y_k)\\ &=\sum_{j=1}^\infty x_jp_X(x_j)\sum_{k=1}^\infty y_kp_Y(y_k)
+    \end{align*}
+    men dette er blot definitionen på den forventede værdi så $E[XY] = E[X]E[Y]$
+\end{proof}
+
+\begin{prop} \label{prop:prop3.15} %prop 3.15
+    Hvis $X_1,\ldots, X_n$ er uafhængige diskrete stokastiske variable, så er
+\begin{align*}
+    E[X_1X_2\cdots X_N]=E[X_1]E[X_2]\cdots E[X_N]
+\end{align*}
+\end{prop}
+\begin{proof}
+Ved hjælp af proposition \ref{lem:prop3.13} fås
+    \begin{align*}
+        E[X_1X_2\cdots X_n]
+        &=E[X_1X_2\cdots X_{n-1}]E[X_n]
+        \\
+        &=E[X_1,X_2,\cdots X_{n-2}]E[X_{n-1}]E[X_n]\\
+        &\; \vdots \\
+        &=E[X_1]E[X_2]\cdots E[X_{n-1}]E[X_n]
+    \end{align*}
+\end{proof}
+
