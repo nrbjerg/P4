@@ -1,4 +1,4 @@
-Dette afsnit bygger på  \cite{sandsynlighedsBog}
+Dette afsnit bygger på \cite{sandsynlighedsBog} og \cite{grimsandsynlighedsBog}
 \begin{defn}
 Lad $\{X_n\}_{n = 0}^\infty$, være en følge af diskrete stokastiske variable, udfaldsrum $S$. Så kaldes $\{X\}_{n = 0}^\infty$ en diskret \textbf{Markov kæde} hvis, den overholder \textbf{Markov betingelsen}:
 \begin{equation*}
@@ -6,15 +6,19 @@ Lad $\{X_n\}_{n = 0}^\infty$, være en følge af diskrete stokastiske variable, 
 \end{equation*}
 for alle $n \in \N$ og $s, x_0, \ldots x_{n - 1} \in S$. Og i såfald kaldes $X_k$ \textbf{udfaldet} af Markov kæden i tiden $k$.
 \end{defn}
-\begin{exmp}
-\textbf{TODO:} RANDOM WALK?
+\begin{exmp} Lad følgen af diskrete stokastiske variable $\{S_{n}\}_{n \geq 0}$, være definieret $S_{n} = \sum_{i=0}^n X_{i}$ for $n \in \N_{0}$, hvor $X_{i}$ er iid. diskrete stokastiske variable $P(X_{i} = 1) = p$ og $P(X_{i} = -1) = 1 - p$. Så er $\{S_{n}\}_{n \geq 0}$ et eksempel på en markov kæde \footnote{Faktisk er $\{S_{n}\}_{n \geq 0}$ et eksempel på hvad der kaldes en tilfældig tur}, da
+  \begin{equation*}
+    S_{n} = S_{n - 1} + X_{i} \implies P(S_{n} = k_{n} | S_{0} = k_{0}, \ldots, S_{n - 1} = k_{n - 1}) = P(S_{n} = k_{n} | S_{n - 1} = k_{n - 1})
+  \end{equation*}
+  for alle $k_{0}, k_{1}, \ldots, k_{n} \in \Z$.
 \end{exmp}
 \begin{defn}
-Markov kæden $\{X_n\}_{n = 0}^\infty$ kaldes \textbf{homogen} hvis 
+Markov kæden $\{X_n\}_{n = 0}^{\infty}$ kaldes \textbf{homogen} hvis
 \begin{equation*}
+  \infty
     P(X_n = i | X_{n - 1} = j) = P(X_1 = i | X_0 = j)
 \end{equation*}
-for alle $n \in \N$ og $i, j \in S$. 
+for alle $n \in \N$ og $i, j \in S$.
 \end{defn}
 Vi vil fremadrettet antage at alle Markov kæder er homogene, medmindre andet eksplicit defineres.
 \begin{defn}
@@ -22,11 +26,16 @@ Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde så defineres \textbf{transpo
 \begin{equation*}
     p_{ij} = P(X_1 = j \;| X_0 = i).
 \end{equation*}
-og \textbf{$n$ skridts tranpositions matricen} $P_X(n) = [p_{ij}(n)]$ hvor 
+og \textbf{$n$ skridts tranpositions matricen} $P_X(n) = [p_{ij}(n)]$ hvor
 \begin{equation*}
     p_{ij}(n) = P(X_n = j \;| X_0 = i)
 \end{equation*}
 \end{defn}
+
+\begin{example}
+
+\end{example}
+
 
 \begin{thm}
 Lad $\{X\}_{n = 0}^\infty$ være en Markov kæde, så er $P_X(n) = P_X^n$ for $n \in \N$.
@@ -38,7 +47,7 @@ Vi beviser dette ved induktion, for $n = 1$ gælder ligheden per definition. Ant
     &\stackrel{(b)}= \sum_{k \in S} P(X_n = j\; | X_{n - 1} = k) P(X_{n - 1} = k\; | X_0 = i) \\
     &= \sum_{k \in S} p_{jk}p_{ki}(n - 1) 
 \end{align*}
-Hvor lighed $(a)$ følger af \textbf{LTP}, $(b)$ af Markov betingelsen. Men $\displaystyle \sum_{k \in S} p_{jk}p_{ki}(n - 1)$ er blot indgang $i, j$ i matrix produktet $P_X P_X(n - 1) = P_X P_X^{n - 1} = P_X^n$, per vores induktions antagelse.
+Hvor lighed $(a)$ følger af \ref{thm:LTP}, $(b)$ af Markov betingelsen. Men $\displaystyle \sum_{k \in S} p_{jk}p_{ki}(n - 1)$ er blot indgang $i, j$ i matrix produktet $P_X P_X(n - 1) = P_X P_X^{n - 1} = P_X^n$, per vores induktions antagelse.
 \end{proof}
 
 \begin{defn}
@@ -48,6 +57,20 @@ Et udfald $i \in S$ kaldes \textbf{rekurrent} hvis
 \end{equation*}
 hvis $P(X_n = i \text{ for et } n \in \N \;| X_0 = i) < 1$ kaldes udfaldet \textbf{transient}.
 \end{defn}
+
+\begin{example}
+  Lad
+\end{example}
+
+Som det kunne ses i eksemplet var det ikke muligt at forlade $0$, vi introducere derfor følgende definition
+\begin{definition}
+Hvis $P(X_{n} = i \text{ for et } n \in \N \;| X_{0} = j) = 0$ for alle $i \neq j$, så kaldes udfaldet $j$ for \textbf{absorberende}.
+\end{definition}
+\begin{example}
+  Det ses nemt at ethvert absorberende udfald også er et rekurrent udfald.
+\end{example}
+
+
 
 \begin{defn}
 Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde og $i, j \in S$. $i$ og $j$ siges at \textbf{kommunikere}, skrevet $i \to j$, hvis $\exists m \in \N_0$ således $p_{ij}(m) > 0$. Hvis $i \to j$ og $j \to i$ siges $i$ og $j$ at \textbf{intrakommunikere}, skrives $i \leftrightarrow j$.\\ Lad $C \subseteq S$.
@@ -61,5 +84,3 @@ Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde og $i, j \in S$. $i$ og $j$ s
 Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde. En vektor $\bs{\pi}$, med indgange $\pi_j \in \R^+$ for $j \in S$, kaldes en \textbf{stationær} fordeling af $\{X_n\}_{n = 0}^\infty$, hvis $\bs{\pi}P_X = \bs{\pi}$ og $\displaystyle \sum_{j \in S} \pi_j = 1$.
 \end{defn}
 Fordelingen kaldes stationær fordi $\bs{\pi} P_X^n = \bs{\pi} P_X^{n - 1} = \cdots = \bs{\pi} P_X = \bs{\pi}$.
-
-
