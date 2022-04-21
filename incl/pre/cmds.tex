@@ -26,6 +26,10 @@
 \newtheorem{lem}[thm]{Lemma}         % Lemmaer, nummereret ligesom sætninger
 \newtheorem{prop}[thm]{Proposition}  % Propositioner, nummereret ligesom sætninger
 \newtheorem{cor}[thm]{Korollar}         % Korollarer, unnumbered
+\newtheorem{theorem}{Sætning}[chapter]   % Sætninger, nummereret efter kapitel
+\newtheorem{lemma}[thm]{Lemma}         % Lemmaer, nummereret ligesom sætninger
+\newtheorem{proposition}[thm]{Proposition}  % Propositioner, nummereret ligesom sætninger
+\newtheorem{corollary}[thm]{Korollar}         % Korollarer, unnumbered
 
 \theoremstyle{definition}            % Title med fed, opretstående tekst
 \newtheorem{DEFN}[thm]{Definition}   % Definitioner, nummereret ligesom sætninger
@@ -33,6 +37,7 @@
 
 \theoremstyle{remark}
 \newtheorem*{rem}{Bemærk}
+\newtheorem*{remark}{Bemærk}
 % Figur-makroer ----------------------------------------------------------------
 
 % imgfig ("image figure")
@@ -103,5 +108,6 @@
 \newcommand{\geom}{\textnormal{geom}}
 \newcommand{\Poi}{\textnormal{Poi}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
-
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\abs}[1]{\lvert#1\rvert}
 \renewcommand{\qedsymbol}{$\blacksquare$}
