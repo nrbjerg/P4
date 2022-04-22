@@ -15,7 +15,6 @@ for alle $n \in \N$ og $s, x_0, \ldots x_{n - 1} \in S$. Og i såfald kaldes $X_
 \begin{defn}
 Markov kæden $\{X_n\}_{n = 0}^{\infty}$ kaldes \textbf{homogen} hvis
 \begin{equation*}
-  \infty
     P(X_n = i | X_{n - 1} = j) = P(X_1 = i | X_0 = j)
 \end{equation*}
 for alle $n \in \N$ og $i, j \in S$.
@@ -32,12 +31,43 @@ og \textbf{$n$ skridts tranpositions matricen} $P_X(n) = [p_{ij}(n)]$ hvor
 \end{equation*}
 \end{defn}
 
+Det er ofte praktisk at vizualisere markov kæder som en vægtede og orienterede graf, hvor knudepunkterne representere de forskellige udfald og kanterne imellem knudepunkt $i$ og $j$ er vægtet med $p_{ij}$, bemærk at kanten imellem $i$ og $j$ kun integnes i grafen hvis $p_{ij} > 0$. Vi vil fremadrettet kalde sådanne en graf for \textbf{transpositions grafen} af markov kæden.
 \begin{example}
+  Betragt spillet roullete, spillet består af 38 felter: 2 grønne, 18 røde samt 18 sorte. En kugle lander tilfældigt på et af felterne uafhængeligt af de tidligere runder. Der odses på hvilket type felt, den lander på. Vi vil i dette eksempel antage at der odses således, at de grønne aldrig bliver valgt. Det koster $1\$$ at være med, men hvis kuglen lander på den korrekte farve, vindes $2\$$. Det bemærkes at den stokastiske process som er beskrevet her opfylder markov betingelsen, da hver rundte er uafhængelige af hinanden. Det følger af beskrivelsen at transpositions matricen er givet som
+  \begin{equation} \label{eq:transpositions_graf_roullete}
+    P_{X} = \begin{bmatrix}
+              1 & 0 & 0 & 0 & \ldots \\
+              20 / 38 & 0 & 18 / 38 & 0 & \ldots \\
+              0 & 20 / 38 & 0 & 18 / 38 & \ldots \\
+              \vdots & \vdots & \vdots & \vdots & \ddots
+            \end{bmatrix}
+  \end{equation}
+  Det mærkes at da det koster $1 \$$ at spille, er $P(X_n = 0 | X_{n-1} = 0) = 1$. Udfra transpositions matricen, kan transpositions grafen optegnes:
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \tikzset{punkt/.style={circle, thick, draw=black, minimum width=0.5cm,inner sep=0}}
+      \node[punkt] at (-2.5, 0)      (a){$0$};
+      \node[punkt] at (-1, 0)  (b){$1$};
+      \node[punkt] at (0.5, 0)    (c){$2$};
+      \tikzset{markus_m/.style={circle, thick, draw=white, minimum width=0.5cm,inner sep=0}}
+      \node[markus_m] at (2, 0)    (d){$\cdots$};
 
+      \draw[->, thick] (a) edge[out= 180, in = 113, looseness=8] node[above]{$1\;$} (a);
+      \draw[->, thick] (b) edge[bend left=60] node[below]{$\frac{20}{38}$} (a);
+      \draw[->, thick] (b) edge[bend left=60] node[above]{$\frac{18}{38}$} (c);
+      \draw[->, thick] (c) edge[bend left=60] node[below]{$\frac{20}{38}$} (b);
+      \draw[->, thick] (c) edge[bend left=60] node[above]{$\frac{18}{38}$} (d);
+      \draw[->, thick] (d) edge[bend left=60] node[below]{$\frac{20}{38}$} (c);
+    \end{tikzpicture}
+    \caption{Transpositions grafen for spillet roullete.}
+    \label{fig:transpositions_graf_roullete}
+  \end{figure}\noindent
+  Bemærk at ligesom at vi har tale om en uendelig marice, har vi også tale om en transpositions graf med uendeligt mange punkter.
 \end{example}
 
-
-\begin{thm}
+Vi vil nu introducere følgende sætning som giver os mulighed for at beregne $n$ skrids transpositions matricer.
+\begin{thm} \label{thm:n_skrids_transpositions_matrix}
 Lad $\{X\}_{n = 0}^\infty$ være en Markov kæde, så er $P_X(n) = P_X^n$ for $n \in \N$.
 \end{thm}
 \begin{proof}
@@ -51,29 +81,24 @@ Hvor lighed $(a)$ følger af \ref{thm:LTP}, $(b)$ af Markov betingelsen. Men $\d
 \end{proof}
 
 \begin{defn}
-Et udfald $i \in S$ kaldes \textbf{rekurrent} hvis 
-\begin{equation*}
-    P(X_n = i \text{ for et } n \in \N \;| X_0 = i) = 1
-\end{equation*}
-hvis $P(X_n = i \text{ for et } n \in \N \;| X_0 = i) < 1$ kaldes udfaldet \textbf{transient}.
+  Lad $\{X_{n}\}_{n \geq 0}$ være en markov kæde, og lad $i \in S$:
+  \begin{enumerate}[i)]
+    \item Hvis $P(X_{n} = i \textbf{ for et } n \in \N \;| X_{0} = i) = 1$ kaldes $i$ \textbf{rekurrent}.
+    \item Hvis $P(X_{1} = i \;| X_{0} = i) = 1$, så kaldes udfaldet $i$ for \textbf{absorberende}.
+    \item Hivs $P(X_n = i \text{ for et } n \in \N \;| X_0 = i) < 1$ kaldes udfaldet \textbf{transient}
+  \end{enumerate}
 \end{defn}
 
+\begin{remark}
+  Det noteres at ethvert absorberende udfald også er et eksmepel på et rekurrent udfald.
+\end{remark}
+
 \begin{example}
-  Lad
+  Betragt igen spillet roullete og transpositions grafen i figur \ref{fig:transpositions_graf_roullete} samt transpositions matricen fra \ref{eq:transpositions_matrix_roullete}. Det noteres at udfaldet $0$ er et eksempel på et absorberende og rekurrent udfald, da $P(X_{1} = 0 | X_{0} = 0) = 1$. Derudover bemærkes det at alle $i \in S \backslash \{0\}$, er eksempler på ikke rekurrente udfald, da der $\exists n \in \N: P(X_{n} = 0 | X_{0} = i) > 0$. Tilgengæld er alle udfald $i \neq 0$ transiente da $p_{ii}(2) = \sum_{j=0}^{\infty} p_{ij}p_{ji} > 0$, jævnfør sætning \ref{thm:n_skridt_transpositions_matrix}.
 \end{example}
-
-Som det kunne ses i eksemplet var det ikke muligt at forlade $0$, vi introducere derfor følgende definition
-\begin{definition}
-Hvis $P(X_{n} = i \text{ for et } n \in \N \;| X_{0} = j) = 0$ for alle $i \neq j$, så kaldes udfaldet $j$ for \textbf{absorberende}.
-\end{definition}
-\begin{example}
-  Det ses nemt at ethvert absorberende udfald også er et rekurrent udfald.
-\end{example}
-
-
 
 \begin{defn}
-Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde og $i, j \in S$. $i$ og $j$ siges at \textbf{kommunikere}, skrevet $i \to j$, hvis $\exists m \in \N_0$ således $p_{ij}(m) > 0$. Hvis $i \to j$ og $j \to i$ siges $i$ og $j$ at \textbf{intrakommunikere}, skrives $i \leftrightarrow j$.\\ Lad $C \subseteq S$.
+Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde og $i, j \in S$. Udfaldene $i$ og $j$ siges at \textbf{kommunikere}, skrevet $i \to j$, hvis $\exists m \in \N_0$ således $p_{ij}(m) > 0$. Hvis $i \to j$ og $j \to i$ siges $i$ og $j$ at \textbf{intrakommunikere}, skrives $i \leftrightarrow j$.\\ Lad $C \subseteq S$.
 \begin{enumerate}[i)]
     \item Så kaldes $C$ \textbf{lukket} hvis $p_{ij} = 0$ for alle $i \in C, j \not \in C$. 
     \item og hvis  $i \leftrightarrow j$ for alle $i, j \in C$ kaldes $C$ \textbf{irreducibel}.
@@ -81,6 +106,34 @@ Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde og $i, j \in S$. $i$ og $j$ s
 \end{defn}
 
 \begin{defn}
-Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde. En vektor $\bs{\pi}$, med indgange $\pi_j \in \R^+$ for $j \in S$, kaldes en \textbf{stationær} fordeling af $\{X_n\}_{n = 0}^\infty$, hvis $\bs{\pi}P_X = \bs{\pi}$ og $\displaystyle \sum_{j \in S} \pi_j = 1$.
+Lad $\{X_n\}_{n = 0}^\infty$ være en Markov kæde. En vektor $\bs{\pi}$, med indgange $\pi_j \in \R^+$ for $j \in S$, kaldes en \textbf{stationær fordeling} af $\{X_n\}_{n = 0}^\infty$, hvis $\bs{\pi}P_X = \bs{\pi}$ og $\displaystyle \sum_{j \in S} \pi_j = 1$.
 \end{defn}
 Fordelingen kaldes stationær fordi $\bs{\pi} P_X^n = \bs{\pi} P_X^{n - 1} = \cdots = \bs{\pi} P_X = \bs{\pi}$.
+% Yay endeligt et nyt eksempel
+\begin{example}
+  Et firma laver ventiler, hvis ventil $X_{n}$ virker gør ventil $X_{n + 1}$ det også med sandsynlighed $0.9$, og hvis ventil $X_{n}$ ikke virker, virker ventil $X_{n + 1}$ heller ikke med sandsnynlighed $0.6$. Vi lader $X_{n} = 1$ hvis ventilen virker og $X_{n} = 0$ ellers. Transpositions grafen for markov kæden kan ses på figure \ref{fig:eksempel_stationary}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \tikzset{punkt/.style={circle, thick, draw=black, minimum width=0.5cm,inner sep=0}}
+      \node[punkt] at (1, 0)  (a){$1$};
+      \node[punkt] at (-1, 0) (b){$0$};
+
+      \draw[->, thick] (a) edge[out= 40, in = 320, looseness=8] node[right]{$0.9$} (a);
+      \draw[->, thick] (b) edge[bend left=60] node[above]{$0.4$} (a);
+      \draw[->, thick] (b) edge[out= 220, in = 140, looseness=8] node[left]{$0.6$} (b);
+      \draw[->, thick] (a) edge[bend left=60] node[below]{$0.1$} (b);
+    \end{tikzpicture}
+    \caption{Transpositions graf}
+    \label{fig:eksempel_stationary}
+  \end{figure}\noindent
+  Fra transpositions grafen ses det at alle udfald intrakommunikere og Markov kæden derfor er et eksempel på en irreducibel Markov kæde. Vi ser derudover at ligningen
+  \begin{equation*}
+    \pi P_{X} = \pi \begin{bmatrix}
+                      0.6 & 0.4 \\ 0.1 & 0.9
+                    \end{bmatrix} = \pi
+  \end{equation*}
+  løses af $\pi = s \begin{bmatrix} 1 & 4 \end{bmatrix}$, hvor $s \in \R$.
+  Men vi har derudover at $\pi_{1} + \pi_{2} = 1$, samt $\pi_{1}, \pi_{2} \geq 0$, da der er tale om en fordeling.
+  Det følger derfor at $\pi = \begin{bmatrix} 0.2 & 0.8 \end{bmatrix}$.
+\end{example}
