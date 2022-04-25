@@ -1,6 +1,6 @@
 %En stokastisk proces i det diskrete tilfælde er en samling af diskrete stokastiske variabler, der har værdier i en mængde, som kaldes \textbf{tilstandsrum}. Mængden er indekseret af \textbf{indeksmængden}, hvor det er typisk de naturlig tal, der anvendes. 
 Dette afsnit bygger på \cite{sandsynlighedsBog} og \cite{grimsandsynlighedsBog}.
-Et eksempel på en stokastisk proces er forgreningsprocessen, som modellere et "et-kønnet" stamtræ, hvilket vil sige, at det kun er den ene forældre, som er med i stamtræet. 
+Et eksempel på en stokastisk proces er den såkaldte forgrenings process, som modellere et ``et-kønnet'' stamtræ, teorien stammer oprindeligt England, hvor Francis Galton, ønskede at undsøge hvilke efternavne, som ville uddø. Processen kan bruges til at modellere mange forskellige stokastiske phenomener, eksempelvis virus, jordskelv og fission.
 Lad de diskret stokastiske variable $X_{n,k}$ betegne antallet af \textbf{afkom} den $k$'te forfader i den $n$'te \textbf{generation} får og lad dem være iid med pmf $p_X$. Den første forfader $Z_0$ kaldes \textbf{stamforfaderen}.
 Størrelsen på hver generation, betegnet $Z_n$, danner en følge, som kaldes en stokastisk forgreningsproces eller en Galton-Watson proces.
 \begin{defn}\label{def:forgreningsproces}
@@ -154,14 +154,21 @@ og hermed er $q$ den mindste løsning til $s=G(s)$.
 
 Den forventede værdi af afkom kan benyttes til at undersøge sandsynligheden for at slægten uddør.
 \begin{prop} \label{prop:prop8.9}%8.9
-    Lad en forgreningsproces have en forventede værdi $\mu$ af afkomsfordelingen. Hvis $\mu\leq1$, så er $P(\Omega)$=1. Ellers er $P(\Omega)<1$. 
+  Lad en forgreningsproces $\{Z_{n}\}_{n \geq 0}$ have en forventede værdi $\mu$ af afkomsfordelingen, $p_{X}$. Hvis $\mu > 1$, så er $P(\Omega) < 1$, ellers hvis $\mu \leq 1$ og $p_{X}(0) > 0$, så er $P(\Omega) = 1$.
 \end{prop}
 \begin{proof}
-    Fra proposition \ref{prop 3.37} gælder det, at $\mu=G'(1)$. Hvis $p_X(0)=0$, så er $\mu > 1$ og $P(\Omega)=0$. Bemærk at beviset for specialtilfældet, hvor $G'(s)\equiv 1$ er undladt.
-    \\
-    \quad Antag nu at $p_X(0)>0$. Fra korollar \ref{problem133} vides det, at pgf'en $G(s)$ er konveks og voksende. Yderligere så er pgf'en stigende fra $G(0)=p_X(0)>0$ til $G(1)=1$. Hvis $\mu>1$, så må $G(s)$ krydse linjen $y=s$, samt er den første skæringen sandsynligheden, for at slægten uddør, hvilket er skarpt mindre end $1$ jævnfør proposition \ref{prop:prop8.7}.
-    Hvis i stedet $\mu\leq1$, så er der ingen skæring med $y=s$ før $1$, og hermed er sandsynligheden $1$. 
+  Det vides at $G_{X}$ er en voksende og konveks funktion jævnfør korollar \ref{problem133}.
+  Antag $\mu \leq 1$ og $p_{X}(0) > 0$, så er $G_{X}$ voksende fra $G_{X}(0) = p_{X}(0) > 0$ til $G(1) = 1$, jævnfør proposition \ref{prop:pgfI0Og1}. Dette medfører at den mindste løsning til $s = G_{X}(s)$, givet ved $s = 1$, heraf følger det at $P(\Omega) = 1$, jævnfør proposition \ref{prop:prop8.7}.
+  Antag nu at $\mu > 1$, så må $G_{X}(s)$ krydse linjen $y = s$, da $G_{X}'(1) = \mu > 1$, jævnfør \ref{prop 3.37} og $G_{X}$ er voksende. Altså eksistere $s < 1$ således $s = G_{X}(s)$, heraf følger det at $P(\Omega) = s$, jævnfør proposition \ref{prop:prop8.7}.
 \end{proof}
+
+%\begin{proof} % GAMELT BEVIS
+%    Fra proposition \ref{prop 3.37} gælder det, at $\mu=G'(1)$. Hvis $p_X(0)=0$, så er $\mu > 1$, såfremt $\exists n \in \N, n > 1: p_{X}(n) > 0$ og $P(\Omega)=0$. Bemærk at beviset for specialtilfældet, hvor $G'(s)\equiv 1$ er undladt.
+%    \\
+%    Hvis $p_{X}(0) = 1$
+%    \quad Antag nu at $1 > p_X(0) >0$. Fra korollar \ref{problem133} vides det, at pgf'en $G(s)$ er konveks og voksende. Yderligere så er pgf'en stigende fra $G(0)=p_X(0)>0$ til $G(1)=1$. Hvis $\mu>1$, så må $G(s)$ krydse linjen $y=s$, samt er den første skæringen sandsynligheden, for at slægten uddør, hvilket er skarpt mindre end $1$ jævnfør proposition \ref{prop:prop8.7}.
+%    Hvis i stedet $\mu\leq1$, så er der ingen skæring med $y=s$ før $1$, og hermed er sandsynligheden $1$.
+%\end{proof}
 Figur \ref{fig:proofprop8.9} illustrerer de forskellige tilfælde i proposition \ref{prop:prop8.9}. Den blå graf er $\mu\leq1$, den røde graf er $G(0)=0$, den grønne graf er $\mu>1$, og så er den sorte graf $y=s$. 
 \begin{figure}[H]
     \centering

@@ -138,10 +138,10 @@ Lad $A \subseteq S$ og $B_1, B_2, \ldots \subseteq S$. Så er
 \end{lem}
 \begin{proof}
 Antag at $x \in A \cap \left( \bigcup^\infty_{k = 1} B_k\right)$, så er $x \in A$ og $x \in \bigcup^\infty_{k = 1} B_k$, der eksistere altså et $n \in \N$ således $x \in B_n$, altså er $x \in A \cap B_n \subseteq \bigcup^\infty_{k = 1} (A \cap B_k)$. 
-Hvis $x \in \bigcup^\infty_{k = 1} (A \cap B_k)$, eksistere et $n \in \N$, således $x \in (A \cap B_k)$. det vil sige at $x \in B_k \subseteq \bigcup^\infty_{k = 1} B_k$ og $x \in A$ så $x \in A \cap \left( \bigcup^\infty_{k = 1} B_k \right)$.
+Hvis $x \in \bigcup^\infty_{k = 1} (A \cap B_k)$, eksistere et $n \in \N$, således $x \in (A \cap B_k)$. det vil sige at $x \in B_k \subseteq \bigcup^\infty_{k = 1} B_k$ og $x \in A$ så $x \in A \cap \left( \bigcup^\infty_{k = 1} B_k \right)$. Vi har altså $A \cap \left( \bigcup^\infty_{k = 1} B_k \right) = \bigcup^\infty_{k = 1} (A \cap B_k)$.
 \end{proof}
 
-
+Lemmaet giver os mulighed for at formulere følgende resultat, som er kendt som loven om total sandsynlighed.
 \begin{thm} \label{thm:LPT}
 Lad $B_1, B_2, \ldots$ være disjunkte hændelser med $P(B_k) > 0$ for $k \in \N$ og $S = \bigcup^\infty_{k = 1} B_k$, så er
 \begin{equation*}
@@ -150,14 +150,14 @@ Lad $B_1, B_2, \ldots$ være disjunkte hændelser med $P(B_k) > 0$ for $k \in \N
 for alle $A \subseteq S$
 \end{thm}
 \begin{proof}
+Vi har lighederne:
 \begin{equation*}
     A = A \cap S = A \cap \left( \bigcup^\infty_{k = 1} B_k \right) = \bigcup^\infty_{k = 1} (A \cap B_k)
 \end{equation*}
-Jævnfør lemma \ref{lem:DistributiveLawForInfiniteUnions}. Eftersom $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ for $i \neq j$, er 
+Jævnfør lemma \ref{lem:DistributiveLawForInfiniteUnions}. Eftersom $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ for $i \neq j$ og da $P(A \cap B_k) = P(A | B_k) P(B_k)$ per definitionen af sandsynligheden af en betinget hændelse, gælder lighederne
 \begin{equation*}
     P(A) = P\left( \bigcup^\infty_{k = 1} A \cap B_k\right)= \sum^\infty_{k = 1} P(A \cap B_k) = \sum^\infty_{k = 1} P(A | B_k)P(B_k)
 \end{equation*}
-da $P(A \cap B_k) = P(A | B_k) P(B_k)$ per definitionen af sandsynligheden af en betinget sandsynlighed.
 \end{proof}
 
 To hændelser kan ske uafhængigt af hinanden. Dette kan eksempelvis være, hvis man kaster en terning, så vil sandsynligheden for $1$ være $\frac{1}{6}$. Tidligere på dagen blev terningen kastet en gang til $1$. Hændelserne har ingen effekt på hinandens udkom, så er den betinget hændelse stadig den samme. Lad $A=$\{Antallet af $1$'er slået i næste kast\} og $B=$\{Antallet af $1$'er slået tidligere\}, så er $P(A)=P(A|B)$, hvor den ubetinget og betinget sandsynlighed er den samme.  Da $P=P(A|B)$, er  $P(A\cap B)=P(A)P(B)$. 

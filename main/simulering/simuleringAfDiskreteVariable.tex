@@ -1,4 +1,44 @@
-Dette afsnit bygger på \cite{sandsynlighedsBog}.
+Dette afsnit bygger på \cite{sandsynlighedsBog} og \cite{grimsandsynlighedsBog}.
+\section{Markovs ulighed}
+\begin{theorem}
+Hvis $X$ er en tilfældig variable med en begrænset middelværdi, så gælder
+\begin{align*}
+    P(|X|\geq a) \leq \frac{E[|X|]}{a} \text{ for alle } a > 0
+\end{align*}
+\end{theorem}
+\begin{proof}
+Lad $A=\{|X|\geq a\}$, så fremstilles indikator funktionen af $A$ $|X|\geq aI_a$. Så tages den forventede værdi på begge sider, hvorefter man kan flytte $a$ uden for.
+\begin{align*}
+E[|X|]\geq E[aI_a] = a E[I_a]
+\end{align*} 
+Til sidst divideres der med $a$ på begge sider. Eftersom den forventede værdi af indikartor funktionen er $P(A)$, så indsættes dette og giver det ænskede resultat.
+\begin{align*}
+    \frac{E[|X|]}{a} \geq P(A)
+\end{align*} 
+\end{proof}
+Det er værd at bemærke at hvis $a<0$ så skal relationen vendes om.
+
+\section{Chebyshews ulighed}
+Chebyshews ulighed siger noget om hvad sansyndligheden er for at en tilfældig værdi ligger inden for $c$ gange standardafvigelser for middelværdien. Dette kan andvendes på enhver fordeling. 
+\begin{theorem}
+    Lad $X$ være en tilfældig variable med middelværdien $\mu$ og variansen $\sigma^2$. For alle konstanter $c>0$ gælder at 
+    \begin{align*}
+        P(|X-\mu|\geq c \sigma)\leq \frac{1}{c^2}
+    \end{align*} 
+\end{theorem}
+\begin{proof}%fra wiki
+    \begin{align*}
+        P(|X-\mu|\geq c \sigma)=P((X-\mu)^2\geq k^2\sigma^2)
+    \end{align*}
+Fra \textbf{Markovs ulighed} vides det at, når $Y$ er en tilfædig variable og $a$ er positiv, gælder at $P(|Y|>a)\leq E(|Y|)/a$. Dette anvendes her
+\begin{align*}
+    P((X-\mu)^2\geq k^2\sigma^2) \leq \frac{E[(X-\mu)^2]}{c^2\sigma^2}
+\end{align*}
+Da $E[(X-\mu)]$ er definitionen af $\sigma$, så indsættes dette og beviset afsluttes.
+\begin{align*}
+    \frac{E[(X-\mu)^2]}{c^2\sigma^2} = \frac{\sigma^2}{c^2\sigma^2} = \frac{1}{c^2}
+\end{align*}
+\end{proof}
 \section{Law of large numbers}
 Law of large numbers går kort sagt ud på at ved en test med stor antal forsøg vil den emperiske middelværdien, nærme sig den teoretiske middelværdi, jo flere forsøg der bliver foretaget.
 \begin{thm}%theorem 4.1
