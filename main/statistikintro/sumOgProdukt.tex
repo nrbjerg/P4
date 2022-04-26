@@ -212,3 +212,13 @@ Ved hjælp af proposition \ref{lem:prop3.13} fås
     \end{align*}
 \end{proof}
 
+\begin{prop}
+    Lad $X_1$, $X_2$,\dots være en følge af iid diskrete stokastiske variable med pmf $p$.
+    Der findes en $n$ hvor $X_n=k$, hvis og kun hvis $p(k)>0$.
+\end{prop}
+
+\begin{proof}
+    Lad $Y=\inf(n\mid X_n=k)$.
+    Da $Y$ beskriver antallet af forsøg indtil hændelsen $\{X_n=k\}$ forekommer og at dette har succes sandsynlighed $p(k)>0$, har vi at $Y\sim \geom(p(k))$ med udfaldsrum i $N_0$.
+    Derved påtager $Y$ altid en endelig værdi, men $Y$ beskriver netop en værdi af $n$ hvor $X_n=k$ og den vil derfor eksistere i alle udfald, hvilket beviser den ene retning. Hvis der findes en $n$ hvor $X_n=k$, så er $P(X_n=k)=p(k)>0$, hvilket beviser den anden retning.
+\end{proof}
