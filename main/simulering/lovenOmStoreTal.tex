@@ -7,11 +7,13 @@ $E[X] < \infty$. Så gælder
 \end{align*}
 \end{theorem}
 \begin{proof}
-Lad $A=\{|X|\geq a\}$, så fremstilles indikator funktionen af $A$, som $I_A$. Så tages den forventede værdi på begge sider, hvorefter man kan flytte $a$ uden for.
-\begin{align*}
-E[|X|]\geq E[aI_A] = a E[I_A] \iff \frac{E[|X|]}{a}\geq E[I_A]
-\end{align*}
-hvor vi har benyttet at $E[I_A] = P(A)$.
+\end{proof}
+\begin{proof}
+  Lad $A=\{|X|\geq a\}$, og definier indikator funktionen $I_A = 1$ hvis $A$ og $I_{A} = 0$ ellers. Vi har $|X| \geq aI_{A}$, da $aI_{A} = 0$ hvis $|X| < a$ og $a$ hvis $|X| \geq a$. Hvis den forventede værdi tages, på begge sider opnåes
+  \begin{align*}
+    E[|X|]\geq E[aI_A] = a E[I_A] \iff \frac{E[|X|]}{a}\geq E[I_A]
+  \end{align*}
+  resultatet følger heraf da $E[I_{A}] = P(A)$.
 \end{proof}
 Det er værd at bemærke, at hvis $a<0$ så skal relationen vendes om.
 
@@ -37,16 +39,46 @@ Da $E[(X-\mu)^2]$ er defineret af $\sigma^2$, så indsættes dette
 Hvilket afslutter beviset.
 \end{proof}
 
+\begin{definition}
+  Lad $X_{1}, X_{2}, \ldots$ være iid. stokastiske variabler, så kaldes
+  \[
+    \overline{X}_{n} = \frac{1}{n} \sum_{k=1}^n X_{k}
+  \]
+  for den $n$'te empiriske middelværdi.
+\end{definition}
+
+\begin{lemma} \label{lem:variansOgForventedeVærdiAfEmpiriskMiddelværdi}
+  Lad $X_{1}, X_{2}, \ldots$ være iid. stokastiske variabler, med $E[X] = \mu$ og $\Var[X] = \sigma^{2}$, så er
+  \begin{equation*}
+    E[\overline{X}_{n}] = \mu \text{ og } \Var[\overline{X}_{n}] = \frac{\sigma^{2}}{n}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Resultatet om den forventede værdi følger umiddelbart af korollar \ref{cor:sumAfDiskreteVariable}, ved
+  \begin{equation*}
+    E[\overline{X}_{n}] = E \left[\sum^{n}_{k = 1} \frac{1}{n} X_{k}\right] = \frac{1}{n} \sum_{k=1}^{n} E[X_{k}] = \mu
+  \end{equation*}
+
+  Og variansen følger af korrollar \ref{cor:variansAfLinearKombinationAFUafhængigeVariable}, ved
+  \begin{equation*}
+    \Var[\overline{X}_{n}] = \Var \left[\sum^{n}_{k = 1} \frac{1}{n} X_{k}\right] = \frac{1}{n^{2}} \sum_{k=1}^{n} \Var[X_{k}] = \frac{\sigma}{n}
+  \end{equation*}
+\end{proof}
+
 Loven om store tal beskriver, at ved en test med et stort antal forsøg vil den emperiske middelværdi, nærme sig den teoretiske middelværdi, jo flere forsøg der bliver foretaget.
 \begin{thm} \label{thm:law_of_large_numbers}%theorem 4.1
-    Lad $X_1, X_2, \dots$ være en følge af iid. med stokastisk variabler, med middelværdien $\mu$, of lad $\Bar{X}$ være den emperiske middelværdi. For hver $\varepsilon>0$ gælder at
+    Lad $X_1, X_2, \dots$ være en følge af iid. stokastisk variabler, med middelværdien $\mu$, of lad $\overline{X}_{n}$ være den emperiske middelværdi. For hver $\varepsilon>0$ gælder at
     \begin{align*}
-        P(|\Bar{X}-\mu|>\varepsilon) \rightarrow 0 \text{ når } n \rightarrow \infty
+        P(|\overline{X}_{n}-\mu|>\varepsilon) \rightarrow 0 \text{ når } n \rightarrow \infty
     \end{align*}
 \end{thm}
 \begin{proof}
-    Antag at $X_k$ har en afgrænset varians, dvs $\sigma^2<\infty$. Anvend Chebyshews ulighed sætning \ref{Thm:Chebyshewsulighed}ulighed på $\Bar{X}$, og lad $c=\varepsilon \sqrt{x}/\sigma$. Eftersom $E[\Bar{X}]=\mu$ og $\Var[\Bar{X}]=\sigma^2/n$, dermed giver det
+  Vi vil i dette bevis antage at $\sigma^{2} < \infty$. Anvend Chebyshews ulighed, sætning \ref{Thm:Chebyshewsulighed}, på $\overline{X}_{n}$, og lad $c=\varepsilon \sqrt{x}/\sigma$. Eftersom $E[\overline{X}_{n}]=\mu$ og $\Var[\overline{X}_{n}]=\sigma^2/n$, jævnfør lemma \ref{lem:variansOgForventedeVærdiAfEmpiriskMiddelværdi}, dermed giver det
     \begin{align*}
-        P(|\Bar{X}-\mu| > \varepsilon) \leq \frac{\sigma}{n\varepsilon^2} \rightarrow 0 \text{ når } n \rightarrow \infty
+        P(|\overline{X}_{n}-\mu| > \varepsilon) \leq \frac{\sigma}{n\varepsilon^2}
     \end{align*}
+  og resultatet følger umiddelbart heraf da $\frac{\sigma}{n\varepsilon^2} \rightarrow 0 \text{ når } n \rightarrow \infty.$
 \end{proof}
+\begin{remark}
+  Det noteres at vi ovenfor kun har givet et bevis i tilfældet hvor $\sigma < \infty$, resultatet gælder også i det andet tilfælde, men beviset for dette udelades fra projektet.
+\end{remark}
