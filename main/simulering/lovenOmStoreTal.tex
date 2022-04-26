@@ -1,0 +1,52 @@
+\section{Loven om store tal}
+\begin{theorem} \label{thm:Markovsulighed}[Markovs ulighed]
+Hvis $X$ er en stokastisk variable, således
+$E[X] < \infty$. Så gælder
+\begin{align*}
+    P(|X|\geq a) \leq \frac{E[|X|]}{a} \text{ for alle } a > 0
+\end{align*}
+\end{theorem}
+\begin{proof}
+Lad $A=\{|X|\geq a\}$, så fremstilles indikator funktionen af $A$, som $I_A$. Så tages den forventede værdi på begge sider, hvorefter man kan flytte $a$ uden for.
+\begin{align*}
+E[|X|]\geq E[aI_A] = a E[I_A] \iff \frac{E[|X|]}{a}\geq E[I_A]
+\end{align*}
+hvor vi har benyttet at $E[I_A] = P(A)$.
+\end{proof}
+Det er værd at bemærke, at hvis $a<0$ så skal relationen vendes om.
+
+Chebyshews ulighed siger noget om, hvad sandsynligheden er for, at en stokastisk variabel ligger inden for $c$ gange standardafvigelser for middelværdien.
+\begin{theorem} \label{Thm:Chebyshewsulighed}[Chebyshews ulighed]
+    Lad $X$ være en stokastisk variable med middelværdien $\mu$ og variansen $\sigma^2>0$. For alle $c>0$ gælder, at
+    \begin{align*}
+        P(|X-\mu|\geq c \sigma)\leq \frac{1}{c^2}
+    \end{align*}
+\end{theorem}
+\begin{proof}%fra wiki
+    \begin{align*}
+        P(|X-\mu|\geq c \sigma)=P((X-\mu)^2\geq c^2\sigma^2)
+    \end{align*}
+Ved at benytte Markovs ulighed, sætning \ref{thm:Markovsulighed} opnåes
+\begin{align*}
+    P((X-\mu)^2\geq c^2\sigma^2) \leq \frac{E[(X-\mu)^2]}{c^2\sigma^2}
+\end{align*}
+Da $E[(X-\mu)^2]$ er defineret af $\sigma^2$, så indsættes dette
+\begin{align*}
+    \frac{E[(X-\mu)^2]}{c^2\sigma^2} = \frac{\sigma^2}{c^2\sigma^2} = \frac{1}{c^2}
+\end{align*}
+Hvilket afslutter beviset.
+\end{proof}
+
+Loven om store tal beskriver, at ved en test med et stort antal forsøg vil den emperiske middelværdi, nærme sig den teoretiske middelværdi, jo flere forsøg der bliver foretaget.
+\begin{thm} \label{thm:law_of_large_numbers}%theorem 4.1
+    Lad $X_1, X_2, \dots$ være en følge af iid. med stokastisk variabler, med middelværdien $\mu$, of lad $\Bar{X}$ være den emperiske middelværdi. For hver $\varepsilon>0$ gælder at
+    \begin{align*}
+        P(|\Bar{X}-\mu|>\varepsilon) \rightarrow 0 \text{ når } n \rightarrow \infty
+    \end{align*}
+\end{thm}
+\begin{proof}
+    Antag at $X_k$ har en afgrænset varians, dvs $\sigma^2<\infty$. Anvend Chebyshews ulighed sætning \ref{Thm:Chebyshewsulighed}ulighed på $\Bar{X}$, og lad $c=\varepsilon \sqrt{x}/\sigma$. Eftersom $E[\Bar{X}]=\mu$ og $\Var[\Bar{X}]=\sigma^2/n$, dermed giver det
+    \begin{align*}
+        P(|\Bar{X}-\mu| > \varepsilon) \leq \frac{\sigma}{n\varepsilon^2} \rightarrow 0 \text{ når } n \rightarrow \infty
+    \end{align*}
+\end{proof}
