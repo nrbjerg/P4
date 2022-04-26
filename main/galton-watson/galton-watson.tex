@@ -1,6 +1,6 @@
 %En stokastisk proces i det diskrete tilfælde er en samling af diskrete stokastiske variabler, der har værdier i en mængde, som kaldes \textbf{tilstandsrum}. Mængden er indekseret af \textbf{indeksmængden}, hvor det er typisk de naturlig tal, der anvendes. 
 Dette afsnit bygger på \cite{sandsynlighedsBog} og \cite{grimsandsynlighedsBog}.
-Et eksempel på en stokastisk proces er den såkaldte forgrenings process, som modellere et ``et-kønnet'' stamtræ, teorien stammer oprindeligt England, hvor Francis Galton, ønskede at undsøge hvilke efternavne, som ville uddø. Processen kan bruges til at modellere mange forskellige stokastiske phenomener, eksempelvis virus, jordskelv og fission.
+Et eksempel på en stokastisk proces er den såkaldte forgrenings process, som modellere et ``et-kønnet'' stamtræ, teorien stammer oprindeligt England, hvor Francis Galton, ønskede at undsøge hvilke efternavne, som ville uddø. Processen kan bruges til at modellere mange forskellige stokastiske phenomener, eksempelvis virus, jordskælv og fission.
 Lad de diskret stokastiske variable $X_{n,k}$ betegne antallet af \textbf{afkom} den $k$'te forfader i den $n$'te \textbf{generation} får og lad dem være iid med pmf $p_X$. Den første forfader $Z_0$ kaldes \textbf{stamforfaderen}.
 Størrelsen på hver generation, betegnet $Z_n$, danner en følge, som kaldes en stokastisk forgreningsproces eller en Galton-Watson proces.
 \begin{defn}\label{def:forgreningsproces}
@@ -62,6 +62,7 @@ Et eksempel på en forgeningsproces kan ses i figur \ref{fig:eksforgreningsproce
   \caption{En forgreningsproces, hvor $Z_0=1, Z_1=2, Z_2=3, Z_3=4$, $Z_4=1$}
   \label{fig:eksforgreningsproces}
 \end{figure}
+Et yderligere begreb omkring generationer \textbf{familie}, hvilket er mængden af afkom i generation $(n+1)$ hvert afkom fra genreationen $(n)$ får. Denne mængde kan er selvfølglig tom, hvis afkommet ingen afkom før. I eksempelet er $A$ og $B$ en familie, da de er de to afkom af $Z_0$. Yderligere bliver $Z_1$ der dannet $2$ familier, $Z_2$ danner også $2$ familier, og $Z_3$ danner $1$.
 
 \begin{prop}\label{prop:pgfforgreningsproces}
 Lad $\{Z_n\}_{n\geq 0}$ være en forgreningsproces og lad $G$ være pgf til afkomstfordelingen. Da er pgf'er $G_n$ for $Z_n$ givet ved
