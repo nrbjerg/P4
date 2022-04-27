@@ -11,10 +11,7 @@ der beskriver hændelsen, hvor $X$ antager værdien $0$.
 Generelt undlades tuborg klammerne omkring predikatet, når der arbejdes med sandsynlighedsmål, så $P(\{X = 0\})$ noteres også $P(X = 0)$.
 
 \begin{defn} [Sandsynlighedsfunktion]%Def 2.3
-    Lad en diskret stokastisk variabel $X$ med udfaldsrum $V_X$. Så kaldes funktionen
-% \begin{align*}
-%     p(x_k)=P(X=x_k), \quad k=1,2,\ldots 
-% \end{align*}
+    Lad $X$ være en diskret stokastisk variabel med udfaldsrum $V_X$. Så kaldes funktionen
 \begin{align*}
     p(x)=
     \begin{cases}
@@ -65,9 +62,10 @@ Lad $X$ være en stokastiske variable. Funktionen $F: \R \to \R$ givet ved
 \end{align*}
 kaldes den \textbf{kumulative fordelingsfunktion (cdf)} af $X$.
 \end{defn}
+
 Ved hjælp af proposition \ref{prop:sandsynlighedMedToHændelser} punkt \ref{enu:propsandsynlighedMedToHændelser1}, kan man omskrive tilfældet $P(X\geq x)$ til $P(X\geq x)=1-P(X<x)$. Yderligere gælder følgende egenskaber for cdf'er. 
 
-\begin{prop}%2.2
+\begin{prop}%2.2 COPY PASTE
 Lad $X$ være en diskret stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$, pmf, $p$ og cdf $F$. Så gælder
 \begin{enumerate}
     \item $F(x)=\displaystyle \sum_{k:x_k \leq x} p(x_k)$
