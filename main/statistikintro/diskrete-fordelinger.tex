@@ -19,7 +19,7 @@ Hvis $X$ er antallet af forsøg indtil en hændelse $A$ med sandsynlighed $\lamb
 \begin{align*}
     p(k)=\lambda(1-\lambda)^{k-1}, \quad k=1,2,\ldots 
 \end{align*}
-og vi siger at $X$ har en geometrisk fordeling med succes sandsynlighed $\lambda$, som noteres $X\sim\geom(\lambda)$.
+$X$ siges at have en \textbf{geometrisk fordeling} med succes sandsynlighed $\lambda$, som noteres $X\sim\geom(\lambda)$.
 \end{defn}
 
 Hvis der i stedet for kigges på $Y$, som er antallet af forsøg, strengt før hændelsen $A$ opstår, så er pmf
@@ -37,7 +37,7 @@ Altså en sandsynlighed på omkring 3\%.
 \end{exmp}
 
 
-\begin{prop} %2.18 
+\begin{prop} %2.18 COPY PASTE, men det er svært at lave om
 \label{prop:geomEgenskaber}
 Hvis $X \sim \geom (p)$, så gælder 
 \begin{align*}
@@ -85,11 +85,11 @@ og derved er:
 Et andet eksempel på en diskrete fordeling er Poissons. Denne fordeling kan benyttes til at beskrive antallet af stokastiske hændelser, der bliver empirisk observeret. Eksempelvis antallet af jordskælv over et årti.
 %Def 2.15
 \begin{defn}\label{def:poisson}
-    Lad $\lambda>0$, hvis en diskret stokastisk variabel $X$ har en pmf
+    Lad $\lambda>0$, hvis $X$ har pmf
     \begin{align*}
          p(k)=\e^{-\lambda}\frac{\lambda^k}{k!}\text{ for } k\in\mathbb{N}_0
     \end{align*}
-    så har $X$ en \textbf{Poisson fordeling} med parameter $\lambda$, noteret ved $X\sim\Poi(\lambda)$.
+    så har $X$ følger en \textbf{Poisson fordeling} med parameter $\lambda$, noteret ved $X\sim\Poi(\lambda)$.
 \end{defn}
 
 \begin{exmp}\label{exmp:kundeservice}

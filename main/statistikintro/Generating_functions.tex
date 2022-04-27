@@ -1,9 +1,9 @@
 \section{Sandsynlighedsfrembringende funktioner}
 Frembringende funktioner er nyttige redskaber i sandsynlighedsteori. Der findes forskellige typer frembringende funktioner, men i dette projekt kigges på sandsynlighedsfrembringende funktioner for diskret fordelinger. 
 \begin{defn} \label{pgf} %def3.23
-    Lad $X$ være en diskret stokastisk variabel, med udfaldsrum $\N_0$. Så kaldes funktionen
+    Lad $X$ være en diskret stokastisk variabel, med udfaldsrum $\N_0$. Så kaldes funktionen $G_{X}: [0, 1] \to \R$, defineret som
     \begin{align*}
-        G_X(s)=E[s^X] = \sum_{k=0}^{\infty}s^k P(X=k), \quad \text{hvor } 0\leq s \leq 1
+        G_X(s)=E[s^X] = \sum_{k=0}^{\infty}s^k P(X=k),
     \end{align*}
     den \textbf{sandsynlighedsfrembringende funktion (pgf)} af $X$. 
 \end{defn}
@@ -149,7 +149,7 @@ Det gælder, at pgf'en af summen over diskrete stokastisk variabler med pgf'er e
 \begin{prop} \label{prop:prop3.38}%3.38
     Lad $X_1, X_2, \ldots, X_n$ være uafhængige diskrete stokastiske variable med pgf henholdsvis $G_1, G_2, \ldots, G_n$, og lad $S_n= \sum^n_{k = 1} X_k$. Det medfører, at $S_n$ har pgf
     \begin{align*}
-        G_{S_n}(s)=\prod^n_{k = 1} G_k(s), \quad 0\leq s \leq 1
+        G_{S_n}(s)=\prod^n_{k = 1} G_k(s), \text{ for } s \in [0, 1]
     \end{align*}
 \end{prop}
 
@@ -168,9 +168,9 @@ hvor $\lambda = \sum^n_{k = 1} \lambda_k$. Altså følger summen af $n$ uafhæng
 \end{exmp}
 Man kan være interesseret i at undersøge summen $S_N = \sum^N_{k = 1} X_k$, hvor $X_1, X_2, \ldots$ er iid og hvor $N$ er en diskret stokastisk variabel. Til dette kan Galton Watson formellen benyttes.
 \begin{prop} [Galton-Watson formellen] \label{prop 3.39} %prop 3.39
-    Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med samme pgf $G_X$. Lad $N$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_N$. Lad $N$ være uafhængig af $X_k$. Så har $S_N=X_1+\cdots X_N$ pgf bestående af den sammensatte funktion
+  Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med samme pgf $G_X$. Lad $N$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_N$. Lad $N$ være uafhængig af $X_k$. Så har $S_N= \sum_{k=1}^n X_k$ pgf bestående af den sammensatte funktion
     \begin{align*}
-        G_{S_N}(s)=G_N(G_X(s))
+        G_{S_N}(s)=G_N(G_X(s)) \text{ for } s \in [0, 1]
     \end{align*}
 \end{prop}
 \begin{proof}
@@ -180,16 +180,16 @@ Betragt, at pgf'en for $S_N$ er givet ved
     \end{align}
 siden $N$ og $S_n$ er uafhængige. Af proposition \ref{prop:prop3.38} har vi, at 
     \begin{align*}
-        E[s^{S_n}]=G_X(s)^n 
+        E[s^{S_n}] = G_{S_{n}}(s) =G_X(s)^n
     \end{align*}
-    hvilket sættes ind i \eqref{alg:proofprop3.39}
+    hvilket indsættes i ligning \eqref{alg:proofprop3.39}
     \begin{align*}
         G_{S_N}(s)=\sum_{n=0}^{\infty} G_X(s)^nP(N=n)=G_N(G_X(s)) 
     \end{align*}
     hvilket afslutter vores bevis.
 \end{proof}
 \begin{prop} \label{prop:cor 3.13} %3.13
-Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med sammen pgf $G_X$. Lad $N$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_N$. Lad $N$ være uafhængig af $X_k$ samt lad $S_N=X_1+\cdots X_N$, så gælder det at 
+Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med pgf $G_X$. Lad $N$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_N$. Lad $N$ være uafhængig af $X_k$ samt lad $S_N=X_1+\cdots X_N$, så gælder det at
 \begin{align*}
     E[S_N] &=E[N]E[X_k] \\
     Var[S_N] &=E[N]\Var[X_k]+E[X_k]^2\Var[N]
