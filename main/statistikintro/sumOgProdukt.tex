@@ -130,7 +130,7 @@ Lighederne $(b)$ og $(c)$ følger af proposition \ref{prop:marginalPmf} og \ref{
 \end{proof}
 
 Proposition \ref{prop:forventedVærdiAfLinearKombination} gælder også for tilfældet med $n$ forskellige diskret stokastisk variabler.
-\begin{cor} %Prop 3.14
+\begin{cor}\label{cor:sumAfDiskreteVariable} %Prop 3.14
 Lad $X_1, X_2, \ldots, X_n$ være diskrete stokastiske variabler og $c_1, c_2, \ldots, c_n \in \R$, så er 
 \begin{align*}
     E\left[\sum^n_{k = 1} c_k X_k\right] = \sum^n_{k = 1} c_k E[X_k]
@@ -212,3 +212,43 @@ Ved hjælp af proposition \ref{lem:prop3.13} fås
     \end{align*}
 \end{proof}
 
+\begin{prop}\label{prop:variansAfX+Y}
+Lad $X, Y$ være uafhængelige diskrete variable, så er $\Var[X + Y] = \Var[X] + \Var[Y]$.
+\end{prop}
+\begin{proof}
+  Ved benyttelse propoisition \ref{prop:forventedVærdiAfLinearKombination} og lemma \ref{lem:prop3.13} har vi at
+  \begin{align*}
+    \Var[X + Y] &= E[(X + Y)^{2}] - E[(X + Y)]^{2} \\
+                &= E[X^{2} + 2XY + Y^{2}] - (E[X] + E[Y])^{2} \\
+                &= E[X^{2}] + E[2XY] + E[Y^{2}] - E[X]^{2} + E[Y]^{2} + 2E[X]E[Y]\\
+                &= E[X^{2}] + E[Y^{2}] - E[X]^{2} + E[Y]^{2}
+  \end{align*}
+  men dette er blot definitionen på varians, så $\Var[X + Y] = \Var[X] + \Var[Y]$.
+\end{proof}
+
+
+\begin{cor} \label{cor:variansAfLinearKombinationAfUafhængigeVariable}
+  Lad $X_{1}, X_{2}, \ldots, X_{n}$ være uafhængige diskrete variable, og $c_{1}, c_{2}, \ldots, c_{n}$, så er
+  \begin{equation*}
+    \Var\left[\sum^{n}_{k = 1} c_{k}X_{k}\right] = \sum_{k=1}^n c_{k}^{2} \Var[X_{k}]
+  \end{equation*}
+\end{cor}
+\begin{proof}
+  Definier $Y_{k} = c_{k}X_{k}$. Så følger det ved gentagende benyttelse af
+  \ref{prop:variansAfX+Y} at
+  \begin{equation*}
+    \Var\left[\sum_{k=1}^n Y_{k}\right] = \sum_{k=1}^n \Var[Y_{k}] = \sum_{k=1}^n \Var[c_{k}X_{k}] = \sum_{k=1}^n c_{k}^{2}\Var[X_{k}].
+  \end{equation*}
+  hvor sidste lighed følger af proposition \ref{prop:prop2.15}.
+\end{proof}
+
+\begin{prop}
+    Lad $X_1$, $X_2$,\dots være en følge af iid diskrete stokastiske variable med pmf $p$.
+    Der findes en $n$ hvor $X_n=k$, hvis og kun hvis $p(k)>0$.
+\end{prop}
+
+\begin{proof}
+    Lad $Y=\inf(n\mid X_n=k)$.
+    Da $Y$ beskriver antallet af forsøg indtil hændelsen $\{X_n=k\}$ forekommer og at dette har succes sandsynlighed $p(k)>0$, har vi at $Y\sim \geom(p(k))$ med udfaldsrum i $N_0$.
+    Derved påtager $Y$ altid en endelig værdi, men $Y$ beskriver netop en værdi af $n$ hvor $X_n=k$ og den vil derfor eksistere i alle udfald, hvilket beviser den ene retning. Hvis der findes en $n$ hvor $X_n=k$, så er $P(X_n=k)=p(k)>0$, hvilket beviser den anden retning.
+\end{proof}
