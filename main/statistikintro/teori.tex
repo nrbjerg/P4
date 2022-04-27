@@ -1,7 +1,7 @@
 I dette afsnit fremlægges den grundlæggende teori, som benyttes til at beskrive stokastiske eksperimenter. Afsnittet tager udgangspunkt i \cite{sandsynlighedsBog}.
 %def 1.1 og 1.2
 \begin{defn}
-Mængden af de mulige udfald $S$ af et stokastisk eksperiment kaldes \textbf{udfaldsrummet}.\\
+Mængden af de mulige udfald $S$ af et stokastisk eksperiment kaldes \textbf{udfaldsrummet} af eksperimentet.\\
 En delmængde af udfaldsrummet $A\subseteq S$ kaldes en \textbf{hændelse}.
 \end{defn}
 
@@ -21,8 +21,8 @@ Så er hændelsen $\left\{\text{Solen skinner lørdag}\right\}$ givet ved
 
 %def 1.3
 \begin{defn} [Aksiomer for sandsynlighed] \label{def:axiomsOfPropability}
-Lad $S$ være udfaldsrummet af et eksperiment og $A\subseteq S$ være en hændelse.
-Et \textbf{sandsynlighedsmål} er en funktion $P$, som til hver hændelse $A$ tildeler et reelt tal $P(A) \in [0; 1]$, hvor $P(A)$ er \text{sandsynligheden} for $A$. \\ 
+Lad $S$ være udfaldsrummet af et eksperiment
+Et \textbf{sandsynlighedsmål} er en funktion $P$, som til hver hændelse $A \subseteq S$ tildeler et reelt tal $P(A) \in [0; 1]$, hvor $P(A)$ kaldes \textbf{sandsynligheden} for $A$. \\
 For $P$ gælder:
 \begin{enumerate}
     \item $P(S)=1$
@@ -36,15 +36,10 @@ For $P$ gælder:
 Definiton \ref{def:axiomsOfPropability} punkt \ref{enu:axiomsOfPropability2} er meget brugetbart, når det kommer til at finde sandsynlighedsmålet. I definitionen ses, at det gælder for uendelige hændelser, hvilket proposition \ref{cor:sandsynlighedenAfEnEndeligDijunktForening} siger det også gælder for endelige hændelser. 
 
 \begin{prop} \label{cor:sandsynlighedenAfEnEndeligDijunktForening} % Prop 1.2
-Lad P være et sandsynlighedsmål, så er
-\begin{enumerate}
-    \item $P(\emptyset) = 0$
-    \item hvis $A_1, \ldots , A_n$ og $A_i\cap A_j=\emptyset$, for $i \neq j$, så er 
-    \begin{equation*}
-        P\left(\bigcup^n_{k = 1} A_k\right) = \sum^n_{k = 1} P(A_k)
-    \end{equation*}
-\end{enumerate}
-
+Lad P være et sandsynlighedsmål, så gælder det at $P(\emptyset) = 0$ og hvis $A_1, \ldots , A_n$ og $A_i\cap A_j=\emptyset$, for $i \neq j$, så er
+\begin{equation*}
+    P\left(\bigcup^n_{k = 1} A_k\right) = \sum^n_{k = 1} P(A_k)
+\end{equation*}
 \end{prop}
 \begin{proof}
 Lad $B_1 = S$ og $B_k = \emptyset$ for alle $k \geq 2$, så er $B_i \cap B_j = \emptyset$ for alle $i \neq j$, hvilket medfører at \begin{equation*}
@@ -62,7 +57,7 @@ da $P(A_k) = 0$ for alle $k > n$, og $\displaystyle\left(\bigcup^n_{k = 1} A_k\r
 \end{proof} 
 Proposition \ref{prop:sandsynlighedMedToHændelser} fortæller omkring nogen grundlæggende egenskaber der gælder for hændelser. 
 \begin{prop} \label{prop:sandsynlighedMedToHændelser} % Prop 1.3
-Lad $P$ være et sandsynlighedsmål på et udfaldsrum $S$ og lad $A, B \subseteq S$, så er 
+Lad $P$ være et sandsynlighedsmål og lad $A, B \subseteq S$, så er 
 \begin{enumerate}
     \item $P(A^c) = 1 - P(A)$ \label{enu:propsandsynlighedMedToHændelser1}
     \item $P(A\backslash B) = P(A) - P(A \cap B)$ 
@@ -109,7 +104,7 @@ da $P(A_6) = \frac{1}{10}$ følger det heraf, at $P(A_2 \cup A_3) = \frac{1}{2} 
 
 Ofte er der sammenhænge imellem hændelser, det kunne for eksempel være at der er større sandsynlighed for at det regner søndag, hvis det har regnet lørdag, end hvis det var tørvejr lørdag.
 \begin{defn}\label{def:betingethændelse} %def 1.4
-Lad $B$ være en hændelse samt $P(B)>0$. Sandsynligheden for en \textbf{betinget hændelse} noteres ved
+Lad $A, B$ være hændelser og lad $P(B)>0$. Sandsynligheden for en \textbf{betinget hændelse} noteres ved
 \begin{align*}
     P(A|B)=\frac{P(A\cap B)}{P(B)}
 \end{align*}
@@ -117,7 +112,7 @@ Lad $B$ være en hændelse samt $P(B)>0$. Sandsynligheden for en \textbf{betinge
 Sandsynligheden $P(A|B)$ forståes som sandsynligheden for $A$ givet hændelsen $B$.
 
  
-\begin{thm}[Bayes sætning] %prop 1.11
+\begin{thm}[Bayes sætning]\label{thm:bayesTheorem} %prop 1.11
 Lad $A, B \subseteq S$ samt $P(A), P(B) > 0$, det gælder at
 \begin{align*}
     P(A|B)P(B)=P(B|A)P(A)
@@ -162,11 +157,11 @@ Jævnfør lemma \ref{lem:DistributiveLawForInfiniteUnions}. Eftersom $(A \cap B_
 
 To hændelser kan ske uafhængigt af hinanden. Dette kan eksempelvis være, hvis man kaster en terning, så vil sandsynligheden for $1$ være $\frac{1}{6}$. Tidligere på dagen blev terningen kastet en gang til $1$. Hændelserne har ingen effekt på hinandens udkom, så er den betinget hændelse stadig den samme. Lad $A=$\{Antallet af $1$'er slået i næste kast\} og $B=$\{Antallet af $1$'er slået tidligere\}, så er $P(A)=P(A|B)$, hvor den ubetinget og betinget sandsynlighed er den samme.  Da $P=P(A|B)$, er  $P(A\cap B)=P(A)P(B)$. 
 \begin{defn}[Parvis uafhængige hændelser] \label{Def:def1.5} %Def 1.5
-Hvis det gælder for to hændelser $A$ og $B$, at 
+Hvis $A, B \subseteq S$ og det gælder at
 \begin{align*}
     P(A\cap B)=P(A)P(B),
 \end{align*}
-så er hændelserne \textbf{parvise uafhængige}. 
+så kaldes hændelserne \textbf{parvise uafhængige}.
 \end{defn}
 Hvis to hændelser ikke er parvis uafhængige, kaldes de parvis afhængige.
 
@@ -181,7 +176,7 @@ Lad $A$ og $B$ være uafhængige hændelser, så gælder det, at
 \end{align*}
 Ud fra definition \ref{def:betingethændelse} gælder, at 
 \begin{align*}
-    P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A)P(B)}{P(B)}=P(A)
+    P(A|B)=\frac{P(A\cap B)}{P(B)} =\frac{P(A)P(B)}{P(B)}=P(A)
 \end{align*}
 Da dette også gælder den anden vej, er det hermed bevist.
 \end{proof}

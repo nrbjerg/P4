@@ -1,7 +1,7 @@
 \section{Momenter}
 I dette afsnit vil vi introducere relevante statistisk momenter for diskrette stokastiske variabler. Disse er funktioner af stokastisk variable der beskriver en variabels fordeling. 
 
-\begin{defn}\label{defn:middelværdien}
+\begin{defn}\label{defn:middelværdien} % def 2.8 COPY PASTE
     Lad $X$, være en diskret stokastisk variabel, med udfaldsrum $\{x_1, x_2, \ldots\}$ og pmf $p$. \textbf{Middelværdien} af $X$ er defineret som
     \begin{equation*}
         E[X] = \sum^\infty_{k = 1} x_k p(x_k)
@@ -15,7 +15,7 @@ Middelværdien kaldes også det første moment.  Det skal bemærkes, at selvom m
 
 Hvis diskret stokastisk variabel kun kan antage ikke-negative heltal, så er følgende resultat nyttig.
 
-\begin{prop} \label{prop:2.9}% prop 2.9
+\begin{prop} \label{prop:2.9}% prop 2.9 COPY PASTE
 Lad $X$ være en diskret variable med udfaldsrum $\N_0$. Så gælder det at
 \begin{align*}
     E[X] = \sum^\infty_{n = 0} P(X > n)
@@ -49,9 +49,10 @@ Lad $X$ være en diskret variable med udfaldsrum $\N_0$. Så gælder det at
         E[X]=\sum_{k=0}^\infty P(X>k)=\sum_{k=0}^\infty\frac{1}{2}\left(\frac{1}{2}\right)^k=\frac{1}{2}\frac{1}{1-\frac{1}{2}}=1.
     \end{align*}
 \end{exmp}
+Vi er ofte interesseret i stokastiske variable, som fremkommer som en funktion af stokastiske variable.
 
 \begin{prop} \label{prop 2.12} %2.12
-Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\{x_1,x_2,\ldots\}$ have pmf $p_x$ og $g:\R\to \R$ være en funktion, så er 
+Lad $X$ have udfaldsrum $\{x_1,x_2,\ldots\}$ og pmf $p_x$ og $g:\R\to \R$, så har vi
 \begin{align*}
     E[g(X)] = \sum_{k=1}^\infty g(x_k)p(x_k)
 \end{align*}
@@ -91,12 +92,12 @@ Lad $X$ være en stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$ og $a
     da $\sum^\infty_{k = 1} p_x(x_k) = 1$, jævnfør proposition \ref{prop:pmfEgenskaber}.
 \end{proof}
 Et udtryk, der kommer af middelværdien, er variansen af $X$. Denne beskriver hvor langt hændelserne ligger fra middelværdien. 
-\begin{defn} \label{def:Varians}%2.10 og 2.11
-Lad $X$ være en diskret stokastisk variabel og $\mu = E[X]$. Så er \textbf{variansen} af $X$ defineret ved
+\begin{defn} \label{def:Varians}%2.10 og 2.11 kinda COPY PASTE
+Lad $X$ være en diskret stokastisk variabel og $\mu = E[X]$. Så defineres \textbf{variansen} af $X$ som ved
 \begin{align*}
     \Var[ X ] = E[(X-\mu)^2]
 \end{align*}
-hvor \textbf{standardafvigelsen} af $X$ noteres $\sigma = \sqrt{\Var[ X ]}$.
+vi definiere $\sigma = \sqrt{\Var[ X ]}$, som kaldes \textbf{standardafvigelsen} af $X$.
 \end{defn}
 
 Varians kaldes også det andet centrale moment.
@@ -132,7 +133,7 @@ Fra definition \ref{def:Varians} har vi
     \begin{align*}
         \Var[aX+b]&=E[(aX+b-E[aX+b])^2]\\
         &=E[(aX+b-aE[X]-b)^2]\\
-        &=a^2E[(X-E[X])^2]\\
-        &=a^2\Var[X]
+        &=a^2E[(X-E[X])^2]
     \end{align*}
+    men dette er blot $a^2\Var[X]$.
 \end{proof}
