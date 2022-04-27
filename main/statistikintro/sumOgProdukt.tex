@@ -10,12 +10,12 @@ Da de bagvedliggende hændelser er uafhængelige har vi også at
 \end{align*}
 for alle $A_1, A_2, \ldots, A_n \subseteq \R$, såfremt $X_1, X_2, \ldots X_n$ er uafhængelige.
 
-\begin{prop} \label{prop:prop3.9} %prop 3.9
+\begin{prop} \label{prop:prop3.9} %prop 3.9 COPY PASTE, men igen ved jeg kke hvordan den skal skrives om
     Lad $X$ og $Y$ være diskrete stokastiske variable med pmf henholdsvis $p_X$ og $p_Y$. Så er $X$ og $Y$ uafhængige hvis og kun hvis 
     \begin{align*}
         P(X = x, Y = y)=p_X(x)p_Y(y) 
     \end{align*}
-for alle $x,y\in \R$
+    for alle $x,y\in \R$.
 \end{prop}
 \begin{proof}
     Antag at $X$ og $Y$ er uafhængige. Lad $A=\{x \}$ og $B=\{y \}$ så er
@@ -30,7 +30,7 @@ og hermed er $X$ og $Y$ uafhængige.
 \end{proof}
 I vise tilfælde har vi flere variabler, som følger samme fordeling, derfor introduceres følgende definition
 \begin{defn} %3.19
-    Lad $X_1,X_2,\ldots$ være uafhængige stokastiske variabler med samme fordeling. Så kaldes variablerne  \textbf{uafhængige og identisk fordelte (iid)}.
+    Lad $X_1,X_2,\ldots$ følge den samme fordeling og være uafhængige af hinanden. Så kaldes variablerne  \textbf{uafhængige og identisk fordelte (iid)}.
 \end{defn}
 \begin{exmp}
     Lad $X_1, X_2, \ldots, X_6$ være diskrete stokastiske variable, og lad $X_k$ beskrive antallet af 6'er ved det $k$'te kast af en fair terning, så er $X_1, X_2, \ldots, X_6$ uafhængelige, jævnfør \ref{exmp:uafhængelighed}, samtidig er 
@@ -46,16 +46,11 @@ I vise tilfælde har vi flere variabler, som følger samme fordeling, derfor int
 
 Når der arbejdes med mere end én variabel viser følgende definition sig at være nyttig.
 \begin{defn} % definition 3.3 & 3.4
-    Lad $n \in \N$ og $X_1, X_2, \ldots, X_n$ være diskrete stokastiske variable og lad $X_j$ have udfaldsrum $\{x_{j, 1}, x_{j, 2}, \ldots\}$. Så kaldes $(X_1, X_2, \ldots, X_n)$ en diskret stokastisk vektor og funktionen
+    Lad $n \in \N$ og $X_1, X_2, \ldots, X_n$ være diskrete stokastiske variable og lad $X_k$ have udfaldsrum $\{x_{k, 1}, x_{k, 2}, \ldots\}$. Så kaldes $(X_1, X_2, \ldots, X_n)$ en diskret stokastisk vektor og funktionen
     \begin{align*}
         p(x_{1, k_1}, x_{2, k_2}, \ldots, x_{n, k_n}) = P(X_1 = x_{1,k_1}, X_2 = x_{2, k_2}, \ldots, X_n = x_{n, k_n})
     \end{align*}
     for \textbf{simultan pmf'en} af $(X_1, X_2, \ldots, X_n)$, og pmf'en for $X_j$ kaldes en \textbf{marginal pmf}.
-    %Hvis $X$ og $Y$ er diskrete stokastiske variabler, så kaldes $(X,Y)$ for en diskrete stokastiske vektor. Hvis vektoren har udfaldsrummet ${(x_j,y_k) : j,k=1,2\ldots}$, så er funktionen 
-    %\begin{align*}
-    %    p(x_j,y_k)=P(X=x_j,Y=y_k)
-    %\end{align*}
-    %den \textbf{simultan pmf} af $(X,Y)$. Den en-dimensionel pmf af henholdsvis $X$ og $Y$ \textbf{marginal pmf'en}
 \end{defn}
 \begin{cor}
 Lad $(X, Y)$ være en diskret stokastisk vektor, så er $X$ og $Y$ uafhængelige hvis og kun hvis
@@ -80,7 +75,7 @@ Fra eksempel \ref{exp:terning} vides det, at de to diskrete stokastisk variabler
 
 De marginale pmf findes ud fra den simultane pmf på følgende måde. 
 \begin{prop}\label{prop:marginalPmf} %prop:3.2
-    Hvis den diskrete stokastiske vektor $(X,Y)$ har den simultan pmf $p$, så er marginal pmf'erne af $X$ og $Y$ givet ved
+    Lad den diskrete stokastiske vektor $(X,Y)$ have simultan pmf $p$, så er marginal pmf'erne af $X$ og $Y$ givet ved
     \begin{align*}
         p_X(x_j)=\sum_{k=1}^\infty p(x_j,y_k), \quad & j=1,2\ldots
         \\
@@ -108,18 +103,17 @@ Hvis vi undersøgere den forventede værdi af en linearkombination af to diskret
 \begin{prop}\label{prop:forventedVærdiAfLinearKombination} %Cor:3.3
 Lad $X, Y$ være diskrete stokastiske variable med udfaldsrummene $\{x_1, x_2, \ldots \}$ og $\{y_1, y_2, \ldots \}$ og $c_X, c_Y \in \R$, så er
 \begin{equation*}
-    E[c_XX+c_yY] = c_XE[X] + c_YE[Y]
+    E[c_XX+c_YY] = c_XE[X] + c_YE[Y].
 \end{equation*}
-
-
 \end{prop}
+
 \begin{proof}
 Vi har
 \begin{align*}
-    E[c_X X + c_Y Y] = \sum^\infty_{j = 1} \sum^\infty_{k = 1} (c_X x_j + c_Y y_k) p(x_j, y_k) &= \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_X x_j p(x_j, y_k) + \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_Y y_k p(x_j, y_k) \\
+    E[c_XX + c_YY] = \sum^\infty_{j = 1} \sum^\infty_{k = 1} (c_X x_j + c_Y y_k) p(x_j, y_k) &= \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_X x_j p(x_j, y_k) + \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_Y y_k p(x_j, y_k) \\
     &\stackrel{(a)}= \sum^\infty_{j = 1} \sum^\infty_{k = 1} c_X x_j p(x_j, y_k) + \sum^\infty_{k = 1} \sum^\infty_{j = 1} c_Y y_k p(x_j, y_k) \\
     &\stackrel{(b)}= \sum^\infty_{j = 1} c_X x_j p_X(x_j) + \sum^\infty_{k = 1} c_Y y_k p_Y(y_k)\\
-    &= E[c_X X] +  E[c_Y Y] \stackrel{(c)}= c_X E[X] + c_Y E[Y]
+    &= E[c_XX] +  E[c_YY] \stackrel{(c)}= c_X E[X] + c_Y E[Y]
 \end{align*}
 Hvor vi har benyttet, at 
 \begin{equation*}
