@@ -9,11 +9,11 @@ $E[X] < \infty$. Så gælder
 \begin{proof}
 \end{proof}
 \begin{proof}
-  Lad $A=\{|X|\geq a\}$, og definier indikator funktionen $I_A = 1$ hvis $A$ sker og $I_{A} = 0$ ellers. Vi har, at $|X| \geq aI_{A}$, da $aI_{A} = 0$, hvis $|X| < a$, og $a$ hvis $|X| \geq a$. Hvis den forventede værdi tages på begge sider, opnåes
+  Lad $A=\{|X|\geq a\}$, og definier indikator funktionen $\mathbb{1}_A = 1$ hvis $A$ sker og $\mathbb{1}_{A} = 0$ ellers. Vi har, at $|X| \geq a\mathbb{1}_{A}$, da $a\mathbb{1}_{A} = 0$, hvis $|X| < a$, og $a$ hvis $|X| \geq a$. Hvis den forventede værdi tages på begge sider, opnåes
   \begin{align*}
-    E[|X|]\geq E[aI_A] = a E[I_A] \iff \frac{E[|X|]}{a}\geq E[I_A]
+    E[|X|]\geq E[a\mathbb{1}_{A}] = a E[\mathbb{1}_A] \iff \frac{E[|X|]}{a}\geq E[\mathbb{1}_A]
   \end{align*}
-  resultatet følger heraf, da $E[I_{A}] = P(A)$.
+  resultatet følger heraf, da $E[\mathbb{1}_{A}] = P(A) = P(|X| \geq a)$.
 \end{proof}
 Det er værd at bemærke, at hvis $a<0$, så skal relationen vendes om.
 
