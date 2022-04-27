@@ -1,5 +1,5 @@
 \section{Simulering af diskrete variable}
-Vi vil i følgende afsnit antage at vi har en stokastisk variabel $U \sim \unif[0,1]$\footnote{Vi vil ikke gå mere i dybden vedrørende simulering af kontinuerte uniforme variable}, som vi vil benytte til at simulere diskrete variable, givet deres pmf.
+Vi vil i følgende afsnit antage, at vi har en stokastisk variabel $U \sim \unif[0,1]$\footnote{Vi vil ikke gå mere i dybden vedrørende simulering af kontinuerte uniforme variable}, som vi vil benytte til at simulere diskrete variable, givet deres pmf.
 \begin{thm} \label{thm:simuleringAfDiskreteVaraible}
     Lad $p$ være en pmf over det diskrete udfaldsrum $\{x_1, x_2, \ldots\}$, lad $F_0 = 0$ og
     \begin{equation*}
@@ -17,7 +17,7 @@ Vi vil i følgende afsnit antage at vi har en stokastisk variabel $U \sim \unif[
 \end{proof}
 
 \begin{rem}
-Hvis $p$ har tilhørende cdf $F$, så gælder det at $F_n = F(x_n)$ for $n \geq 1$.
+Hvis $p$ har tilhørende cdf $F$, så gælder det, at $F_n = F(x_n)$ for $n \geq 1$.
 \end{rem}
 Følgende algoritme følger af sætning \ref{thm:simuleringAfDiskreteVaraible}, og gør det muligt at simulere diskrete fordelinger, givet den ønskede pmf $p$ og en uniform stokastisk variabel $U$ på intervallet $[0, 1]$.
 
@@ -42,8 +42,8 @@ Følgende algoritme følger af sætning \ref{thm:simuleringAfDiskreteVaraible}, 
 \begin{exmp} \label{exmp:simuleringAfDiskreteVariable}
     Det ønskes at simulere $X \sim \Poi(1)$. Så har $X$ pmf $p(k) = \dfrac{\e^{-1}}{k!}$ for $k \in \N_0$.
     
-    Algoritme \ref{alg:discreteSimulation} implementeres i appendix \ref{app:kodeTilSimuleringAfDiskreteVariable}. Her simuleres $n$ stokastiske variable som følger Poisson fordelingen og måler samtidig frekvensen $F_k$ af hvert udfald i udfaldsrummet $\N_0$.
-    Af sætning \ref{thm:law_of_large_numbers} om store tal, kan vi approximere $p(k)$ som $\frac{F_k}{n}$ for $k = 0, 1, \ldots$, det benytter vi herefter til at lave følgende plot. 
+    Algoritme \ref{alg:discreteSimulation} implementeres i appendix \ref{app:kodeTilSimuleringAfDiskreteVariable}. Her simuleres $n$ stokastiske variable, som følger Poisson fordelingen og måler samtidig frekvensen $F_k$ af hvert udfald i udfaldsrummet $\N_0$.
+    Af sætning \ref{thm:law_of_large_numbers} om store tal kan vi approximere $p(k)$ som $\frac{F_k}{n}$ for $k = 0, 1, \ldots$, det benytter vi herefter til at lave følgende plot. 
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.5]{fig/img/poisson.png} 
