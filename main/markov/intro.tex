@@ -13,12 +13,18 @@ for alle $n \in \N$ og $s, x_0, \ldots x_{n - 1} \in S$. Og i såfald kaldes $X_
   for alle $k_{0}, k_{1}, \ldots, k_{n} \in \Z$.
 \end{exmp}
 \begin{defn}
-Markov kæden $\{X_n\}_{n \geq 0}$ kaldes \textbf{homogen} hvis
-\begin{equation*}
-    P(X_n = i | X_{n - 1} = j) = P(X_1 = i | X_0 = j)
-\end{equation*}
-for alle $n \in \N$ og $i, j \in S$.
-\end{defn}
+  Markov kæden $\{X_n\}_{n \geq 0}$, hvor
+    \begin{equation*}
+      P(X_n = i | X_{n - 1} = j) = P(X_1 = i | X_0 = j)
+  \end{equation*}
+  for alle $n \in \N$ og $i, j \in S$ kaldes \textbf{homogen}.
+{
+%Markov kæden $\{X_n\}_{n \geq 0}$ kaldes \textbf{homogen} hvis
+%\begin{equation*}
+%    P(X_n = i | X_{n - 1} = j) = P(X_1 = i | X_0 = j)
+%\end{equation*}
+%for alle $n \in \N$ og $i, j \in S$.
+}\end{defn}
 Vi vil fremadrettet antage, at alle Markov kæder er homogene, medmindre andet eksplicit defineres.
 \begin{defn}
 Lad $\{X_n\}_{n \geq 0}$ være en Markov kæde, så defineres \textbf{overgangsmatricen} $P_X = [p_{ij}]$, hvor 
