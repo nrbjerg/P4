@@ -1,11 +1,11 @@
 \section{Loven om store tal}
-\begin{theorem} \label{thm:Markovsulighed}[Markovs ulighed]
+\begin{thm} \label{thm:Markovsulighed}[Markovs ulighed]
 Hvis $X$ er en stokastisk variable, således
 $E[X] < \infty$. Så gælder
 \begin{align*}
     P(|X|\geq a) \leq \frac{E[|X|]}{a} \text{ for alle } a > 0
 \end{align*}
-\end{theorem}
+\end{thm}
 \begin{proof}
 \end{proof}
 \begin{proof}
@@ -18,12 +18,12 @@ $E[X] < \infty$. Så gælder
 Det er værd at bemærke, at hvis $a<0$, så skal relationen vendes om.
 
 Chebyshews ulighed siger noget om, hvad sandsynligheden er for, at en stokastisk variabel ligger inden for $c$ gange standardafvigelser for middelværdien.
-\begin{theorem} \label{Thm:Chebyshewsulighed}[Chebyshews ulighed]
+\begin{thm} \label{Thm:Chebyshewsulighed}[Chebyshews ulighed]
     Lad $X$ være en stokastisk variable med middelværdien $\mu$ og variansen $\sigma^2>0$. For alle $c>0$ gælder, at
     \begin{align*}
         P(|X-\mu|\geq c \sigma)\leq \frac{1}{c^2}
     \end{align*}
-\end{theorem}
+\end{thm}
 \begin{proof}%fra wiki
     \begin{align*}
         P(|X-\mu|\geq c \sigma)=P((X-\mu)^2\geq c^2\sigma^2)
@@ -39,20 +39,20 @@ Da $E[(X-\mu)^2]$ er defineret af $\sigma^2$, så indsættes dette
 Hvilket afslutter beviset.
 \end{proof}
 
-\begin{definition}
+\begin{defn}
   Lad $X_{1}, X_{2}, \ldots$ være iid. stokastiske variabler, så kaldes
   \[
     \overline{X}_{n} = \frac{1}{n} \sum_{k=1}^n X_{k}
   \]
   for den $n$'te empiriske middelværdi.
-\end{definition}
+\end{defn}
 
-\begin{lemma} \label{lem:variansOgForventedeVærdiAfEmpiriskMiddelværdi}
+\begin{lem} \label{lem:variansOgForventedeVærdiAfEmpiriskMiddelværdi}
   Lad $X_{1}, X_{2}, \ldots$ være iid. stokastiske variabler med $E[X] = \mu$ og $\Var[X] = \sigma^{2}$, så er
   \begin{equation*}
     E[\overline{X}_{n}] = \mu \text{ og } \Var[\overline{X}_{n}] = \frac{\sigma^{2}}{n}
   \end{equation*}
-\end{lemma}
+\end{lem}
 \begin{proof}
   Resultatet om den forventede værdi følger umiddelbart af korollar \ref{cor:sumAfDiskreteVariable}, ved
   \begin{equation*}
@@ -79,6 +79,6 @@ Loven om store tal beskriver, at ved en test med et stort antal forsøg vil den 
     \end{align*}
   og resultatet følger umiddelbart heraf, da $\frac{\sigma}{n\varepsilon^2} \rightarrow 0 \text{ når } n \rightarrow \infty.$
 \end{proof}
-\begin{remark}
+\begin{rem}
   Det noteres, at vi ovenfor kun har givet et bevis i tilfældet, hvor $\sigma < \infty$, resultatet gælder også i det andet tilfælde, men beviset for dette udelades fra projektet.
-\end{remark}
+\end{rem}

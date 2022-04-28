@@ -1,6 +1,6 @@
 \section{Stokastisk Variable} \label{sec:SV}
 \begin{defn}%def 2.1 og 2.2
-En reel variabel med værdi fra et stokastisk eksperiment kaldes en \textbf{stokastisk variabel} $X$. Værdimængden af $X$, kaldes \textbf{udfaldsrummet} af $X$. Hvis udfaldsrummet af $X$ er tællelig kaldes $X$ en \textbf{diskret stokastisk variabel}.
+En reel variabel med værdi fra et stokastisk eksperiment kaldes en \textbf{stokastisk variabel} $X$. Værdimængden af $X$ kaldes \textbf{udfaldsrummet} af $X$. Hvis udfaldsrummet af $X$ er tællelig, kaldes $X$ en \textbf{diskret stokastisk variabel}.
 \end{defn}
 
 Vi husker, at en hændelse afhængig af stokastiske variabler kan noteres med et prædikat, så som
@@ -66,25 +66,25 @@ kaldes den \textbf{kumulative fordelingsfunktion (cdf)} af $X$.
 Ved hjælp af proposition \ref{prop:sandsynlighedMedToHændelser} punkt \ref{enu:propsandsynlighedMedToHændelser1}, kan man omskrive tilfældet $P(X\geq x)$ til $P(X\geq x)=1-P(X<x)$. Yderligere gælder følgende egenskaber for cdf'er. 
 
 \begin{prop}%2.2 COPY PASTE
-Lad $X$ være en diskret stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$, pmf $p$ og cdf $F$. Så gælder
+Lad en diskret stokastisk variable $X$ have udfaldsrum $\{x_1, x_2, \ldots\}$, samt lad $X$ have pmf $p$ og cdf $F$. Så gælder
 \begin{enumerate}
-    \item $F(x)=\displaystyle \sum_{k:x_k \leq x} p(x_k)$, hvor $x\in \R$
-    \item $p(x_k)=F(x_k)- \displaystyle \lim_{y \rightarrow x_k^- } F(y)$ for $k\in \N $
-    \item hvis $B \subseteq \R$, så er $P(X \in B)= \displaystyle \sum_{k:x_k \in B} p(x_k)$.
+    \item $F(x)=\displaystyle \sum_{k:x_k \leq x} p(x_k)$, hvor $x\in \R$ \label{alg1:prop2.2}
+    \item $p(x_k)=F(x_k)- \displaystyle \lim_{y \rightarrow x_k^- } F(y)$ for $k\in \N $ \label{alg2:prop2.2}
+    \item hvis $B \subseteq \R$, så er $P(X \in B)= \displaystyle \sum_{k:x_k \in B} p(x_k)$. \label{alg3:prop2.2}
 \end{enumerate}
 \end{prop} 
 \begin{proof}
-Først bevises punkt 3. Lad $V_X$ være udfaldsrummet af $X$. Vi har derved, at
+Først bevises punkt \ref{alg3:prop2.2}. Lad $V_X$ være udfaldsrummet af $X$. Vi har derved, at
 \begin{align*}
     P(X\in B)=\sum_{x\in B}p(x)=\sum_{x\in(B\cap V_X)}p(x)=\sum_{k:x_k\in B}p(x_k)
 \end{align*}
-hvilket beviser punkt 3. Dette anvendes til at bevise punkt 1,
+hvilket beviser punkt \ref{alg3:prop2.2}. Dette anvendes til at bevise punkt \ref{alg1:prop2.2},
 \begin{align*}
     F(x)=P(X\in]-\infty,x])=\sum_{k:x_k\in ]-\infty,x]}p(x_k)=\sum_{k:x_k\leq x}p(x_k)
 \end{align*}
-Til sidst bevises punkt 2 ved
+Til sidst bevises punkt \ref{alg2:prop2.2} ved
 \begin{align*}
     F(x_k)-\lim_{y\rightarrow x_k^-}F(y)=P(X\leq x_k)-P(X<x_k)=P(X=x_k)=p(x_k)
 \end{align*}
-
+%Forklaring om grænseværdien 
 \end{proof}

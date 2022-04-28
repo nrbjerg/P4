@@ -44,11 +44,11 @@ Lad P være et sandsynlighedsmål, så gælder det, at $P(\emptyset) = 0$. Hvis 
 \end{equation*}
 \end{prop}
 \begin{proof}
-Lad $B_1 = S$ og $B_k = \emptyset$ for alle $k \geq 2$, så er $B_i \cap B_j = \emptyset$ for alle $i \neq j$, hvilket medfører at \begin{equation*}
+Lad $B_1 = S$ og $B_k = \emptyset$ for alle $k \geq 2$, så er $B_i \cap B_j = \emptyset$ for alle $i \neq j$, hvilket medfører, at \begin{equation*}
     P(S) = P\left(\bigcup^\infty_{k = 1} B_k\right) = \sum^\infty_{k = 1} P(B_k) = P(B_1) + \sum^\infty_{k = 2} P(B_k) = 1 + \sum^\infty_{k = 2} P(\emptyset) 
 \end{equation*}
 Eftersom $P(S) = 1$, følger det, at $\sum^\infty_{k = 2} P(\emptyset) = 0$, hvilket medfører, at $P(\emptyset) = 0$. \\
-Lad $k\in \N$ og $A_k = \emptyset$ for alle $k > n$. Så er $A_i \cap A_j = \emptyset$ for alle $i \neq j$ og vi har derfor 
+Lad $k\in \N$ og $A_k = \emptyset$ for alle $k > n$. Så er $A_i \cap A_j = \emptyset$ for alle $i \neq j$, og vi har derfor 
 \begin{equation*}
     P\left(\bigcup_{k=1}^\infty A_k\right)=\sum_{k=1}^\infty P(A_k)
 \end{equation*}
@@ -91,7 +91,7 @@ Heraf følger det, at $P(A^c) = 1 - P(A)$.
 
  
 \begin{exmp} % exmp 1.10 (ish)
-Vælg et tilfældigt $n \in \{1, 2 \ldots, 10\}$, med sandsynlighed $P(n)=\frac{1}{10}$. Hvad er sandsynligheden for at $2$ eller $3$ er en divisor af $n$?
+Vælg et tilfældigt $n \in \{1, 2 \ldots, 10\}$, med sandsynlighed $P(n)=\frac{1}{10}$. Hvad er sandsynligheden for, at $2$ eller $3$ er en divisor af $n$?
 Vi introducerer hændelserne
 \begin{equation*}
     A_k = \{k \text{ er en divisor af } n\} \text{ for } k = 1, \ldots, 10  
@@ -104,7 +104,7 @@ da $P(A_6) = \frac{1}{10}$ følger det heraf, at $P(A_2 \cup A_3) = \frac{1}{2} 
 \end{exmp}
 
 
-Ofte er der sammenhænge imellem hændelser. Det kunne for eksempel være at der er større sandsynlighed for at det regner søndag, hvis det har regnet lørdag, end hvis det var tørvejr lørdag.
+Ofte er der sammenhænge imellem hændelser. Det kunne for eksempel være, at der er større sandsynlighed for, at det regner søndag, hvis det har regnet lørdag, end hvis det var tørvejr lørdag.
 \begin{defn}\label{def:betingethændelse} %def 1.4
 Lad $A, B$ være hændelser og lad $P(B)>0$. Sandsynligheden for en \textbf{betinget hændelse} noteres ved
 \begin{align*}
@@ -132,7 +132,7 @@ Lad $A \subseteq S$ og $B_1, B_2, \ldots \subseteq S$. Så er
 \end{lem}
 \begin{proof}
 Antag at $x \in A \cap \left( \bigcup^\infty_{k = 1} B_k\right)$, så er $x \in A$ og $x \in \bigcup^\infty_{k = 1} B_k$, der eksisterer altså et $n \in \N$ således $x \in B_n$, altså er $x \in A \cap B_n \subseteq \bigcup^\infty_{k = 1} (A \cap B_k)$. 
-Hvis $x \in \bigcup^\infty_{k = 1} (A \cap B_k)$, eksisterer et $n \in \N$, således $x \in (A \cap B_n)$. det vil sige, at $x \in B_n \subseteq \bigcup^\infty_{k = 1} B_k$ og $x \in A$ så $x \in A \cap \left( \bigcup^\infty_{k = 1} B_k \right)$. Vi har altså $A \cap \left( \bigcup^\infty_{k = 1} B_k \right) = \bigcup^\infty_{k = 1} (A \cap B_k)$.
+Hvis $x \in \bigcup^\infty_{k = 1} (A \cap B_k)$, eksisterer et $n \in \N$, således $x \in (A \cap B_n)$. Det vil sige, at $x \in B_n \subseteq \bigcup^\infty_{k = 1} B_k$ og $x \in A$, så $x \in A \cap \left( \bigcup^\infty_{k = 1} B_k \right)$. Vi har altså $A \cap \left( \bigcup^\infty_{k = 1} B_k \right) = \bigcup^\infty_{k = 1} (A \cap B_k)$.
 \end{proof}
 
 Lemmaet giver os mulighed for at formulere følgende resultat, som er kendt som loven om total sandsynlighed.
@@ -148,7 +148,7 @@ Vi har lighederne:
 \begin{equation*}
     A = A \cap S = A \cap \left( \bigcup^\infty_{k = 1} B_k \right) = \bigcup^\infty_{k = 1} (A \cap B_k)
 \end{equation*}
-jævnfør lemma \ref{lem:DistributiveLawForInfiniteUnions}. Eftersom $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ for $i \neq j$ og $P(A \cap B_k) = P(A | B_k) P(B_k)$ per definitionen af sandsynligheden af en betinget hændelse, gælder lighederne
+jævnfør lemma \ref{lem:DistributiveLawForInfiniteUnions}. Eftersom $(A \cap B_i) \cap (A \cap B_j) = \emptyset$ for $i \neq j$, og $P(A \cap B_k) = P(A | B_k) P(B_k)$ per definitionen af sandsynligheden af en betinget hændelse, gælder lighederne
 \begin{equation*}
     P(A) = P\left( \bigcup^\infty_{k = 1} A \cap B_k\right)= \sum^\infty_{k = 1} P(A \cap B_k) = \sum^\infty_{k = 1} P(A | B_k)P(B_k)
 \end{equation*}
@@ -156,7 +156,7 @@ jævnfør lemma \ref{lem:DistributiveLawForInfiniteUnions}. Eftersom $(A \cap B_
 
 To hændelser kan ske uafhængigt af hinanden. Dette kan eksempelvis være, hvis man kaster en terning, så vil sandsynligheden for $1$ være $\frac{1}{6}$. Tidligere på dagen blev terningen kastet en gang til $1$. Hændelserne har ingen effekt på hinandens udkom, så er den betinget hændelse stadig den samme. Lad $A=$\{Antallet af $1$'er slået i næste kast\} og $B=$\{Antallet af $1$'er slået tidligere\}, så er $P(A)=P(A|B)$, hvor den ubetinget og betinget sandsynlighed er den samme.  Da $P=P(A|B)$, er  $P(A\cap B)=P(A)P(B)$. 
 \begin{defn}[Parvis uafhængige hændelser] \label{Def:def1.5} %Def 1.5
-Hvis $A, B \subseteq S$ og det gælder at
+Hvis $A, B \subseteq S$ og det gælder, at
 \begin{align*}
     P(A\cap B)=P(A)P(B),
 \end{align*}
@@ -190,7 +190,7 @@ med $P(A_1) = P(A_2) = \frac{1}{6}$. Sandsynligheden for at slå to seksere er $
 
 Vi vil nu kigge på tilfældet hvor der uendeligt mange uafhængige hændelser.
 \begin{defn}
-    Hændelserne $A_1, A_2, \ldots$ kaldes \textbf{uafhængige} hvis det for alle $n = 2, 3, \ldots$ og strengt voksende følge $\{i_k\}^n_{k = 1}$, hvor $i_k \in \N$ gælder at
+    Hændelserne $A_1, A_2, \ldots$ kaldes \textbf{uafhængige} hvis det for alle $n = 2, 3, \ldots$ og strengt voksende følge $\{i_k\}^n_{k = 1}$, hvor $i_k \in \N$ gælder, at
     \begin{equation*}
         P\left(\bigcap_{k = 1}^n A_{i_k} \right) = \prod_{k = 1}^n P(A_{i_k})
     \end{equation*}
@@ -211,13 +211,13 @@ Vi vil nu kigge på tilfældet hvor der uendeligt mange uafhængige hændelser.
 %\end{exmp}
 
 \begin{exmp}\label{exmp:uafhængelighed}
-En terning kastes seks gange, først defineres følgende hændelser: \begin{equation*} 
+En terning kastes seks gange. Først defineres følgende hændelser: \begin{equation*} 
     A_k=\{6 \text{ ved det k'te kast}\} \text{ med } P(A_k)=\frac{1}{6}, \text{ for } k = 1,2\ldots,6 
 \end{equation*} 
 Det gælder, at $A_i$ og $A_j$, hvor  $i\neq j$, er parvis uafhængige af hinanden, se eksempel \ref{exp:terning}. Lad $n \in \{1, 2, \ldots, 6\}$ og $\{i_k\}_{k = 1}^n\subseteq \N$ være en strengt voksende følge.
-Da de tidligere kast ikke påvirker det nuværende kast, og da der er tale om en terning, er der $6^n$ udfald i alt, med lige stor sandsynlighed, altså er
+Da de tidligere kast ikke påvirker det nuværende kast, og da der er tale om en terning, er der $6^n$ udfald i alt med lige stor sandsynlighed, altså er
 \begin{align*}
     P\left(\bigcap_{k=1}^n A_{i_k}\right)=\frac{1}{6^n}
 \end{align*}
- Men $\frac{1}{6^n} = \prod_{k=1}^n P\left(A_{i_k}\right)$ heraf følger det at $A_1, A_2, \ldots$ er uafhængige af hinanden.
+ Men $\frac{1}{6^n} = \prod_{k=1}^n P\left(A_{i_k}\right)$ heraf følger det, at $A_1, A_2, \ldots$ er uafhængige af hinanden.
 \end{exmp}
