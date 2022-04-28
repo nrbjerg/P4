@@ -11,16 +11,16 @@ der beskriver hændelsen, hvor $X$ antager værdien $0$.
 Generelt undlades tuborg klammerne omkring predikatet, når der arbejdes med sandsynlighedsmål, så $P(\{X = 0\})$ noteres også $P(X = 0)$.
 
 \begin{defn} [Sandsynlighedsfunktion]%Def 2.3
-    Lad $X$ være en diskret stokastisk variabel med udfaldsrum $V_X$. Så kaldes funktionen
+    Lad $X$ være en diskret stokastisk variabel. Så kaldes funktionen
 \begin{align*}
-    p(x)=
-    \begin{cases}
-        P(X=x) & x\in V_X\\
-        0 & x\not\in V_X
-    \end{cases}
+    p(x) = P(X=x) 
 \end{align*}
 for \textbf{sandsynlighedsfunktion (pmf)} af $X$. Sandsynlighederne, beskrevet ved $p(x_k)$, kaldes \textbf{fordelingen} af $X$.
 \end{defn}
+\begin{remark}
+    hvis $X$ har udfaldsrum $V_X$ så er $p(x) = 0$ for alle $x \not \in V_X$
+\end{remark}
+
 Vi introducerer nu følgende resultat, som kan benyttes til at generalisere resultaterne om sandsynlighedsfunktioner til diskrete stokastiske variable med uendelige udfaldsrum til diskrete stokastiske variabler med endelige udfaldsrum.
 \begin{lem}
 Lad $X$, være en diskret stokastisk variabel med udfaldsrum $\{x_1, x_2, \ldots, x_n\}$, og $f: \N \to \R$. Så er 
@@ -66,7 +66,7 @@ kaldes den \textbf{kumulative fordelingsfunktion (cdf)} af $X$.
 Ved hjælp af proposition \ref{prop:sandsynlighedMedToHændelser} punkt \ref{enu:propsandsynlighedMedToHændelser1}, kan man omskrive tilfældet $P(X\geq x)$ til $P(X\geq x)=1-P(X<x)$. Yderligere gælder følgende egenskaber for cdf'er. 
 
 \begin{prop}%2.2 COPY PASTE
-Lad $X$ være en diskret stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$, pmf, $p$ og cdf $F$. Så gælder
+Lad $X$ være en diskret stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\}$, pmf $p$ og cdf $F$. Så gælder
 \begin{enumerate}
     \item $F(x)=\displaystyle \sum_{k:x_k \leq x} p(x_k)$, hvor $x\in \R$
     \item $p(x_k)=F(x_k)- \displaystyle \lim_{y \rightarrow x_k^- } F(y)$ for $k\in \N $
@@ -74,16 +74,17 @@ Lad $X$ være en diskret stokastisk variable med udfaldsrum $\{x_1, x_2, \ldots\
 \end{enumerate}
 \end{prop} 
 \begin{proof}
-Først bevises punkt 3. Lad $X_V$ være udfaldsrummet af $X$. Vi har derved, at
+Først bevises punkt 3. Lad $V_X$ være udfaldsrummet af $X$. Vi har derved, at
 \begin{align*}
-    P(X\in B)=\sum_{r\in B}p(r)=\sum_{r\in(B\cap X_V)}p(r)=\sum_{k:x_k\in B}p(x_k)
+    P(X\in B)=\sum_{x\in B}p(x)=\sum_{x\in(B\cap V_X)}p(x)=\sum_{k:x_k\in B}p(x_k)
 \end{align*}
 hvilket beviser punkt 3. Dette anvendes til at bevise punkt 1,
 \begin{align*}
-    F(x)=P(X\in(\infty,x])=\sum_{k:x_k\in ]-\infty,x]}p(x_k)=\sum_{k:x_k\leq x}p(x_k)
+    F(x)=P(X\in]-\infty,x])=\sum_{k:x_k\in ]-\infty,x]}p(x_k)=\sum_{k:x_k\leq x}p(x_k)
 \end{align*}
 Til sidst bevises punkt 2 ved
 \begin{align*}
     F(x_k)-\lim_{y\rightarrow x_k^-}F(y)=P(X\leq x_k)-P(X<x_k)=P(X=x_k)=p(x_k)
 \end{align*}
+
 \end{proof}
