@@ -1,7 +1,9 @@
-\section*{Covid case}
+\section {Covid case}
+Dette afsnit er baseret på \cite{fremskrivning}.\\
 En eksempel på hvordan  disse processer virker i den virkelige verden, kunne være udviklingen af en smitsom sygdom.
 Her bruges den nuværende pandemi af covid-19, som et eksempel, men det kunne lige så vel være almidelig influinza.
 Vi kan ved hjælp af data fra Statens Serum Institut(SSI) lave en simulering af hvor mange generationer der vil gå før at covid-19 uddør.
+Vi vil lave en simulering der beregner hvor mange generationer corona skal igennem før den må ske uddør. 
 Dog er der en række væsentlige forbehold vi bliver nødt til at tage. 
 Først er der kvaliteten af den data vi har mulighed for at bruge.
 Vi andvender to data punkter, en given dags nylige bekræftede corona tilfælde, bliver brugt som $Z_0$, og samme dags kontakttal, som en estimeret $\mu$.
@@ -9,6 +11,11 @@ I forhold til dagens bekræftede corona tilfælde, så basere det sig udelukkend
 Med hensyn til kontakttallet, så er kotaktallet selv en modulering af smitteudbruddet, med en række antagelser og forbehold.
 Den bygge på en række faktorer, som er: Antallet af positive prøver, antallet af prøver på dagen, et indeks for sygdommensudbredelse, og en faktor $\beta$ der bekriver hvor representativt de positive test er.
  Antallet af positive prøver har de samme fejlkilder som dagens bekræftede corona tilfælde.
- Antallet af prøver taget, og $\beta$ er sammenhængde. Hvorfra $\beta$ bestemmes ud fra en vurdering, om hvorvidt hvor mange flere der vil teste positivt ved flere test. Hvis $\beta$ er $0$ så er alle positive coronatilfælde i populationen er blevet testet, hvorimod hvis $\beta$ er $1$, så vil en fordobling af antallet af test, medføre en fordobling af antallet bekræftede tilfælde.
+ Antallet af prøver taget, og $\beta$ er sammenhængende. Hvorfra $\beta$ bestemmes ud fra en vurdering, om hvorvidt hvor mange flere der vil teste positivt ved flere test. Hvis $\beta$ er $0$ så er alle positive coronatilfælde i populationen er blevet testet, hvorimod hvis $\beta$ er $1$, så vil en fordobling af antallet af test, medføre en fordobling af antallet bekræftede tilfælde.
 Derudover så antager modellen at sygdomsudviklingen følger en Poisson-fordeling.
-Til sidst flader den også estimatet ud baseret på de seneste syv dages resultater, for at undgå ekstreme resultater, ved eksempelvis varienrende antal prøver på forskellige ugedage. Eksempelvis er der rigtig mange prøver torsdag, så folk kan få et gyldigt coronapas over weekenden, mens der samtidig er en markant mindre antal af prøver i selve weekenden.
+Modellen flader estimatet ud baseret på de seneste syv dages resultater, for at udligne $\sigma$, ved eksempelvis varienrende antal prøver på forskellige ugedage. Eksempelvis er der rigtig mange prøver torsdag, så folk kan få et gyldigt coronapas over weekenden, mens der samtidig er en markant mindre antal af prøver i selve weekenden.
+Derudover er der indlagt en generationstid på 4,7 dage, fra person A er blevet smittet, til person A smitter person B. Hvortil der er lagt syv dages perioder fra en person er smittet til at det kan testes.
+Vores modulering bliver markant simplere en den SSI har for fremskrivningen af sygedomsudviklingen.
+Som nævt bygger vores model udelukkende på 2 datapunkter, således kan vi ikke lave de mere sophistikerede variationer. 
+Dermed kommer der til at være nogle implicitte antagerser som vi ikke kan komme uden om.
+Vi arbejder med en arbitrær generationstid. Vi kan ikke sige noget om hvor lang tid der er fra en generation til den næste. I forlængelseheraf, så kan vi hellere ikke bearbejde en inkubationsperiode. 
