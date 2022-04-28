@@ -341,3 +341,4 @@ TSWLatexianTemp*
 
 # Screw pdfs we don't want to share thoes
 *.pdf
+**/_region_.tex

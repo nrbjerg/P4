@@ -42,11 +42,11 @@ Følgende algoritme følger af sætning \ref{thm:simuleringAfDiskreteVaraible}, 
 \begin{exmp} \label{exmp:simuleringAfDiskreteVariable}
     Det ønskes at simulere $X \sim \Poi(1)$. Så har $X$ pmf $p(k) = \dfrac{\e^{-1}}{k!}$ for $k \in \N_0$.
     
-    Algoritme \ref{alg:discreteSimulation} implementeres i appendix \ref{app:kodeTilSimuleringAfDiskreteVariable}. Her simuleres $n$ stokastiske variable, som følger Poisson fordelingen og måler samtidig frekvensen $F_k$ af hvert udfald i udfaldsrummet $\N_0$.
+    Algoritme \ref{alg:discreteSimulation} implementeres i appendix \ref{app:kodeTilSimuleringAfDiskreteVariable}. Her simuleres $n$ stokastiske variable, som følger Poisson fordelingen og samtidig måles frekvensen $F_k$ af hvert udfald i udfaldsrummet $\N_0$.
     Af sætning \ref{thm:law_of_large_numbers} om store tal kan vi approximere $p(k)$ som $\frac{F_k}{n}$ for $k = 0, 1, \ldots$, det benytter vi herefter til at lave følgende plot. 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.5]{fig/img/poisson.png} 
+        \includegraphics[scale=0.5]{code/barplot.png}
         \caption{Den simulerede relative frekvens af $k = 0, 1, \ldots, 5$ og den rigtige pmf.}
         \label{fig:simuleringAfPoisson}
     \end{figure}
