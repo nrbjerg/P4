@@ -1,21 +1,12 @@
 \section{Diskrete fordelinger}
-\begin{defn} [Indikator] %2.12. Bernoulli random variable
-Lad $A$ være en hændelse. Den stokastiske variabel $\mathbb{1}_A$ er en indikator af $A$, hvis
-\begin{align*}
-    \mathbb{1}_A=\begin{cases} 
-      1 & \text{hvis } A \text{ opstår} \\
-      0 & \text{ellers}
-   \end{cases}
-\end{align*}
-\end{defn}
-
-Lad $A$ være en hændelse i et forsøg, der gentages $n$ uafhængige gange. Antallet af forsøg, der skal udføres for, at $A$ opstår første gang, noters så med $X$, som tager udfaldsrummet $1,2,\ldots$. Hændelsen $\{X=k\}$ betyder, at vi har $k-1$ fejslag, før vi får succes ved det $k$'te forsøg. Grundet uafhængighed, så er sandsynligheden for $\{X=k\}$ givet ved
+% Se martins rettelser
+Lad $A$ være en hændelse i et forsøg, der gentages $n$ uafhængige gange. Antallet af forsøg, der skal udføres for, at $A$ opstår første gang, noters så med $X$, som tager udfaldsrummet $\{1,2,\ldots\}$. Hændelsen $\{X=k\}$ betyder, at vi har $k-1$ fejslag, før vi får succes ved det $k$'te forsøg. Grundet uafhængighed, så er sandsynligheden for $\{X=k\}$ givet ved
 \begin{align*}
     \lambda(1-\lambda)(1-\lambda)\cdots (1-\lambda) =\lambda(1-\lambda)^{k-1}
 \end{align*}
 hvor $\lambda \in [0, 1]$ er sandsynligheden for succes.
 \begin{defn} \label{def:2.14} %Def 2.14
-Hvis $X$ er antallet af forsøg indtil en hændelse $A$ med sandsynlighed $\lambda>0$ opstår i et uafhængigt eksperiment som gentages, så har $X$ pmf 
+Hvis $X$ er antallet af forsøg indtil en hændelse $A$ med sandsynlighed $\lambda>0$ opstår i et uafhængigt eksperiment, som gentages, så har $X$ pmf 
 \begin{align*}
     p(k)=\lambda(1-\lambda)^{k-1}, \quad k=1,2,\ldots 
 \end{align*}
@@ -29,11 +20,10 @@ Hvis der i stedet for kigges på $Y$, som er antallet af forsøg, strengt før h
 hvilket svare til en geometrisk fordeling med $k$ startende i $0$. Det gælder også, at $Y=X-1$.
 
 \begin{exmp}
-En terning kastes indtil den første sekser bliver slået, defineres hændelserne $A_k = \{\text{det } k \text{'te kast er en 6'er}\}$, så er $A_1, A_2, \ldots$ uafhængige, se eksempel \ref{exmp:uafhængelighed}. Lad $X$ være antallet af terninger kastet før den første sekser bliver slået, så er $X \sim \geom(\tfrac{1}{6})$, da der er tale om et stokastisk forsøg, som gentages $n$ uafhængige gange. Hvad er sandsynligheden for, at den første sekser kommer ved $10$'ene slag? Vi har 
+En terning kastes indtil, den første sekser bliver slået. Lad $A_k = \{\text{det } k \text{'te kast er en 6'er}\}$. Betragt, at $A_1, A_2, \ldots$ er uafhængige, se eksempel \ref{exmp:uafhængelighed}. Lad $X$ være antallet af terninger kastet før, den første sekser bliver slået, så er $X \sim \geom\left(\tfrac{1}{6}\right)$, da der er tale om et stokastisk forsøg, som gentages $n$ uafhængige gange. Hvad er sandsynligheden for, at den første sekser kommer ved $10.$ slag? Vi har 
 \begin{equation*}
     p(10) = \frac{1}{6} \left(1-\frac{1}{6}\right)^{10 - 1} \approx 0.032.
 \end{equation*}
-Altså en sandsynlighed på omkring 3\%.
 \end{exmp}
 
 
@@ -41,7 +31,7 @@ Altså en sandsynlighed på omkring 3\%.
 \label{prop:geomEgenskaber}
 Hvis $X \sim \geom (p)$, så gælder 
 \begin{align*}
-    E[X] = \frac{1}{p}, \text{ og } \Var[X] = \frac{1-p}{p^2}
+    E[X] = \frac{1}{p} \text{ og } \Var[X] = \frac{1-p}{p^2}
 \end{align*}
 \end{prop}
 
@@ -89,11 +79,11 @@ Et andet eksempel på en diskrete fordeling er Poissons. Denne fordeling kan ben
     \begin{align*}
          p(k)=\e^{-\lambda}\frac{\lambda^k}{k!}\text{ for } k\in\mathbb{N}_0
     \end{align*}
-    så har $X$ følger en \textbf{Poisson fordeling} med parameter $\lambda$, noteret ved $X\sim\Poi(\lambda)$.
+    så $X$ følger en \textbf{Poisson fordeling} med parameter $\lambda$, noteret ved $X\sim\Poi(\lambda)$.
 \end{defn}
 
 \begin{exmp}\label{exmp:kundeservice}
-En kundeservice benytter en Poisson fordeling med $\lambda = 10$ til at modellere, hvor mange opkald de forventer på en time, så de har en ide, om hvor meget personale, de skal kalde ind på arbejde. Hver medarbejder kan varetage $6$ opkald i timen. Lad $X$ være antallet af opkald på en time, så $X \sim \Poi(10)$.
+En kundeservice benytter en Poisson fordeling med $\lambda = 10$ til at modellere, hvor mange opkald de forventer på en time, så de har en ide om hvor meget personale, de skal kalde ind på arbejde. Hver medarbejder kan varetage $6$ opkald i timen. Lad $X$ være antallet af opkald på en time, så $X \sim \Poi(10)$.
 Sandsynligheden for, at der er mere end $18$ opkald, er
 \begin{align*}
     P(X > 18) = 1 - P(X \leq 18) \approx 1 - 0.985 = 0.015
@@ -107,7 +97,7 @@ Lad $\lambda > 0$ og $X \sim \Poi(\lambda)$, så gælder
 \end{equation*}
 \end{prop}
 \begin{proof}
-Noter at $kp(k) = k \e^{-\lambda} \frac{\lambda^k}{k!} = \lambda \e^{-\lambda} \frac{\lambda^{k - 1}}{(k - 1)!} = \lambda p(k - 1)$, for $k = 1, 2, \ldots$, heraf følger det, at 
+Det gælder, at $kp(k) = k \e^{-\lambda} \frac{\lambda^k}{k!} = \lambda \e^{-\lambda} \frac{\lambda^{k - 1}}{(k - 1)!} = \lambda p(k - 1)$ for $k = 1, 2, \ldots$, heraf følger det, at 
 \begin{equation*}
     E[X] = \sum^\infty_{k = 0} k p(k) = \sum^\infty_{k = 1} k p(k) = \lambda \sum^\infty_{k = 1} p(k - 1) = \lambda,
 \end{equation*}
