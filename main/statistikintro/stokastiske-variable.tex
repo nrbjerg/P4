@@ -10,6 +10,17 @@ Vi husker, at en hændelse afhængig af stokastiske variabler kan noteres med et
 der beskriver hændelsen, hvor $X$ antager værdien $0$.
 Generelt undlades tuborg klammerne omkring predikatet, når der arbejdes med sandsynlighedsmål, så $P(\{X = 0\})$ noteres også $P(X = 0)$.
 
+Vi er ofte intresseret i om en hændelse sker, til dette introduceres indikator funktionen, som er $1$ hvis hændelsen sker og $0$ ellers.
+\begin{defn} [Indikator] %2.12. Bernoulli random variable
+    Lad $A$ være en hændelse. Den stokastiske variabel $\mathbb{1}_A$ kaldes en \textbf{indikator} af $A$, hvis
+    \begin{align*}
+        \mathbb{1}_A=\begin{cases}
+          1 & \text{hvis } A \text{ opstår} \\
+          0 & \text{ellers}
+       \end{cases}
+    \end{align*}
+\end{defn}
+
 \begin{defn} [Sandsynlighedsfunktion]%Def 2.3
     Lad $X$ være en diskret stokastisk variabel. Så kaldes funktionen
 \begin{align*}
@@ -21,6 +32,9 @@ for \textbf{sandsynlighedsfunktion (pmf)} af $X$. Sandsynlighederne, beskrevet v
     hvis $X$ har udfaldsrum $V_X$ så er $p(x) = 0$ for alle $x \not \in V_X$
 \end{remark}
 
+\begin{example}
+  Lad $A$ være en hændelse, således $P(A) = q$,
+\end{example}
 Vi introducerer nu følgende resultat, som kan benyttes til at generalisere resultaterne om sandsynlighedsfunktioner til diskrete stokastiske variable med uendelige udfaldsrum til diskrete stokastiske variabler med endelige udfaldsrum.
 \begin{lem}
 Lad $X$, være en diskret stokastisk variabel med udfaldsrum $\{x_1, x_2, \ldots, x_n\}$, og $f: \N \to \R$. Så er 
@@ -36,9 +50,6 @@ Vi har
 \end{align*}
 da $p(x_k) = 0$ for alle $x_k \not \in \{x_1, x_2, \ldots, x_n\}$.
 \end{proof}
-
-
-
 % En sandsynlighedsfunktion kaldes skrives på engelsk probability mass function, heraf forkortelsen \textbf{pmf} fremkommer, som vi herefter vil benytte.
 
 \begin{prop}\label{prop:kravTilPMF}\label{prop:pmfEgenskaber} %Prop:2.1
@@ -88,15 +99,3 @@ Til sidst bevises punkt \ref{alg2:prop2.2} ved
 \end{align*}
 %Forklaring om grænseværdien 
 \end{proof}
-
-
-\begin{defn} [Indikator] %2.12. Bernoulli random variable
-    Lad $A$ være en hændelse. Den stokastiske variabel $\mathbb{1}_A$ er en indikator af $A$, hvis
-    \begin{align*}
-        \mathbb{1}_A=\begin{cases} 
-          1 & \text{hvis } A \text{ opstår} \\
-          0 & \text{ellers}
-       \end{cases}
-    \end{align*}
-    \end{defn}
-    

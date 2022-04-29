@@ -10,7 +10,7 @@ I dette afsnit vil vi introducere statistisk momenter for diskrette stokastiske 
 Middelværdien kaldes også det første moment.  Det skal bemærkes, at selvom middelværdien giver en forventning til variablens udfald, så er det ikke nødvendigvis en værdi, som variablen kan antage. Dette ses i følgende eksempel.
 
 \begin{exmp}
-    Variablen $X$ beskriver udfaldet af et fair møntkast med værdi $0$ for plat, $1$ for krone og pmf $p(0)=p(1)=\frac{1}{2}$. Hvad bliver middelværdien? Fra definition \ref{defn:middelværdien} fås $E[X]=0p(0)+1p(1)=\frac{1}{2}$, altså en middelværdi som variablen ikke selv kan antage.
+    Definier hændelserne $P$ og $K$ som hændholdsvis plat eller krone efter et mønt kast, hvad er $E[\mathbb{1}_{P}]$? Vi har $E[\mathbb{1}_{P}] = 0p(0) + 1p(1) = \frac{1}{2}$, da $p(0) = p(1) = 1/2$, altså en middelværdi som variablen ikke selv kan antage.
 \end{exmp}
 
 Hvis en diskret stokastisk variabel kun kan antage ikke-negative heltal, så er følgende resultat nyttig.
@@ -36,7 +36,7 @@ Lad $X$ være en diskret variable med udfaldsrum $\N_0$. Så gælder det, at
 \end{proof}
 
 \begin{exmp}
-    Variablen $X$ beskriver antallet af møntkast, inden første krone bliver slået. Det vides på forhånd, at sandsynligheden for, at de første $k$ kast giver plat, er 
+  Variablen $X$ beskriver antallet af møntkast, inden første krone bliver slået. Det vides på forhånd, at sandsynligheden for, at de første $k$ kast giver plat, er
     \begin{align*}
         P(X\geq k)=\left(\frac{1}{2}\right)^k
     \end{align*}
