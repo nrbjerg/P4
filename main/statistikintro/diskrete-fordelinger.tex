@@ -36,39 +36,58 @@ Hvis $X \sim \geom (p)$, så gælder
 \end{prop}
 
 \begin{proof}
-\begin{align*}
-    E[X]&=\sum_{k=1}^\infty kp(1-p)^{k-1} =p\sum_{k=0}^\infty k(1-p)^{k-1}=p\frac{1}{1-(1-p)^2}=\frac{1}{p}
-\end{align*}
-% Ud fra proposition \ref{prop:2.9} kan middelværdien af $X$ opskrives som:
+    Ud fra proposition \ref{prop:2.9} kan middelværdien af $X$ opskrives som
+    \begin{align*}
+      E[X] &= \sum_{n=0}^{\infty} P(X > n) =\sum_{n=0}^\infty(1-p)^n=\frac{1}{1-(1-p)}=\frac{1}{p}.
+    \end{align*}
+    hvor det vides, at $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$ for alle $|x|<1$, hvor vi har, at $|p-1|<1$.\\
+    Jævnfør fra korollar \ref{cor:VariansIForholdTilForventedVærdi}, at
+    \begin{align*}
+        \Var[X] =E[X^2]-E[X]^2
+    \end{align*}    
+    For at udregne $E[X^2]$, så bemærkes det først, at hvis
+    \begin{align*}
+        \sum^\infty_{n=0}x^n=\frac{1}{1-x}
+    \end{align*}
+    for alle $|x|<1$ differentieres to gange, fåes 
+    \begin{align*}
+        \sum^\infty_{n=2}(n(n-1))x^{n-2}=\frac{2}{(1-x)^3}
+    \end{align*}
+    Yderligere bemærk, at $X^2=X(X-1)+X$, hermed fåes det, at
+    \begin{align*}
+        E[X^2]=E[X(X-1)]+E[X]
+    \end{align*}
+    hvor 
+    \begin{align*}
+        E[X(X-1)]&= \sum_{k=1}^{\infty}k(k-1)p(1-p)^{k-1}\\
+        &= p(1-p)\sum_{k=0}^{\infty}k(k-1)(1-p)^{k-2}\\
+        &=p(1-p)\frac{2}{(1-(1-p))^3}
+        \\
+        &=(1-p)\frac{2}{p^2}
+    \end{align*}
+    Hermed fåes det så, at
+    \begin{align*}
+        \Var[X]=(1-p)\frac{2}{p^2}+\frac{1}{p}-\left(\frac{1}{p}\right)^2
+        =\frac{2(1-p)+p-1}{p^2}
+        =\frac{1-p}{p^2}
+    \end{align*}
 % \begin{align*}
-%   E[X] &= \sum_{n=0}^{\infty} P(X > n) =\sum_{n=0}^\infty(1-p)^n=\frac{1}{1-(1-p)}=\frac{1}{p}.
+%     E[X]&=\sum_{k=1}^\infty kp(1-p)^{k-1} =p\sum_{k=0}^\infty k(1-p)^{k-1}=p\frac{1}{1-(1-p)^2}=\frac{1}{p}
 % \end{align*}
-% Da $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$ for $0 < x < 1$, kan man finde den afledte og dobbeltafledte:
-% \begin{align} \label{dobleafledt}
-%     E'[X]&=\sum_{n=1}^{\infty}nx^{n-1}=\frac{1}{(1-x)^2} \nonumber \\ %bemærk man tager summe fra 1, fordi at afledte af 0 bliver 0.
-%     E''[X]&=\sum_{n=2}^{\infty}n(n-1)x^{n-2}=\frac{2}{(1-x)^3} %bemærk man tager summe fra 2, fordi at afledte af 1 bliver 0.
-% \end{align}
-
-Man kan opskrive $\Var[X] =E[X^2]-E[X]^2$, jævnfør korollar \ref{cor:VariansIForholdTilForventedVærdi}\\
-Ud fra lemma \ref{lem:middelværdiAfX2} er $E[X^2]$ givet ved:
-\begin{align*}
-E[X^2]&=E[X]+E[X(X-1)]\\
-    &=\frac{1}{p}+\sum_{k=1}^{\infty}k(k-1)p(1-p)^{k-1}\\
-    &=\frac{1}{p} + p(1-p)\sum_{k=0}^{\infty}k(k-1)(1-p)^{k-2}\\
-    &=\frac{1}{p}+p(1-p)\frac{2}{(1-(1-p))^3}\\
-    &=\frac{2-p}{p^2}
-\end{align*}
-% Ved at benytte ligning \eqref{dobleafledt}, opnås:
+% Man kan opskrive $\Var[X] =E[X^2]-E[X]^2$, jævnfør korollar \ref{cor:VariansIForholdTilForventedVærdi}\\
+% Ud fra lemma \ref{lem:middelværdiAfX2} er $E[X^2]$ givet ved:
 % \begin{align*}
-%     E[X^2] = \frac{1}{p} + p(1-p)\frac{2}{(1-(1-p))^3}= \frac{1}{p} + \frac{2(1-p)}{p^2}%som kommer fra den dobbeltafledte, hvor x svare til 1-p og n svare til k
+% E[X^2]&=E[X]+E[X(X-1)]\\
+%     &=\frac{1}{p}+\sum_{k=1}^{\infty}k(k-1)p(1-p)^{k-1}\\
+%     &=\frac{1}{p} + p(1-p)\sum_{k=0}^{\infty}k(k-1)(1-p)^{k-2}\\
+%     &=\frac{1}{p}+p(1-p)\frac{2}{(1-(1-p))^3}\\
+%     &=\frac{2-p}{p^2}
 % \end{align*}
-og derved er:
-\begin{align*}
-     \Var[X]&=E[X^2]-E[X]^2
- %    &=E[X(X-1)]+E[X]-E[X]^2\\
-     =\frac{2-p}{p^2}-\left(\frac{1}{p}\right)^2=\frac{1-p}{p^2}
-\end{align*}
-% Heraf fås $\Var[X] = \dfrac{1 - p}{p^2}$.
+% og derved er:
+% \begin{align*}
+%      \Var[X]&=E[X^2]-E[X]^2
+%      =\frac{2-p}{p^2}-\left(\frac{1}{p}\right)^2=\frac{1-p}{p^2}
+% \end{align*}
 \end{proof}
 
 Et andet eksempel på en diskrete fordeling er Poissons. Denne fordeling kan benyttes til at beskrive antallet af stokastiske hændelser, over en periode. Eksempelvis antallet af jordskælv over et årti.
