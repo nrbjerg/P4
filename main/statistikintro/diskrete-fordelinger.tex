@@ -1,23 +1,23 @@
 \section{Diskrete fordelinger}
 % Se martins rettelser
-Lad $A$ være en hændelse i et forsøg, der gentages $n$ uafhængige gange. Antallet af forsøg, der skal udføres for, at $A$ opstår første gang, noters så med $X$, som tager udfaldsrummet $\{1,2,\ldots\}$. Hændelsen $\{X=k\}$ betyder, at vi har $k-1$ fejslag, før vi får succes ved det $k$'te forsøg. Grundet uafhængighed, så er sandsynligheden for $\{X=k\}$ givet ved
+Lad $A$ være en hændelse i et forsøg og lad $\lambda = P(A) > 0$, som gentages uafhængigt af tidligere forsøg. Lad $X$ være antallet af forsøg, der udføres før $A$ opstår første gang. Så følger det at $X$ har udfaldsrum $\{1, 2, \ldots\}$, og at $X = k$ hvis og kun $A$ opstod i det $k$'te forsøg men ikke i de første $k - 1$ forsøg. Grundet uafhængigheden af gentagelserne af forsøgene, så er sandsynligheden for at $X = k$ givet ved
 \begin{align*}
     \lambda(1-\lambda)(1-\lambda)\cdots (1-\lambda) =\lambda(1-\lambda)^{k-1}
 \end{align*}
-hvor $\lambda \in [0, 1]$ er sandsynligheden for succes.
+for $k \in \N$.
 \begin{defn} \label{def:2.14} %Def 2.14
-Hvis $X$ er antallet af forsøg indtil en hændelse $A$ med sandsynlighed $\lambda>0$ opstår i et uafhængigt eksperiment, som gentages, så har $X$ pmf 
-\begin{align*}
+  Lad $A$ være en hændelse og lad $\lambda = P(A) > 0$. Lad $X$ være antallet af gentagelser før $A$ opstår, så har $X$ pmf
+  \begin{align*}
     p(k)=\lambda(1-\lambda)^{k-1}, \quad k=1,2,\ldots 
-\end{align*}
-$X$ siges at have en \textbf{geometrisk fordeling} med succes sandsynlighed $\lambda$, som noteres $X\sim\geom(\lambda)$.
+  \end{align*}
+  og $X$ siges at følge en \textbf{geometrisk fordeling} med parametre $\lambda$, og vi notere $X\sim\geom(\lambda)$.
 \end{defn}
 
-Hvis der i stedet for kigges på $Y$, som er antallet af forsøg, strengt før hændelsen $A$ opstår, så er pmf
+Hvis der i stedet for kigges på $Y$, som er antallet af forsøg, strengt før hændelsen $A$ opstår, så er
 \begin{align*}
-    p(k)=\lambda(1-\lambda)^{k}, \quad k=0,1,2,\ldots 
+    p_{Y}(k)=\lambda(1-\lambda)^{k}, \quad k=0,1,2,\ldots
 \end{align*}
-hvilket svare til en geometrisk fordeling med $k$ startende i $0$. Det gælder også, at $Y=X-1$.
+hvilket svare til en geometrisk fordeling med $k$ startende i $0$. Det gælder også, at $Y=X-1$, såfremt variablerne bygger på samme forsøg og hændelse $A$.
 
 \begin{exmp}
 En terning kastes indtil, den første sekser bliver slået. Lad $A_k = \{\text{det } k \text{'te kast er en 6'er}\}$. Betragt, at $A_1, A_2, \ldots$ er uafhængige, se eksempel \ref{exmp:uafhængelighed}. Lad $X$ være antallet af terninger kastet før, den første sekser bliver slået, så er $X \sim \geom\left(\tfrac{1}{6}\right)$, da der er tale om et stokastisk forsøg, som gentages $n$ uafhængige gange. Hvad er sandsynligheden for, at den første sekser kommer ved $10.$ slag? Vi har 
