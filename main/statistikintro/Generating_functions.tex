@@ -114,7 +114,7 @@ heraf fåes $p_X(n) = \dfrac{G_X^{(n)}(0)}{n!}$.
     præcis som man ville forvente.
 \end{exmp}
 
-Den forventede værdi og varians for den direkte stokastiske variabel kan også findes ud fra den første og anden afledte af pgf'en.
+Middelværdien og varians for den direkte stokastiske variabel kan også findes ud fra den første og anden afledte af pgf'en.
 \begin{prop}\label{prop 3.37} %3.37
     Lad $X$ være en diskret stokastisk variabel med udfaldsrum $\N_0$ og pgf $G_X$, så gælder
     \begin{align*}
@@ -197,15 +197,15 @@ Lad $X_1,X_2,\ldots$ med udfaldsrum $\N_0$ være iid. med pgf $G_X$. Lad $N$ væ
 \end{prop}
 
 \begin{proof}
-Først bevises formelen for den forventede værdi. Ved at benytte  proposition \ref{prop 3.39} gælder, at
+Først bevises formelen for middelværdien. Ved at benytte  proposition \ref{prop 3.39} gælder, at
 \begin{align} \label{alg:proofcor3.13}
     G'_{S_N}(s) = \frac{d}{ds}G_N(G_X(s))=G'_N(G_X(s))G'_X(s)
 \end{align}
-Da $G_X(1)=1$, så fåes ud fra proposition \ref{prop 3.37} og \eqref{alg:proofcor3.13}, at
+Da $G_X(1)=1$, så fåes ud fra proposition \ref{prop 3.37} og ligning \eqref{alg:proofcor3.13}, at
 \begin{align} \label{alg:Eproofcor3.13}
     E[S_N]= G'_N(G_X(1))G'_X(1)=G'_N(1)E[X_k]=E[N]E[X_k]
 \end{align}
-hvor $\mu=E[X_k]$. Hvilket afslutter beviset for den forventede værdi. Vi beviser nu formlen for variansen. Fra proposition \ref{prop 3.37} og \eqref{alg:Eproofcor3.13} har vi, at 
+hvor $\mu=E[X_k]$. Hvilket afslutter beviset for middelværdien. Vi beviser nu formlen for variansen. Fra proposition \ref{prop 3.37} og ligning \eqref{alg:Eproofcor3.13} har vi, at 
 \begin{equation*}
     \Var[S_n] = G''_{S_n}(1) + G'_{S_n}(1) - G'_{S_n}(1)^2 = G''_{S_n}(1) + E[N]E[X_k] - E[N]^2E[X_k]^2
 \end{equation*}

@@ -99,7 +99,7 @@ Beviset er analogt for $Y$.
     Da $\sum^6_{k = 1} p_Y(y_k) = 1$.
 \end{exmp}
 
-Hvis vi undersøgere den forventede værdi af en linearkombination af to diskrete stokastiske variable, får vi en linearkombination af forventede værdier.
+Hvis vi undersøgere middelværdien af en linearkombination af to diskrete stokastiske variable, får vi en linearkombination af middelværdier.
 \begin{prop}\label{prop:forventedVærdiAfLinearKombination} %Cor:3.3
 Lad $X, Y$ være diskrete stokastiske variable med udfaldsrummene $\{x_1, x_2, \ldots \}$ og $\{y_1, y_2, \ldots \}$ og $c_X, c_Y \in \R$, så er
 \begin{equation*}
@@ -160,7 +160,7 @@ Lad $X_1, X_2, \ldots, X_n$ være diskrete stokastiske variabler og $c_1, c_2, \
     jævnfør proposition \ref{prop:geomEgenskaber}. Altså forventes det at tage lidt under $15$ slag for at have opnået alle forskellige udfald af en terning.
 \end{exmp}
 
-Den forventede værdi af en diskret stokastisk vektor indsat i en funktion $g(X,Y)$ kan findes på nærmest samme måde som i proposition \ref{prop 2.12} og beviset er også analogt. 
+Middelværdien af en diskret stokastisk vektor indsat i en funktion $g(X,Y)$ kan findes på nærmest samme måde som i proposition \ref{prop 2.12} og beviset er også analogt. 
 \begin{prop} \label{prop:prop3.11}%prop 3.11
     Lad $(X,Y)$ være en diskret stokastisk vektor med simultan pmf $p$, samt lad $g:\R \times \R \to \R$ være en funktion, så er 
     \begin{align*}
@@ -173,7 +173,7 @@ $E[V] = \sum_{j=1}^\infty \sum_{k=1}^\infty v_{j,k} p_V(v_{j,k})$
 følger det at $E[g(X,Y)] = \sum_{j=1}^\infty \sum_{k=1}^\infty g(x_j,y_k) p(x_j,y_k)$.
 \end{proof}
 
-Den forventede værdi af diskrete stokastiske variabler kan også opdeles, når det kommer til multiplikation.  
+Middelværdien af diskrete stokastiske variabler kan også opdeles, når det kommer til multiplikation.  
 \begin{lem} \label{lem:prop3.13} %prop 3.13
     Lad $X$ og $Y$ være uafhængige diskrete stokastiske variable, så er 
     \begin{align*}
@@ -185,7 +185,7 @@ Den forventede værdi af diskrete stokastiske variabler kan også opdeles, når 
     \begin{align*}
         E[XY]=\sum_{j=1}^\infty\sum_{k=1}^\infty xyp(x_j,y_k)&=\sum_{j=1}^\infty\sum_{k=1}^\infty x_jy_kp_X(x_j)p_Y(y_k)\\ &=\sum_{j=1}^\infty x_jp_X(x_j)\sum_{k=1}^\infty y_kp_Y(y_k)
     \end{align*}
-    men dette er blot definitionen på den forventede værdi så $E[XY] = E[X]E[Y]$
+    men dette er blot definitionen på middelværdien, så $E[XY] = E[X]E[Y]$
 \end{proof}
 
 \begin{prop} \label{prop:prop3.15} %prop 3.15

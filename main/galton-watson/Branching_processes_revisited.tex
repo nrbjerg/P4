@@ -91,7 +91,7 @@ Det gælder at $h$ er voksende da $G$ er konveks på $[0, \eta)$ jævnfør korol
 \begin{equation*}
     \lim_{n \to \infty} H_n(s\eta) = H(s\eta)
 \end{equation*}
-eksistere, da $H_n(s) > 0 \forall n \in N, s \in [0, \eta)$ og denne grænseværdi giver os sammen med ligning \ref{eq:lemmaErAids}, os grænseværdien at grænseværdien
+eksistere, da $H_n(s) > 0 \forall n \in N, s \in [0, \eta)$ og denne grænseværdi giver os sammen med ligning \eqref{eq:lemmaErAids}, os grænseværdien at grænseværdien
 \begin{equation*}
     \lim_{n \to \infty} G_n^\pi(s) = G^\pi(s)
 \end{equation*}
@@ -114,7 +114,7 @@ da $\eta = G(\eta)$, jævnfør proposition \ref{prop:prop8.7}. Lad nu $n \to \in
 \begin{equation} \label{alg:alg6bevislemma6.7.1grim}
     H(G(s)) = G'(\eta)H(s), \text { hvis } s \in [0, \eta)
 \end{equation}
-Benyt ligning \ref{alg:alg4bevislemma6.7.1grim} til at opnå
+Benyt ligning \eqref{alg:alg4bevislemma6.7.1grim} til at opnå
 \begin{equation*}
     G^\pi(\eta^{-1}G(s)) + 1
 \end{equation*}
@@ -122,7 +122,7 @@ Tilsidst \textbf{todo med ligningen}
 \end{proof}
 
 \begin{rem}
-Når $\mu=E[Z_1] \leq 1$, så er det sikkert, at forgreningen uddør ifølge proposition \ref{prop:prop8.9}, således er $P(\Omega)=1$, samt $G'(P(\Omega))=\mu$. Dette leder til, at \eqref{alg:alg6.7.2grim} kan reduceres til 
+Når $\mu=E[Z_1] \leq 1$, så er det sikkert, at forgreningen uddør ifølge proposition \ref{prop:prop8.9}, således er $P(\Omega)=1$, samt $G'(P(\Omega))=\mu$. Dette leder til, at ligning \eqref{alg:alg6.7.2grim} kan reduceres til 
 \begin{align*}
     G^\pi(G(s))=\mu (G^\pi(s)-\mu)+1
 \end{align*}
@@ -136,7 +136,7 @@ Lad $\mu=E[Z_1]$. Hvis
 \end{cor}
 \begin{proof}
 Bevis af $\mu=1$:\\
-Vi har, at $G'(P(\Omega))=1$ hvis og kun hvis $\mu=1$ fra bemærkningen. Hermed kan \eqref{alg:alg6.7.2grim} omskrives til \begin{align*}
+Vi har, at $G'(P(\Omega))=1$ hvis og kun hvis $\mu=1$ fra bemærkningen. Hermed kan ligning \eqref{alg:alg6.7.2grim} omskrives til \begin{align*}
     G^\pi(G(s))=G^\pi(s)
 \end{align*}
 da $P(\Omega)=1$, når $\mu\leq1$. Fra proposition \ref{prop:prop8.7} har vi, at hvis $\mu > 1$, så er $G(s)>s$ for alle $s<1$. Og da $G^\pi(G(s)) =G^\pi(s)$, og følgen $\{G_n(0)\}_{n \geq 0}$ konvergere imod $1$, da $G(1) = 1$ og talfølgen er voksende, har vi at $G^\pi(s)=G^\pi(0)=0$ for alle $s<1$. 
@@ -147,7 +147,7 @@ Hermed er $G^\pi(s)=\sum_j q_j s^j =0$, hvilket medfører, at
 \end{align*}
 
 Bevis af $\mu\neq1$:\\ 
-Modsat første tilfælde, så gælder det, at $\mu\neq1$ hvis og kun hvis $G'(P(\Omega))\neq 1$. Lad $s\to P(\Omega)$ i \eqref{alg:alg6bevislemma6.7.1grim}, så fåes
+Modsat første tilfælde, så gælder det, at $\mu\neq1$ hvis og kun hvis $G'(P(\Omega))\neq 1$. Lad $s\to P(\Omega)$ i ligning \eqref{alg:alg6bevislemma6.7.1grim}, så fåes
 Lad ${s_n}_{n \geq 0}$ være en følge som konvergere imod nede fra $\eta$, da $H_n(s_n)$ konvergere uniformt har vi
 
 \begin{align*}
@@ -155,7 +155,7 @@ Lad ${s_n}_{n \geq 0}$ være en følge som konvergere imod nede fra $\eta$, da $
 \end{align*}
 eftersom $G_n(s_n) \to \eta$, når $n \to \infty$.
 
-Derfor fåes det fra \eqref{alg:alg4bevislemma6.7.1grim}, at
+Derfor fåes det fra ligning \eqref{alg:alg4bevislemma6.7.1grim}, at
 \begin{align*}
     \lim_{s\to 1} G^\pi(s)=\lim_{s\to 1} 1-H(sP(\Omega))=1 
 \end{align*}

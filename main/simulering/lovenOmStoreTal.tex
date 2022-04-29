@@ -9,7 +9,7 @@ $E[X] < \infty$. Så gælder
 \begin{proof}
 \end{proof}
 \begin{proof}
-  Lad $A=\{|X|\geq a\}$, og definier indikator funktionen $\mathbb{1}_A = 1$ hvis $A$ sker og $\mathbb{1}_{A} = 0$ ellers. Vi har, at $|X| \geq a\mathbb{1}_{A}$, da $a\mathbb{1}_{A} = 0$, hvis $|X| < a$, og $a$ hvis $|X| \geq a$. Hvis den forventede værdi tages på begge sider, opnåes
+  Lad $A=\{|X|\geq a\}$, og definier indikator funktionen $\mathbb{1}_A = 1$ hvis $A$ sker og $\mathbb{1}_{A} = 0$ ellers. Vi har, at $|X| \geq a\mathbb{1}_{A}$, da $a\mathbb{1}_{A} = 0$, hvis $|X| < a$, og $a$ hvis $|X| \geq a$. Hvis middelværdien tages på begge sider, opnåes
   \begin{align*}
     E[|X|]\geq E[a\mathbb{1}_{A}] = a E[\mathbb{1}_A] \iff \frac{E[|X|]}{a}\geq E[\mathbb{1}_A]
   \end{align*}
@@ -54,7 +54,7 @@ Hvilket afslutter beviset.
   \end{equation*}
 \end{lem}
 \begin{proof}
-  Resultatet om den forventede værdi følger umiddelbart af korollar \ref{cor:sumAfDiskreteVariable}, ved
+  Resultatet om middelværdien følger umiddelbart af korollar \ref{cor:sumAfDiskreteVariable}, ved
   \begin{equation*}
     E[\overline{X}_{n}] = E \left[\sum^{n}_{k = 1} \frac{1}{n} X_{k}\right] = \frac{1}{n} \sum_{k=1}^{n} E[X_{k}] = \mu
   \end{equation*}

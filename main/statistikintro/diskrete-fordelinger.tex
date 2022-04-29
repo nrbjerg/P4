@@ -29,18 +29,18 @@ En terning kastes indtil, den første sekser bliver slået. Lad $A_k = \{\text{d
 
 \begin{prop} %2.18 COPY PASTE, men det er svært at lave om
 \label{prop:geomEgenskaber}
-Hvis $X \sim \geom (p)$, så gælder 
+Hvis $X \sim \geom (\lambda)$, så gælder 
 \begin{align*}
-    E[X] = \frac{1}{p} \text{ og } \Var[X] = \frac{1-p}{p^2}
+    E[X] = \frac{1}{\lambda} \text{ og } \Var[X] = \frac{1-\lambda}{\lambda^2}
 \end{align*}
 \end{prop}
 
 \begin{proof}
     Ud fra proposition \ref{prop:2.9} kan middelværdien af $X$ opskrives som
     \begin{align*}
-      E[X] &= \sum_{n=0}^{\infty} P(X > n) =\sum_{n=0}^\infty(1-p)^n=\frac{1}{1-(1-p)}=\frac{1}{p}.
+      E[X] &= \sum_{n=0}^{\infty} P(X > n) =\sum_{n=0}^\infty(1-\lambda)^n=\frac{1}{1-(1-\lambda)}=\frac{1}{\lambda}.
     \end{align*}
-    hvor det vides, at $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$ for alle $|x|<1$, hvor vi har, at $|p-1|<1$.\\
+    hvor det vides, at $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$ for alle $|x|<1$, hvor vi har, at $|\lambda-1|<1$.\\
     Jævnfør fra korollar \ref{cor:VariansIForholdTilForventedVærdi}, at
     \begin{align*}
         \Var[X] =E[X^2]-E[X]^2
@@ -60,16 +60,16 @@ Hvis $X \sim \geom (p)$, så gælder
     hvor 
     \begin{align*}
         E[X(X-1)]&= \sum_{k=1}^{\infty}k(k-1)p(1-p)^{k-1}\\
-        &= p(1-p)\sum_{k=0}^{\infty}k(k-1)(1-p)^{k-2}\\
-        &=p(1-p)\frac{2}{(1-(1-p))^3}
+        &= \lambda(1-\lambda)\sum_{k=0}^{\infty}k(k-1)(1-\lambda)^{k-2}\\
+        &=\lambda(1-\lambda)\frac{2}{(1-(1-p))^3}
         \\
-        &=(1-p)\frac{2}{p^2}
+        &=(1-\lambda)\frac{2}{\lambda^2}
     \end{align*}
     Hermed fåes det så, at
     \begin{align*}
-        \Var[X]=(1-p)\frac{2}{p^2}+\frac{1}{p}-\left(\frac{1}{p}\right)^2
-        =\frac{2(1-p)+p-1}{p^2}
-        =\frac{1-p}{p^2}
+        \Var[X]=(1-\lambda)\frac{2}{\lambda^2}+\frac{1}{\lambda}-\left(\frac{1}{\lambda}\right)^2
+        =\frac{2(1-\lambda)+\lambda-1}{\lambda^2}
+        =\frac{1-\lambda}{\lambda^2}
     \end{align*}
 % \begin{align*}
 %     E[X]&=\sum_{k=1}^\infty kp(1-p)^{k-1} =p\sum_{k=0}^\infty k(1-p)^{k-1}=p\frac{1}{1-(1-p)^2}=\frac{1}{p}
