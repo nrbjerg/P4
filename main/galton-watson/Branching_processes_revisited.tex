@@ -1,11 +1,12 @@
 \subsection{Revisted (skal ikke være her, men så har vi har styr på hvad der igang)}
 Gej
-Kigger man på en forgreningsprocces, hvor der for hver familie gælder, at   
+Der er en række eksempler som kan være besværlige at håndtere med de indtil videre præsenterede værktøjer.
+Eksempelvis hvis $Z_0=1$, men hvor der for hver familie gælder, at   
 \begin{align*}
 P(Z_1=0)<0    
 \end{align*}
-så er $0$ i en absorberende tilstand, og alle andre tilstand er transiente. Af denne årsag er kæden også reducerbar, %rekurrent skal indskrives 
- da når familien er $0$, så gælder det, at $P(Z_1=0)=1$. Dog eksisterer der en stationær fordeling 
+så er $0$ i en absorberende tilstand, og alle andre tilstand er transiente. Derfor er hele hele kæden ikkereducerbar, men  %rekurrent skal indskrives 
+ når familien er $0$, så er den. Så gælder det, at $P(Z_1=0)=1$. Dog eksisterer der en stationær fordeling 
 \begin{align*}
     \bs{\pi}=\begin{bmatrix}
 1\\
@@ -65,7 +66,7 @@ hvor $G_n(s) = E(s^{Z_n})$. Lighed $(a)$ følger af ${}_0p_j(n) = \dfrac{P(Z_n =
     P(Z_n = j, E_n) &= P(Z_n = j \text{ og alle børnenes slægter uddør }) \\
     &= P(Z_n = j) \eta^j, \text{ hvis } j \geq 1,
 \end{align*}
-Definier nu funktionerne 
+Definer nu funktionerne 
 \begin{equation*}
     H_n(s) = \frac{\eta - G_n(s)}{\eta - G_n(0)}, \quad h(s) = \frac{\eta - G(s)}{\eta - s}, \quad 0 \leq s \leq \eta
 \end{equation*}

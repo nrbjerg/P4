@@ -129,18 +129,18 @@ jævnfør proposition \ref{prop:pgfI0Og1}.
 
 En hurtig måde til at finde sandsynligheden for, at forgreningen uddør er at kigge på fikspunktet $s=G(s)$  
 \begin{prop} \label{prop:prop8.7}%8.7
-Lad afkomsfordelingen af en forgreningsproces have pgf $G$. Så er den mindste løsning til $s=G(s)$ i intervallet $s\in[0,1]$ givet ved $q=P(\Omega)$.
+Lad afkomsfordelingen af en forgreningsproces have pgf $G$. Så er den mindste løsning til $s=G(s)$ i intervallet $s\in[0,1]$ givet ved $\eta=P(\Omega)$.
 \end{prop}
 \begin{proof}
-Først vises det at $q$ er en løsning, hvorefter det vises at det er den mindste løsning.
+Først vises det at $\eta$ er en løsning, hvorefter det vises at det er den mindste løsning.
 Lad $X$ være antallet af afkom stamforfaderen får.
 Hvis $X=k$, så eksisterer der $k$ uafhængige forgreningsprocesser, der skal uddø, for at slægten uddør.
-Sandsynligheden, for at dette sker, er $q^k$, da forgreningsprocesserne er uafhængige af hinanden.
+Sandsynligheden, for at dette sker, er $\eta^k$, da forgreningsprocesserne er uafhængige af hinanden.
 Dette giver, at 
 \begin{align*}
-    q=\sum_{k=0}^{\infty}P(\Omega|X=k)P(X=k)=\sum_{k=0}^{\infty}q^kP(X=k)=G(q)
+    \eta=\sum_{k=0}^{\infty}P(\Omega|X=k)P(X=k)=\sum_{k=0}^{\infty}q^kP(X=k)=G(q)
 \end{align*}
-jævnfør sætning \ref{thm:LTP} og det ses, at $P(\Omega)=q$ løser $s=G(s)$.\\ 
+jævnfør sætning \ref{thm:LTP} og det ses, at $P(\Omega)=\eta$ løser $s=G(s)$.\\ 
 Antag nu at der er en anden løsning $r\in[0,1]$.
 Fra proposition \ref{prop:pgfforgreningsproces} har vi at
 \begin{align*}
@@ -148,9 +148,9 @@ Fra proposition \ref{prop:pgfforgreningsproces} har vi at
 \end{align*}
 Da pgf'er er voksende jævnfør korollar \ref{cor:egenskaberVedPGF}, og $r\geq 0$, så er
 \begin{align*}
-    r = \lim_{n\to\infty}G_n(r) \geq \lim_{n\to\infty}G_n(0)=P(\Omega)=q
+    r = \lim_{n\to\infty}G_n(r) \geq \lim_{n\to\infty}G_n(0)=P(\Omega)=\eta
 \end{align*}
-og hermed er $q$ den mindste løsning til $s=G(s)$.
+og hermed er $\eta$ den mindste løsning til $s=G(s)$.
 \end{proof}
 
 Den forventede værdi af afkom kan benyttes til at undersøge sandsynligheden for at slægten uddør.
@@ -258,7 +258,7 @@ hvilket afslutter induktionsskridtet og beviset.
 Vi vil nu undersøge om antallet af individer kan gå imod et $n \in \N$.
 
 \begin{prop} %8.10 (vi mangler bemærkningen under)
-Hvis $P(Z_n \to 0) = q$ for $n \to \infty$, så gælder det, at  $P(Z_n \to \infty) = 1 - q$ for $n \to \infty$.
+Hvis $P(Z_n \to 0) = \eta$ for $n \to \infty$, så gælder det, at  $P(Z_n \to \infty) = 1 - \eta$ for $n \to \infty$.
 \end{prop}
 \begin{proof}
 Antag først at $Z_n\not\to\infty$.
@@ -266,5 +266,5 @@ Dette betyder, at følgen har en øvre grænse $M$, således at $Z_n \leq M \; \
 Generation $Z_{n+1}=0$, hvis ingen individer i forrige generation får afkom, hvilket har sandsynlighed $p_X(0)^{Z_n}\geq p_X(0)^{M}>0$.
 Da denne sandsynlighed er positiv for alle $Z_n$, må der efter nok generationer være en generation hvor $Z_n=0$.
 Altså gælder det for $n \to \infty$, at $Z_n\not\to\infty\implies Z_n\to0$.
-Det gælder også, at $Z_n\to0\implies Z_n\not\to\infty$, så hændelserne er ækvivalente. Med dette konkluderes, at $P(Z_n \to 0) = P(Z_n\not\to\infty) = q \implies P(Z_n\to\infty) = 1-q$ for $n \to \infty$.
+Det gælder også, at $Z_n\to0\implies Z_n\not\to\infty$, så hændelserne er ækvivalente. Med dette konkluderes, at $P(Z_n \to 0) = P(Z_n\not\to\infty) = \eta \implies P(Z_n\to\infty) = 1-\eta$ for $n \to \infty$.
 \end{proof}
