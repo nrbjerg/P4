@@ -1,18 +1,17 @@
 \section{Diskrete fordelinger}
 % Se martins rettelser
-Lad $A$ være en hændelse i et forsøg og lad $\lambda = P(A) > 0$, som gentages uafhængigt af tidligere forsøg. Lad $X$ være antallet af forsøg, der udføres før $A$ opstår første gang. Så følger det at $X$ har udfaldsrum $\{1, 2, \ldots\}$, og at $X = k$ hvis og kun $A$ opstod i det $k$'te forsøg men ikke i de første $k - 1$ forsøg. Grundet uafhængigheden af gentagelserne af forsøgene, så er sandsynligheden for at $X = k$ givet ved
+Lad $A$ være en hændelse i et forsøg, som gentages uafhængigt af tidligere forsøg. Lad $\lambda = P(A) > 0$ og lad $X$ være antallet af forsøg, der udføres før $A$ opstår første gang. Så følger det, at $X$ har udfaldsrum $\{1, 2, \ldots\}$, og at $X = k$ hvis og kun $A$ opstod i det $k$'te forsøg men ikke i de første $k - 1$ forsøg. Grundet uafhængigheden af gentagelserne af forsøgene, så er sandsynligheden for, at $X = k$ givet ved
 \begin{align*}
     \lambda(1-\lambda)(1-\lambda)\cdots (1-\lambda) =\lambda(1-\lambda)^{k-1}
 \end{align*}
 for $k \in \N$.
 \begin{defn} \label{def:2.14} %Def 2.14
-  Lad $A$ være en hændelse og lad $\lambda = P(A) > 0$. Lad $X$ være antallet af gentagelser før $A$ opstår, så har $X$ pmf
+  Lad $A$ være en hændelse og $\lambda = P(A) > 0$. Lad $X$ være antallet af gentagelser før $A$ opstår, så har $X$ pmf
   \begin{align*}
     p(k)=\lambda(1-\lambda)^{k-1}, \quad k=1,2,\ldots 
   \end{align*}
-  og $X$ siges at følge en \textbf{geometrisk fordeling} med parametre $\lambda$, og vi notere $X\sim\geom(\lambda)$.
+  og $X$ siges at følge en \textbf{geometrisk fordeling} med parametre $\lambda$, og vi noterer $X\sim\geom(\lambda)$.
 \end{defn}
-
 Hvis der i stedet for kigges på $Y$, som er antallet af forsøg, strengt før hændelsen $A$ opstår, så er
 \begin{align*}
     p_{Y}(k)=\lambda(1-\lambda)^{k}, \quad k=0,1,2,\ldots
@@ -40,11 +39,12 @@ Hvis $X \sim \geom (\lambda)$, så gælder
     \begin{align*}
       E[X] &= \sum_{n=0}^{\infty} P(X > n) =\sum_{n=0}^\infty(1-\lambda)^n=\frac{1}{1-(1-\lambda)}=\frac{1}{\lambda}.
     \end{align*}
-    hvor det vides, at $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$ for alle $|x|<1$, hvor vi har, at $|\lambda-1|<1$.\\
-    Jævnfør fra korollar \ref{cor:VariansIForholdTilForventedVærdi}, at
+    hvor det vides, at $\sum_{n=0}^\infty x^n=\frac{1}{1-x}$ for alle $|x|<1$, da der er tale om en geometrisk række, og vi har, at $|1 - \lambda|<1$.\\
+    Vi har at
     \begin{align*}
         \Var[X] =E[X^2]-E[X]^2
-    \end{align*}    
+    \end{align*}
+    jævnfør fra korollar \ref{cor:VariansIForholdTilForventedVærdi}
     For at udregne $E[X^2]$, så bemærkes det først, at hvis
     \begin{align*}
         \sum^\infty_{n=0}x^n=\frac{1}{1-x}
@@ -53,15 +53,15 @@ Hvis $X \sim \geom (\lambda)$, så gælder
     \begin{align*}
         \sum^\infty_{n=2}(n(n-1))x^{n-2}=\frac{2}{(1-x)^3}
     \end{align*}
-    Yderligere bemærk, at $X^2=X(X-1)+X$, hermed fåes det, at
+    Fra lemma \ref{lem:middelværdiAfX2} har vi
     \begin{align*}
         E[X^2]=E[X(X-1)]+E[X]
     \end{align*}
-    hvor 
+    hvor
     \begin{align*}
         E[X(X-1)]&= \sum_{k=1}^{\infty}k(k-1)p(1-p)^{k-1}\\
         &= \lambda(1-\lambda)\sum_{k=0}^{\infty}k(k-1)(1-\lambda)^{k-2}\\
-        &=\lambda(1-\lambda)\frac{2}{(1-(1-p))^3}
+        &=\lambda(1-\lambda)\frac{2}{(1-(1-\lambda))^3}
         \\
         &=(1-\lambda)\frac{2}{\lambda^2}
     \end{align*}
@@ -90,7 +90,7 @@ Hvis $X \sim \geom (\lambda)$, så gælder
 % \end{align*}
 \end{proof}
 
-Et andet eksempel på en diskrete fordeling er Poissons. Denne fordeling kan benyttes til at beskrive antallet af stokastiske hændelser, over en periode. Eksempelvis antallet af jordskælv over et årti.
+Et andet eksempel på en diskrete fordeling er Poissons. Denne fordeling kan benyttes til at beskrive antallet af stokastiske hændelser over en periode. Eksempelvis antallet af jordskælv over et årti.
 %Def 2.15
 \begin{defn}\label{def:poisson}
     Lad $\lambda>0$, hvis $X$ har pmf
