@@ -31,6 +31,7 @@ simulate_poisson_pmf <- function(n) {
 }
 
 transform_dataset <- function(df, row_ids) {
+  # This function is just used to convert the data frame to a usable dataframe for plotting.
   dfs <- List()
   for (i in seq(row_ids)) {
     row_id <- row_ids[i]
@@ -71,9 +72,10 @@ rownames(df) <- row_ids
 df <- transform_dataset(df, row_ids)
 print(df)
 
+# Plot data
 theme_set(
   theme(legend.position = "top")
 )
 
 ggplot(df, aes(x = k, y = p.k, fill = simulation.type)) +
-  geom_col(position = "dodge")
+  geom_col(position = "dodge") + theme_minimal()
