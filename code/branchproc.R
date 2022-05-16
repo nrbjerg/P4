@@ -1,5 +1,7 @@
 library(ggplot2)
 
+set.seed(42)
+
 ronamu <- 1
 ronafirst <- 1634
 

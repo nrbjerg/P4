@@ -35,20 +35,20 @@ plot_means <- function (mu, n, number_of_generations = 14, Z0 = 1) {
   mean <- compute_mean_of_population(mu, number_of_generations = number_of_generations, Z0 = Z0)
 
   # creating a dataframe for the data.
-  empirical_mean_df <- data.frame(Graf=rep(c("Empirisk middelværdi"),times=number_of_generations), generation=c(1:number_of_generations), value=empirical_mean)
-  mean_df <- data.frame(Graf=rep(c("Teoretisk æ middelværdi"),times=number_of_generations), generation=c(1:number_of_generations), value=mean)
+  empirical_mean_df <- data.frame(Graf=rep(c("Målt generationsstørrelse"),times=number_of_generations), generation=c(1:number_of_generations), value=empirical_mean)
+  mean_df <- data.frame(Graf=rep(c("Teoretisk middelværdi"),times=number_of_generations), generation=c(1:number_of_generations), value=mean)
   df <- rbind(empirical_mean_df, mean_df)
 
   ggplot(data=df, aes(x=generation, y=value, group=Graf)) +
     geom_line(aes(linetype =Graf))+
     geom_point() +
-    labs(title = "Gennemsnitligt antal individer per generation",
-         x = "Generationer",
-         y = "Antal individer")
+    labs(title = "Antal individer per generation",
+         x = "Generation",
+         y = "Antal individer") +
+    theme_minimal() +
+    theme(legend.position = "bottom")
   ggsave(sprintf("code/generation_case[%s].png", mu))
 }
-# Specify any integer
-set.seed(42)
 
 plot_means(0.7, 1, Z0=1593)
 plot_means(1.3, 1, Z0=157)

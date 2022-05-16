@@ -1,7 +1,7 @@
 source("code/branchproc.R")
 datapoints <- 10000
 
-cases <- read.csv(file = "code/data/cases.csv")
+cases <- read.csv(file = "code/data/cases2.csv")
 data <- data.frame(matrix(nrow = datapoints, ncol = nrow(cases)))
 for (i in seq_len(nrow(cases))) {
     mu <- cases[i, ]$kontakttal
