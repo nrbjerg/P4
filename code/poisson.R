@@ -24,7 +24,7 @@ simulate_variable <- function(u, pmf = poisson_pmf) {
 
 simulate_poisson_pmf <- function(n) {
   # Simulates a sequence and creates a barplot
-  set.seed(2) # makes sure to that the first uniform random variables are always the same
+  set.seed(42) # makes sure to that the first uniform random variables are always the same
   u <- runif(n = n)
   simulated_frequencies <- table(unlist(map(u, simulate_variable))) / n
   return(simulated_frequencies)
